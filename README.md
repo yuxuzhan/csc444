@@ -1,24 +1,21 @@
-# README
+# Golf Tournament Organizer
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The Github repo for CSC444 Project
 
-Things you may want to cover:
+####Run Server on Localhost:
+```
+bundle install --without production
+rails server
+```
+####Push to Heroku
+```
+git push heroku master
+heroku run rake db:migrate  /*Migrate remote database*/
+```
+###Database
+* Local Database: SQLite3
+* Heroku: PostgresSQL
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+###Pages
+* Login: https://golftournamentorganizer.herokuapp.com/accounts/sign_in
+* Signup: https://golftournamentorganizer.herokuapp.com/accounts/sign_up
