@@ -1,3 +1,5 @@
 .bundle/config
 .bundle/
 tmp/
+log/development.log
+log/
