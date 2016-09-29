@@ -17,5 +17,5 @@ heroku run rake db:migrate  /*Migrate remote database*/
 * Heroku: PostgresSQL
 
 ###Pages
-* Login: https://golftournamentorganizer.herokuapp.com/accounts/sign_in
-* Signup: https://golftournamentorganizer.herokuapp.com/accounts/sign_up
+* Login: https://csc444.herokuapp.com/accounts/sign_in
+* Signup: https://csc444.herokuapp.com/accounts/sign_up
