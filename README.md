@@ -18,5 +18,6 @@ heroku run rake db:migrate
 * Heroku: PostgresSQL
 
 ###Pages
+* Home: https://csc444.herokuapp.com/
 * Login: https://csc444.herokuapp.com/accounts/sign_in
 * Signup: https://csc444.herokuapp.com/accounts/sign_up
