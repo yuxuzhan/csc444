@@ -5,12 +5,13 @@ The Github repo for CSC444 Project
 ####Run Server on Localhost:
 ```
 bundle install --without production
+rake db:migrate
 rails server
 ```
 ####Push to Heroku
 ```
 git push heroku master
-heroku run rake db:migrate  /*Migrate remote database*/
+heroku run rake db:migrate
 ```
 ###Database
 * Local Database: SQLite3
