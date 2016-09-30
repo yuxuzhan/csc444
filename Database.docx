@@ -1,0 +1,42 @@
+user:
+  user_id
+  name
+  date_of_birth(yyyy/mm/dd)
+  gender(m/f)
+  email
+  phone_number
+  
+tournament:
+  tournament_id
+  name
+  date(yyyy/mm/dd)
+  location
+  logo
+  status(private/public)
+  
+ organizer:
+  tournament_id
+  user_id
+  status(admin/guest)
+  
+ players:
+  tournament_id
+  group_id
+  user_id
+  checked(y/n)
+  
+ sponsors:
+  sponsor_id
+  user_id
+  logo
+  organization_name
+  website
+  contact
+  
+ trasections:
+   tournament_id
+   user_id
+   amount
+   detail
+  
+  
