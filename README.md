@@ -1,5 +1,7 @@
 # Golf Tournament Organizer
 
+##Please notify the team when changed Gemfile
+
 The Github repo for CSC444 Project
 
 ####Run Server on Localhost:
