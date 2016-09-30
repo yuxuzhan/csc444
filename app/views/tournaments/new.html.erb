@@ -1,0 +1,34 @@
+<h1>Create a Tournament</h1>
+
+<%= form_for(:tournament, :url => {:controller => 'tournaments', :action => 'create'}) do |f| %>
+
+  <div class="field">
+    <%= f.label :name, 'Tournament Name' %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :venue, 'Tournament Venue' %><br />
+    <%= f.text_field :venue %>
+  </div>
+
+  <div class="field">
+    <%= f.label :details, 'Tournament Details' %><br />
+    <%= f.text_field :details %>
+  </div>
+
+  <div class="field">
+    <%= f.label :contact, 'Contact Information' %><br />
+    <%= f.text_field :contact %>
+  </div>
+
+  <div class="field">
+    <%= f.label :private, 'Make Tournament Private' %><br />
+    <%= f.check_box :private %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit "Create" %>
+  </div>
+<% end %>

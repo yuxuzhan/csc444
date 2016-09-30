@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'tournaments/new'
+  post 'tournaments/create'
+
   devise_for :accounts
   get "home/show" => "home#show"
 
