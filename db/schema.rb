@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20160930022701) do
     t.string   "details"
     t.string   "contact"
     t.boolean  "private"
+    t.date     "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
