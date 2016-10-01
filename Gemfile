@@ -19,6 +19,8 @@ gem 'devise'
 
 # Use Bootstrap for sass
 gem 'bootstrap-sass', '~> 3.3.6'
+# Use font-awesome for all icons
+gem 'font-awesome-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
