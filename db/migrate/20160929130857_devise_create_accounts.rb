@@ -4,6 +4,10 @@ class DeviseCreateAccounts < ActiveRecord::Migration[5.0]
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
+      t.string :name
+      t.string :birth
+      t.string :gender				#"m" for male, "f" for female
+      t.string :phone_number
 
       ## Recoverable
       t.string   :reset_password_token
