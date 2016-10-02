@@ -10,7 +10,17 @@ class TournamentsController < ApplicationController
   	@tournament = Tournament.new(tournament_params)
 
   	if @tournament.save
-  		redirect_to home_show_path, :notice => 'Tournament created'
+  		@org = Organizer.new
+
+  		@org.tournament_id = @tournament.id
+  		@org.account_id = current_account.id
+  		@org.admin = true
+
+  		if @org.save
+  			redirect_to home_show_path, :notice => 'Tournament created'
+  		else
+  			render 'new', :notice => 'Invalid'
+  		end
   	else
   		render 'new', :notice => 'Invalid'
   	end

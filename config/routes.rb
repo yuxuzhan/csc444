@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'organizers/new'
+
   get 'tournaments/new'
   post 'tournaments/create'
 
