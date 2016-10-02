@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161002030823) do
+ActiveRecord::Schema.define(version: 20161002060108) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -37,6 +37,15 @@ ActiveRecord::Schema.define(version: 20161002030823) do
     t.integer  "tournament_id"
     t.integer  "account_id"
     t.boolean  "admin"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "players", force: :cascade do |t|
+    t.integer  "account_id"
+    t.integer  "tournament_id"
+    t.integer  "group_id"
+    t.boolean  "checkin"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end

@@ -1,42 +1,48 @@
-user:
-  user_id
-  name
-  date_of_birth(yyyy/mm/dd)
-  gender(m/f)
-  email
-  phone_number
-  
+--------------------------------------
+Initialized table
+--------------------------------------
+account:
+  account_id : integer (need to add)
+  encrypted_password : string
+  name : string
+  birth : string
+  gender : string
+  email : string
+  phone_number : string
+
 tournament:
-  tournament_id
-  name
-  date(yyyy/mm/dd)
-  location
-  logo
-  status(private/public)
-  
+  name : string
+  tournament_id : integer (need to add)
+  venue : string
+  details : string
+  contact : string
+  private : boolean
+  date : date
+
  organizer:
-  tournament_id
-  user_id
-  status(admin/guest)
-  
+  tournament_id : integer
+  account_id : boolean
+  admin : boolean
+
  players:
-  tournament_id
-  group_id
-  user_id
-  checked(y/n)
-  
+  account_id : integer
+  tournament_id : integer
+  group_id : integer
+  checkin : boolean
+
+--------------------------------------
+Tables need to implement in the future
+--------------------------------------
  sponsors:
   sponsor_id
-  user_id
+  account_id
   logo
   organization_name
   website
   contact
-  
+
  trasections:
    tournament_id
-   user_id
+   account_id
    amount
    detail
-  
-  
