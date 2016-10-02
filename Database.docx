@@ -21,7 +21,7 @@ tournament:
 
  organizer:
   tournament_id : integer
-  account_id : boolean
+  account_id : integer
   admin : boolean
 
  players:
