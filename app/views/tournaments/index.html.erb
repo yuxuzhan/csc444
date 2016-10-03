@@ -15,7 +15,7 @@
 			<td><%= t.venue%></td>
 			<td><%= t.date%></td>
 			<td><%= t.contact%></td>
-			<td><%= link_to('Sign up', home_show_path) %></td>
+			<td><%= link_to 'Sign up', players_create_path(:tournament_id => t.id), :method => :post %></td>
 		</tr>
 		<% end %>
 	</tbody>

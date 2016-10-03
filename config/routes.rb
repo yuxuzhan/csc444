@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-
   get 'organizers/new'
+
+  post 'players/create'
 
   get 'tournaments/new'
   get 'tournaments/index'
