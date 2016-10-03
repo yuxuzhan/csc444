@@ -2,6 +2,10 @@ class TournamentsController < ApplicationController
 
 	before_action :authenticate_account!, :except => [:show, :index]	
 
+  def index
+    @tournaments = Tournament.all
+  end
+
   def new
   	@tournament = Tournament.new
   end

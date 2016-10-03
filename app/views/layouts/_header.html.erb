@@ -28,7 +28,7 @@
                         <a href="#contacts">Contacts</a>
                     </li>
                     <li>
-                        <a href="#tournaments">Tournaments</a>
+                        <%= link_to('Tournaments', tournaments_index_path) %> 
                     </li>
                     <li>
                         <%= link_to('Log out', destroy_account_session_path, :method => :delete) %>   

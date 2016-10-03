@@ -1,0 +1,22 @@
+<h1>Tournaments</h1>
+<%= link_to('Create a tournament', tournaments_new_path) %>
+
+<table class = "table table-striped">
+	<thead>
+		<th>Name</th>
+		<th>Venue</th>
+		<th>Date</th>
+		<th>Contact</th>
+	</thead>
+	<tbody>
+		<% @tournaments.each do |t| %>
+		<tr>
+			<td><%= t.name%></td>
+			<td><%= t.venue%></td>
+			<td><%= t.date%></td>
+			<td><%= t.contact%></td>
+			<td><%= link_to('Sign up', home_show_path) %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

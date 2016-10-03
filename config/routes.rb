@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'organizers/new'
 
   get 'tournaments/new'
+  get 'tournaments/index'
   post 'tournaments/create'
 
   devise_for :accounts
