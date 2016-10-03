@@ -1,5 +1,7 @@
 class PlayersController < ApplicationController
 
+before_action :authenticate_account!, :except => [:show, :index]	
+
 def create
   	@player = Player.new
   	@player.tournament_id = params[:tournament_id]
