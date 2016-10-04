@@ -10,6 +10,7 @@
 	</thead>
 	<tbody>
 		<% @tournaments.each do |t| %>
+		<% if t.private == false %>
 		<tr>
 			<td><%= t.name%></td>
 			<td><%= t.venue%></td>
@@ -18,6 +19,7 @@
 			<td><%= link_to 'Sign up', players_create_path(:tournament_id => t.id), :method => :post%></td>
 			<td><%= link_to 'players in tournament', players_show_path(:tournament_id => t.id) %></tr>
 		</tr>
+		<% end %>
 		<% end %>
 	</tbody>
 </table>
