@@ -30,7 +30,7 @@ form
     margin: 0 auto;
 }
 
-input
+input[type="email"],input[type="password"]
 {
     width: 100%;
     margin: 0;
@@ -39,16 +39,12 @@ input
     border: 0;
     border-bottom: 1px solid #FFFFFF;
     outline: 0;
-    font-style: italic;
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 1px;
     margin-bottom: 5px;
     color: #FFFFFF;
     outline: 0;
 }
 
-.actions
+.login-button
 {
     width: 100%;
     font-size: 14px;
@@ -60,16 +56,17 @@ input
     letter-spacing: 1px;
 }
 
-.actions:hover
+.login-button:hover
 {
     transition: background-color 0.5s ease;
 }
 
-form.login .remember-forgot
+.remember-forgot
 {
     float: left;
-    width: 100%;
-    margin: 10px 0 0 0;
+    color: #FFFFFF;
+    font-size: 10px;
+    letter-spacing: 1px;
 }
 .links
 {
