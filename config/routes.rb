@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   #resources :players
 
   post 'players/create'
-  post "players/show"
+  get "players/show"
 
 
   get 'tournaments/new'

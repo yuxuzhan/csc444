@@ -17,9 +17,8 @@ def create
   end
 
 def show
-    @player_info =  Player.where(tournament_id = params[:tournament_id])
+    @player_info =  Player.where(tournament_id: params[:tournament_id])
 
-  #  @player_info = Player.all
 
   end
 

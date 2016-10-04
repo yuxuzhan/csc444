@@ -16,7 +16,7 @@
 			<td><%= t.date%></td>
 			<td><%= t.contact%></td>
 			<td><%= link_to 'Sign up', players_create_path(:tournament_id => t.id), :method => :post%></td>
-			<td><%= link_to 'players in tournment', players_show_path(:tournament_id => t.id), :method => :post%></tr>
+			<td><%= link_to 'players in tournament', players_show_path(:tournament_id => t.id) %></tr>
 		</tr>
 		<% end %>
 	</tbody>
