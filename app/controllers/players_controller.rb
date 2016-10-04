@@ -1,6 +1,6 @@
 class PlayersController < ApplicationController
 
-before_action :authenticate_account!, :except => [:show, :index]	
+before_action :authenticate_account!, :except => [:show, :index]
 
 def create
   	@player = Player.new
@@ -14,6 +14,13 @@ def create
   	else
   		render 'new', :notice => 'Invalid'
   	end
+  end
+
+def show
+    @player_info =  Player.where(tournament_id = params[:tournament_id])
+
+  #  @player_info = Player.all
+
   end
 
 end

@@ -1,0 +1,20 @@
+<h1>Players</h1>
+<table class = "table table-striped">
+	<thead>
+		<th>tournament</th>
+		<th>account</th>
+		<th>group</th>
+		<th>checkin</th>
+	</thead>
+	<tbody>
+    <%= @player_info.each do |t|%>
+		<tr>
+			<td><%= t.tournament_id%></td>
+			<td><%= t.account_id%></td>
+			<td><%= t.group_id%></td>
+			<td><%= t.checkin%></td>
+			<td><%= link_to 'Back', tournaments_index_path %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
