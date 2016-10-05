@@ -9,13 +9,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand topnav" href="#">Golf Tournament</a>
+                <a class="navbar-brand topnav" href="/">GOLFi</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <%= link_to('Log in', new_account_session_path)  %> 
+                        <%= link_to('Log in', new_account_session_path)  %>
                     </li>
 
                     <li>
@@ -28,12 +28,12 @@
                         <a href="#contacts">Contacts</a>
                     </li>
                     <li>
-                        <%= link_to('Tournaments', tournaments_index_path) %> 
+                        <%= link_to('Tournaments', tournaments_index_path) %>
                     </li>
                     <li>
-                        <%= link_to('Log out', destroy_account_session_path, :method => :delete) %>   
+                        <%= link_to('Log out', destroy_account_session_path, :method => :delete) %>
                     </li>
-                    
+
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
