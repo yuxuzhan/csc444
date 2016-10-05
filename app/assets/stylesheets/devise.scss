@@ -7,10 +7,20 @@
     height: 100%;
     min-height: 100%;
     position: absolute;
-    top: 0;
     left: 0;
     z-index: 99;
+
 }
+
+
+.login
+{
+
+    width: 250px;
+    margin: 0 auto;
+}
+
+
 
 p.form-title
 {
@@ -22,15 +32,10 @@ p.form-title
     margin-top: 5%;
     text-transform: uppercase;
     letter-spacing: 4px;
+    padding-top: 50%;
 }
 
-form
-{
-    width: 250px;
-    margin: 0 auto;
-}
-
-input[type="email"],input[type="password"]
+form.login input[type="email"],form.login input[type="password"]
 {
     width: 100%;
     margin: 0;
@@ -44,7 +49,8 @@ input[type="email"],input[type="password"]
     outline: 0;
 }
 
-.login-button
+
+form.login input[type="submit"]
 {
     width: 100%;
     font-size: 14px;
@@ -56,16 +62,34 @@ input[type="email"],input[type="password"]
     letter-spacing: 1px;
 }
 
-.login-button:hover
+form.login input[type="submit"]:hover
 {
     transition: background-color 0.5s ease;
 }
 
-.remember-forgot
+
+form.login .login-button
+{
+    width: 100%;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-top: 16px;
+    outline: 0;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+
+form.login .login-button:hover
+{
+    transition: background-color 0.5s ease;
+}
+
+form.login .remember-forgot
 {
     float: left;
-    color: #FFFFFF;
-    font-size: 10px;
+    color: #e6e6e6;
+    font-size: 12px;
     letter-spacing: 1px;
 }
 .links
@@ -87,20 +111,4 @@ input[type="email"],input[type="password"]
     color: #2ecc71;
 }
 
-form.login label, form.login a
-{
-    font-size: 12px;
-    font-weight: 400;
-    color: #FFFFFF;
-}
-
-form.login a
-{
-    transition: color 0.5s ease;
-}
-
-form.login a:hover
-{
-    color: #2ecc71;
-}
 
