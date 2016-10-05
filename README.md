@@ -1,4 +1,4 @@
-# Golf Tournament Organizer
+# Golf Tournament Organizers
 
 ##Please notify the team when changed Gemfile
 
