@@ -7,8 +7,8 @@ def create
     @player.tournament_id = params[:tournament_id]
     @player.account_id = current_account.id
     #don't know what to do for groups and checkin yet
-    @duplicate_player = Player.where(tournament_id: params[:tournament_id], account_id: @player.account_id)
-    if @duplicate_player.nil?
+    @duplicate_player = Player.where(tournament_id: params[:tournament_id], account_id: current_account.id)
+    if @duplicate_player.blank?
       if @player.save
         redirect_to tournaments_index_path, :notice => 'Joined Tournament'
       else
