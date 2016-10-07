@@ -4,8 +4,29 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :birth %><br />
+    <%= f.date_field :birth %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gender %><br />
+    <span class="option">Male<span><%= f.radio_button :gender, "m" %>
+    <span class="option">Female<span><%= f.radio_button :gender, "f" %></br>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone_number %><br />
+    <%= f.text_field :phone_number %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
