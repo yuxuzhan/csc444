@@ -7,3 +7,13 @@ Gender: <%= @account.gender %><br>
 Phone number: <%= @account.phone_number %><br>
 
 <%= link_to 'Edit Profile', edit_account_registration_path %>
+
+<h2>Tournaments I play in</h2>
+<% @player.each do |p| %>
+	<%= p.tournament_id %>
+<% end %>
+
+<h2>Tournaments I organize</h2>
+<% @organizer.each do |o| %>
+	<%= o.tournament_id %>
+<% end %>
