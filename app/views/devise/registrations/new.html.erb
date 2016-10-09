@@ -1,15 +1,15 @@
 <div class="container-fluid">
     <section class="container">
-    <div class="container-page"> 
+    <div class="container-page">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name),:html => {:class => 'col-md-6'}) do |f| %>
-    <%= devise_error_messages! %>       
+    <%= devise_error_messages! %>
         <h3 class="dark-grey">Registration</h3>
-        
+
         <div class="form-group col-lg-12 field">
           <%= f.label :name %><br />
           <%= f.text_field :name, autofocus: true, :class => "form-control" %>
         </div>
-        
+
         <div class="form-group col-lg-6 field">
           <%= f.label :password %>
           <% if @minimum_password_length %>
@@ -17,22 +17,22 @@
           <% end %><br />
           <%= f.password_field :password, autocomplete: "off", :class => "form-control" %>
         </div>
-        
+
         <div class="form-group col-lg-6 field">
           <%= f.label :password_confirmation %><br />
           <%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-control" %>
         </div>
-                
+
         <div class="form-group col-lg-6 field">
           <%= f.label :email %><br />
           <%= f.email_field :email, :class => "form-control" %>
         </div>
-        
+
         <div class="form-group col-lg-6 field">
           <%= f.label :phone_number %><br />
           <%= f.text_field :phone_number, :class => "form-control" %>
-        </div>      
-        
+        </div>
+
         <div class="form-group col-lg-12 field">
           <%= f.label :gender %><br />
           <label class="radio-inline"><%= f.radio_button :gender, "m" %>Male</label>
@@ -47,14 +47,14 @@
             <label class="radio-inline"><input type="radio" name="role" value="Other">Other</label>
         </div>
       </div>
-    
+
       <div class="col-md-6">
         <h3 class="dark-grey">Terms and Conditions</h3>
         <p>
           By clicking on "Register" you agree to The Company's' Terms and Conditions
         </p>
         <p>
-          While rare, prices are subject to change based on exchange rate fluctuations - 
+          While rare, prices are subject to change based on exchange rate fluctuations -
           should such a fluctuation happen, we may request an additional payment. You have the option to request a full refund or to pay the new price. (Paragraph 13.5.8)
         </p>
         <p>
@@ -63,12 +63,9 @@
         <p>
           Acceptance of an order by us is dependent on our suppliers ability to provide the product. (Paragraph 13.5.6)
         </p>
-        
+
           <%= f.submit "Sign Up", :class=>"btn btn-success btn-large" %>
       </div>
-
     <% end %>
   </section>
 </div>
-
-

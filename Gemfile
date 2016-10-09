@@ -18,7 +18,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 
 # Use Stripe for online payment
-gem 'stripe-rails'
+# gem 'stripe-rails'
 
 # Use Bootstrap for sass
 gem 'bootstrap-sass', '~> 3.3.6'
