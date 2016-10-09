@@ -56,6 +56,8 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     concurrent-ruby (1.0.2)
+    data-confirm-modal (1.2.0)
+      railties (>= 3.0)
     debug_inspector (0.0.2)
     devise (4.2.0)
       bcrypt (~> 3.0)
@@ -194,6 +196,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
   coffee-script-source (= 1.8.0)
+  data-confirm-modal
   devise
   font-awesome-rails
   jbuilder (~> 2.5)

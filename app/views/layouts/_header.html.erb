@@ -17,7 +17,6 @@
                     <li>
                         <%= link_to('Log in', new_account_session_path)  %>
                     </li>
-
                     <li>
                         <%= link_to('Sign up', new_account_registration_path)  %>
                     </li>
@@ -34,7 +33,7 @@
                         <%= link_to('Tournaments', tournaments_index_path) %>
                     </li>
                     <li>
-                        <%= link_to('Log out', destroy_account_session_path, :method => :delete) %>
+                        <%= link_to('Log out', destroy_account_session_path, :method => :delete, data: {confirm: 'Are you sure?'}) %>
                     </li>
 
                 </ul>

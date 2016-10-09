@@ -20,6 +20,9 @@ gem 'devise'
 # Use Stripe for online payment
 # gem 'stripe-rails'
 
+#Use Data-Confirm Modal for popup
+gem 'data-confirm-modal'
+
 # Use Bootstrap for sass
 gem 'bootstrap-sass', '~> 3.3.6'
 # Use font-awesome for all icons
