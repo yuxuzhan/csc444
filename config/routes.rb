@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :sponsors
   get 'profiles/show'
   get 'organizers/new'
   #resources :players
