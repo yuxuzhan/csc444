@@ -1,0 +1,23 @@
+<h1>Become a Sponsor</h1>
+
+<%= form_for(:sponsor, :url => {:controller => 'sponsors', :action => 'create'}) do |f| %>
+
+  <div class="field">
+    <%= f.label :name, 'Orgnization Name' %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :website, 'Link to website' %><br />
+    <%= f.text_field :website %>
+  </div>
+
+  <div class="field">
+    <%= f.label :contact, 'Contact Information' %><br />
+    <%= f.text_field :contact %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Create" %>
+  </div>
+<% end %>
