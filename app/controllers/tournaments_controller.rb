@@ -1,6 +1,6 @@
 class TournamentsController < ApplicationController
 
-	before_action :authenticate_account!, :except => [:show, :index]	
+	before_action :authenticate_account!, :except => [:show, :index]
 
   def index
     @tournaments = Tournament.all
@@ -9,6 +9,10 @@ class TournamentsController < ApplicationController
   def new
   	@tournament = Tournament.new
   end
+
+	def show
+		@tournament_detail = Tournament.where(id: params[:tournamet_id])
+	end
 
   def create
   	@tournament = Tournament.new(tournament_params)

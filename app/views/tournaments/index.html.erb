@@ -4,20 +4,12 @@
 <table class = "table table-striped">
 	<thead>
 		<th>Name</th>
-		<th>Venue</th>
-		<th>Date</th>
-		<th>Contact</th>
 	</thead>
 	<tbody>
 		<% @tournaments.each do |t| %>
 		<% if t.private == false %>
 		<tr>
-			<td><%= t.name%></td>
-			<td><%= t.venue%></td>
-			<td><%= t.date%></td>
-			<td><%= t.contact%></td>
-			<td><%= link_to 'Sign up', players_create_path(:tournament_id => t.id), :method => :post%></td>
-			<td><%= link_to 'players in tournament', players_show_path(:tournament_id => t.id) %></tr>
+			<td><%= link_to t.name, tournaments_show_path(:tournamet_id => t.id)%></td>
 		</tr>
 		<% end %>
 		<% end %>

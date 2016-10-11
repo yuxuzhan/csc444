@@ -1,0 +1,24 @@
+<% @tournament_detail.each do |t| %>
+  <h1><%= t.name%></h1>
+  <table class = "table table-striped">
+  	<thead>
+  		<th>Name</th>
+  		<th>Venue</th>
+  		<th>Date</th>
+  		<th>Contact</th>
+  	</thead>
+  	<tbody>
+      <% if t.private == false %>
+  		<tr>
+        <td><%= t.name%></td>
+  			<td><%= t.venue%></td>
+  			<td><%= t.date%></td>
+  			<td><%= t.contact%></td>
+        <td><%= link_to 'Sign up', players_create_path(:tournament_id => t.id), :method => :post%></td>
+        <td><%= link_to 'players in tournament', players_show_path(:tournament_id => t.id) %></td>
+        <td><%= link_to 'Back', tournaments_index_path %></td>
+  		</tr>
+      <% end %>
+  	</tbody>
+  </table>
+<% end %>
