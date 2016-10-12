@@ -48,6 +48,10 @@ GEM
       sass (>= 3.3.4)
     builder (3.2.2)
     byebug (9.0.5)
+    carrierwave (1.0.0.beta)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.2.x)
@@ -194,6 +198,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass (~> 3.3.6)
   byebug
+  carrierwave (>= 1.0.0.beta, < 2.0)
   coffee-rails (~> 4.2)
   coffee-script-source (= 1.8.0)
   data-confirm-modal
@@ -216,4 +221,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   1.13.1
+   1.13.2
