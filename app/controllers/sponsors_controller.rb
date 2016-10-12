@@ -1,27 +1,28 @@
 class SponsorsController < ApplicationController
-  def create
-    reate_table :sponsors do |t|
-      t.integer :account_id
-      t.string :name
-      t.string :website
-      t.string :logo
-      t.string :contact
-      @sponsor = Sponsor.new
-      @sponsor.account_id = current_account.id
-      @sponsor.name = params[:name]
-      @sponsor.contact = params[:contact]
-      @sponsor.website = params[:website]
+  before_action :authenticate_account!, :except => [:show]
 
-      @duplicate_sponsor = Player.where(name: params[:name], account_id: current_account.id)
-      if @duplicate_sponsor.blank?
-        if @sponsor.save
-          redirect_to tournaments_index_path, :notice => 'Become Sponsor, Please make a payment'
-        else
-          render 'new', :notice => 'Invalid'
-        end
+  def show
+    @sponsor_detail = Sponsor.all
+  end
+
+  def create
+  	@sponsor = Sponsor.new
+    @sponsor.account_id = current_account.id
+    @sponsor.name = params[:name]
+    @sponsor.website = params[:website]
+    @sponsor.contact = params[:contact]
+
+    @duplicate_sponsor = Sponsor.where(account_id: current_account.id, name: params[:name])
+    #a user cannot create two sponsor entry with the same sponsor name
+    if @duplicate_sponsor.blank?
+      if @sponsor.save
+        redirect_to sponsors_index_path, :notice => 'Sponsor created'
       else
-          redirect_to tournaments_index_path, :notice => 'Already a sponsor'
+        render 'new', :notice => 'Invalid'
       end
+    else
+        redirect_to sponsors_index_path, :notice => 'Already a sponsor'
+    end
   end
 
 end
