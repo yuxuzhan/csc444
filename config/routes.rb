@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :sponsors
-  post 'sponsors/create'
+  get 'sponsors/new'
   get 'sponsors/index'
+  post 'sponsors/create'
 
   get 'tournaments/show'
   get 'profiles/show'
