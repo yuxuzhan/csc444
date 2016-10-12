@@ -1,0 +1,20 @@
+<h1>Sponsors</h1>
+<%= link_to 'Back to tournaments', tournaments_index_path %>
+  <table class = "table table-striped">
+  	<thead>
+  		<th>Name</th>
+  		<th>logo</th>
+  		<th>website</th>
+  		<th>Contact</th>
+  	</thead>
+  	<tbody>
+      <% @sponsor_detail.each do |t| %>
+  		<tr>
+        <td><%= t.name%></td>
+  			<td></td>
+  			<td><%= t.website%></td>
+  			<td><%= t.contact%></td>
+  		</tr>
+      <% end %>
+  	</tbody>
+  </table>
