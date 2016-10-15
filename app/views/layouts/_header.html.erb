@@ -15,13 +15,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <%= link_to('Log in', new_account_session_path)  %>
-                    </li>
-                    <li>
-                        <%= link_to('Sign up', new_account_registration_path)  %>
-                    </li>
-                    <li>
-                        <%= link_to('My Account', profiles_show_path)  %>
+                        <%= link_to('Tournaments', tournaments_index_path) %>
                     </li>
                     <li>
                         <a href="#about">About us</a>
@@ -29,12 +23,21 @@
                     <li>
                         <a href="#contacts">Contacts</a>
                     </li>
-                    <li>
-                        <%= link_to('Tournaments', tournaments_index_path) %>
-                    </li>
-                    <li>
-                        <%= link_to('Log out', destroy_account_session_path, :method => :delete, data: {confirm: 'Are you sure?'}) %>
-                    </li>
+                    <% if account_signed_in? %>
+                        <li>
+                            <%= link_to('My Account', profiles_show_path)  %>
+                        </li>
+                        <li>
+                            <%= link_to('Log out', destroy_account_session_path, :method => :delete, data: {confirm: 'Are you sure?'}) %>
+                        </li>
+                    <% else %>
+                        <li>
+                            <%= link_to('Log in', new_account_session_path)  %>
+                        </li>
+                        <li>
+                            <%= link_to('Sign up', new_account_registration_path)  %>
+                        </li>
+                    <% end %>
 
                 </ul>
             </div>
