@@ -4,7 +4,8 @@
 
 
 .lead {
-    font-size: 18px;
+    text-align: center;
+    font-size: 14px;
     font-weight: 400;
 }
 
@@ -72,29 +73,22 @@
 
 .content-section-a {
     background-color: #f8f8f8;
+    height: 650px;
+    width: auto；
 }
 
 .img-section-a {
   display: block;
-  max-width: 115%;
+  margin: auto;
+  margin-bottom: 25px;
+  max-width: 35%;
   height: auto;
-}
 
-
-.content-section-b {
-//    padding: 50px 0;
-    border-top: 1px solid #e7e7e7;
-    border-bottom: 1px solid #e7e7e7;
 }
 
 .section-heading {
-    margin-bottom: 30px;
-}
-
-.section-heading-spacer {
-    float: left;
-    width: 200px;
-    border-top: 3px solid #e7e7e7;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 .banner {
@@ -117,6 +111,13 @@
 .banner-social-buttons {
     float: right;
     margin-top: 0;
+}
+
+.container-front-page {
+    width: 1170px;
+    height: inherit;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 @media(max-width:1199px) {
