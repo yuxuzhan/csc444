@@ -1,3 +1,5 @@
+
+<div class="padding-navbar">
 <h1>My Profile</h1>
 
 Name: <%= @account.name %><br>
@@ -10,10 +12,12 @@ Phone number: <%= @account.phone_number %><br>
 
 <h2>Tournaments I play in</h2>
 <% @player.each do |p| %>
-	<%= p.tournament_id %> 
+	<%= p.tournament_id %>
 <% end %>
 
 <h2>Tournaments I organize</h2>a
 <% @organizer.each do |o| %>
 	<%= o.tournament_id %>
 <% end %>
+
+</div>
