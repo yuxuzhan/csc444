@@ -1,3 +1,6 @@
+<%-This file we're using look awfully too similar to  https://github.com/plataformatec/devise/blob/master/app/views/devise/sessions/new.html.erb , was this copied and modified accordingly?-%>
+
+
 <div class="new-session">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => 'login'}) do |f| %>
     <p class="form-title">Log In</p>
@@ -10,6 +13,7 @@
         <%= f.password_field :password, autocomplete: "off", :placeholder => "Password" %>
     </div>
 
+	
     <% if devise_mapping.rememberable? -%>
     <div class="field remember-forgot">
         <%= f.check_box :remember_me%>
