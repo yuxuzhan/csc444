@@ -24,5 +24,4 @@ class SponsorsController < ApplicationController
         redirect_to sponsors_index_path, :notice => 'Already a sponsor'
     end
   end
-
 end
