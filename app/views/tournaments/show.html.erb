@@ -1,3 +1,4 @@
+<div class="padding-navbar">
 <% @tournament_detail.each do |t| %>
   <h1><%= t.name%></h1>
   <table class = "table table-striped">
@@ -24,3 +25,5 @@
     <%= button_to('Want To Donate Money to tournament', sponsors_new_path, :class => 'btn btn-large btn-primary', :method => :post)%>
 
 <% end %>
+
+</div>
