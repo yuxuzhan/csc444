@@ -10,4 +10,5 @@ class Account < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+	#More information on https://www.sitepoint.com/devise-authentication-in-depth/   
 end
