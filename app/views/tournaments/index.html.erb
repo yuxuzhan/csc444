@@ -11,6 +11,7 @@
 		<% if t.private == false %>
 		<tr>
 			<td><%= link_to t.name, tournaments_show_path(:tournamet_id => t.id)%></td>
+			<td><%= link_to 'Edit', tournaments_edit_path(:id => t.id)%></td>
 		</tr>
 		<% end %>
 		<% end %>

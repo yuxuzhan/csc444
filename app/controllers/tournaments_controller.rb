@@ -33,6 +33,10 @@ class TournamentsController < ApplicationController
   		render 'new', :notice => 'Invalid'
   	end
   end
+  
+  def edit
+    @tournament = Tournament.find(params[:id])
+  end
 
   def tournament_params
   	params.require(:tournament).permit(:name, :venue, :details, :contact, :private, :date)

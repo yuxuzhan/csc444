@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get 'sponsors/show'
 
   get 'tournaments/show'
+  get 'tournaments/edit'
+  put 'tournaments/update'
+
   get 'profiles/show'
   get 'organizers/new'
   #resources :players
