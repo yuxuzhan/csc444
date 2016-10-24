@@ -36,6 +36,14 @@ class TournamentsController < ApplicationController
   
   def edit
     @tournament = Tournament.find(params[:id])
+
+    @user = Organizer.where(account_id: current_account.id, tournament_id: params[:id])
+    if @user.blank?
+      flash[:notice] = 'You are not the tournament organizer'
+      redirect_to tournaments_index_path
+    end
+
+
   end
 
   def update
