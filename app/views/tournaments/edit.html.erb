@@ -1,7 +1,7 @@
 <div class="padding-navbar">
 <h1>Edit Tournament</h1>
 
-<%= form_for(:tournament, :url => {:controller => 'tournaments', :action => 'update'}, method: :put) do |f| %>
+<%= form_for(:tournament, :url => {:controller => 'tournaments', :id => @tournament.id, :action => 'update'}, method: :put) do |f| %>
 
   <div class="field">
     <%= f.label :name, 'Tournament Name' %><br />

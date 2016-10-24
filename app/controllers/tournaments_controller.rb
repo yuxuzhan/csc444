@@ -38,6 +38,12 @@ class TournamentsController < ApplicationController
     @tournament = Tournament.find(params[:id])
   end
 
+  def update
+    @tournament = Tournament.find(params[:id])
+    @tournament.update(tournament_params)
+    redirect_to tournaments_index_path
+  end
+
   def tournament_params
   	params.require(:tournament).permit(:name, :venue, :details, :contact, :private, :date)
   end
