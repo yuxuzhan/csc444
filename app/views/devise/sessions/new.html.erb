@@ -15,13 +15,11 @@ rules: {
 }
 });
 });
-
-
 </script>
 
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => 'login'}) do |f| %>
-    <p class="form-title">Log In VJP      !</p>
+    <p class="form-title">Log In</p>
 
     <div class="field">
         <%= f.email_field :email, autofocus: true, :placeholder => "Email" %>
