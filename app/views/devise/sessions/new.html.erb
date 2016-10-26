@@ -1,6 +1,23 @@
 <div class="new-session">
+
+
+<script>
+$(document).ready(function () {
+$("#new_account").validate({
+debug: true,
+rules: {
+"account[email]": {required: true, email: true},
+"account[password]": {required: true, minlength: 6}
+}
+});
+});
+
+
+</script>
+
+
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => 'login'}) do |f| %>
-    <p class="form-title">Log In</p>
+    <p class="form-title">Log In VJP      !</p>
 
     <div class="field">
         <%= f.email_field :email, autofocus: true, :placeholder => "Email" %>
