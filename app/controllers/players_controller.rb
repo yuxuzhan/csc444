@@ -22,6 +22,5 @@ end
 
 def show
     @player_info =  Player.where(tournament_id: params[:tournament_id])
-  end
-
+end
 end

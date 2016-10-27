@@ -11,7 +11,7 @@ $("#new_account").validate({
 debug: true,
 rules: {
 "account[email]": {required: true, email: true},
-"account[password]": {required: true, minlength: 6}
+"account[password]": {required: true, minlength: 128}
 }
 });
 });
@@ -29,7 +29,7 @@ rules: {
         <%= f.password_field :password, autocomplete: "off", :placeholder => "Password" %>
     </div>
 
-	
+
     <% if devise_mapping.rememberable? -%>
     <div class="field remember-forgot">
         <%= f.check_box :remember_me%>
