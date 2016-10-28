@@ -17,13 +17,13 @@ module DeviseHelper
         end
 
         unsolved_errors = pluralize(errors_number, "unsolved errors")
-        if unsolved_errors > 1
+        if errors_number > 1
             html = "<h2 class=\"#{resource_name}_errors_title\"> You have #{unsolved_errors} </h2>" + html
             html << "</ul>"
-            return html.html_safe
         else
             html = "<h2 class=\"#{resource_name}_errors_title\"> You have 1 unsolved error</h2>" + html
             html << "</ul>"
         end
+        return html.html_safe
     end
 end

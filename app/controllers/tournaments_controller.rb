@@ -33,7 +33,7 @@ class TournamentsController < ApplicationController
   		render 'new', :notice => 'Invalid'
   	end
   end
-  
+
   def edit
     @tournament = Tournament.find(params[:id])
 
@@ -42,8 +42,6 @@ class TournamentsController < ApplicationController
       flash[:notice] = 'You are not the tournament organizer'
       redirect_to tournaments_index_path
     end
-
-
   end
 
   def update
