@@ -3,6 +3,7 @@ class TournamentsController < ApplicationController
 
     def index
         @tournaments = Tournament.all
+        @tournaments_orgnized = get_editable_tournaments
     end
 
     def new
@@ -49,5 +50,14 @@ class TournamentsController < ApplicationController
 
     def tournament_params
         params.require(:tournament).permit(:name, :venue, :details, :contact, :private, :date)
+    end
+
+    def get_editable_tournaments
+        arr = []
+        orgnizers = Organizer.where(account_id: current_account.id)
+        orgnizers.each do |orgnizer|
+            arr << orgnizer.tournament_id
+        end
+        return arr
     end
 end
