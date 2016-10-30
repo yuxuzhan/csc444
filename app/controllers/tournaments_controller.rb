@@ -54,9 +54,11 @@ class TournamentsController < ApplicationController
 
     def get_editable_tournaments
         arr = []
-        orgnizers = Organizer.where(account_id: current_account.id)
-        orgnizers.each do |orgnizer|
-            arr << orgnizer.tournament_id
+        if !current_account.nil?
+            orgnizers = Organizer.where(account_id: current_account.id)
+            orgnizers.each do |orgnizer|
+                arr << orgnizer.tournament_id
+            end
         end
         return arr
     end
