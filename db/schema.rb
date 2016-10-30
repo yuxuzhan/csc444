@@ -53,11 +53,13 @@ ActiveRecord::Schema.define(version: 20161011174535) do
   create_table "sponsors", force: :cascade do |t|
     t.integer  "account_id"
     t.string   "name"
-    t.string   "website"
     t.string   "logo"
     t.string   "contact"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "website"
+    t.string   "business_phone_number"
+    t.string   "business_email"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   create_table "tournaments", force: :cascade do |t|
