@@ -2,19 +2,23 @@ class ProfilesController < ApplicationController
     before_action :authenticate_account!
 
     def show
+        @profile = Profile.new
+        @profile.tournaments_played = Hash.new
+        @profile.tournaments_orgnized = Hash.new
+
+        get_account_info
+        get_played_tournaments
+        get_orgnized_tournaments
+    end
+
+    def get_account_info
         account = Account.find_by id: current_account.id
 
-        @profile = Profile.new
         @profile.name = account.name
         @profile.email = account.email
         @profile.birth = account.birth
         @profile.gender = get_gender_name(account.gender)
         @profile.phone_number = account.phone_number
-        @profile.tournaments_played = Hash.new
-        @profile.tournaments_orgnized = Hash.new
-
-        get_played_tournaments
-        get_orgnized_tournaments
     end
 
     def get_gender_name(gender)
