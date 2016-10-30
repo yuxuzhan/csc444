@@ -16,11 +16,19 @@
     <div class="field">
         <%= f.label :business_phone_number, 'Phone' %><br/>
         <%= f.text_field :business_phone_number %>
+        <label class="radio-inline">
+            <%= f.check_box :same_phone_number %>
+            Use Account Phone Number
+        </label>
     </div>
 
     <div class="field">
         <%= f.label :business_email, 'Email' %><br/>
         <%= f.text_field :business_email %>
+        <label class="radio-inline">
+            <%= f.check_box :same_email %>
+            Use Account Email
+        </label>
     </div>
 
     <div class="field">
