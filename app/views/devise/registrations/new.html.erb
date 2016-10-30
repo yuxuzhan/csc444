@@ -90,6 +90,11 @@
 </div>
 
 <div class="field">
+    <%= f.label :phone_number %><br />
+    <%= f.text_field :phone_number %>
+</div>
+
+<div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %>
