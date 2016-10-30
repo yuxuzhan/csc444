@@ -10,9 +10,11 @@ Rails.application.routes.draw do
 
   get 'profiles/show'
   get 'organizers/new'
+  get 'organizers/show'
   #resources :players
 
   post 'players/create'
+  post 'players/update'
   get "players/show"
 
 

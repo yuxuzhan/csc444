@@ -52,6 +52,7 @@ class TournamentsController < ApplicationController
         params.require(:tournament).permit(:name, :venue, :details, :contact, :private, :date)
     end
 
+<<<<<<< Updated upstream
     def get_editable_tournaments
         arr = []
         if !current_account.nil?
@@ -62,4 +63,6 @@ class TournamentsController < ApplicationController
         end
         return arr
     end
+=======
+>>>>>>> Stashed changes
 end
