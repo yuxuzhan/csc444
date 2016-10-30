@@ -1,20 +1,18 @@
 <div class="new-session">
-
-
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
 <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
 
 <script>
-$(document).ready(function () {
-$("#new_account").validate({
-debug: true,
-rules: {
-"account[email]": {required: true, email: true},
-"account[password]": {required: true, minlength: 6}
-}
-});
-});
+    $(document).ready(function () {
+        $("#new_account").validate({
+            debug: true,
+            rules: {
+                "account[email]": {required: true, email: true},
+                "account[password]": {required: true, minlength: 6}
+            }
+        });
+    });
 </script>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => 'login'}) do |f| %>
