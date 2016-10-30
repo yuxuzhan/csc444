@@ -14,6 +14,8 @@
 				<td><%= link_to t.name, tournaments_show_path(:tournamet_id => t.id)%></td>
 				<% if @tournaments_orgnized.include?(t.id) %>
 				<td><%= link_to 'Edit', tournaments_edit_path(:id => t.id)%></td>
+				<% else %>
+				<td></td>
 				<% end %>
 			</tr>
 			<% end %>
