@@ -1,0 +1,2 @@
+class SubAdmin < ApplicationRecord
+end

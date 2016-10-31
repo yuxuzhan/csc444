@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161030214148) do
+ActiveRecord::Schema.define(version: 20161031021746) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -66,6 +66,13 @@ ActiveRecord::Schema.define(version: 20161030214148) do
     t.integer  "sponsor_id"
     t.integer  "tournament_id"
     t.integer  "amount"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "sub_admins", force: :cascade do |t|
+    t.integer  "tournament_id"
+    t.integer  "account_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
