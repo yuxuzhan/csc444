@@ -23,3 +23,9 @@ heroku run rake db:migrate
 * Home: https://csc444.herokuapp.com/
 * Login: https://csc444.herokuapp.com/accounts/sign_in
 * Signup: https://csc444.herokuapp.com/accounts/sign_up
+
+###Test
+* Test the account registration/login:
+```
+rspec spec/features/account_spec.rb
+```
