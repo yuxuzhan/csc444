@@ -22,6 +22,7 @@
       <% end %>
   	</tbody>
   </table>
+    <%= link_to('To see current sponsorships', sponsorships_index_path(:tournament_id =>t.id), :class => 'btn btn-large btn-primary')%>
     <%= link_to('Want To Donate Money to tournament', sponsorships_new_path(:tournament_id =>t.id), :class => 'btn btn-large btn-primary')%>
 
 <% end %>

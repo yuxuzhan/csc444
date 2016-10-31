@@ -4,7 +4,7 @@ class SponsorshipsController < ApplicationController
   # GET /sponsorships
   # GET /sponsorships.json
   def index
-    @sponsorships = Sponsorship.all
+
   end
 
   # GET /sponsorships/1
@@ -20,6 +20,7 @@ class SponsorshipsController < ApplicationController
 
   # GET /sponsorships/1/edit
   def edit
+
   end
 
   # POST /sponsorships

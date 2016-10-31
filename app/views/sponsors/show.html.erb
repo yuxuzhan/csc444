@@ -1,22 +1,11 @@
 <div class="padding-navbar">
-    <h1>Sponsors</h1>
-    <%= link_to 'Back to tournaments', tournaments_index_path %>
-    <table class="table table-striped">
-        <thead>
-            <th>Name</th>
-            <th>logo</th>
-            <th>website</th>
-            <th>Contact</th>
-        </thead>
-        <tbody>
-            <% @sponsor_detail.each do |t| %>
-            <tr>
-                <td><%= t.name%></td>
-                <td></td>
-                <td><%= t.website%></td>
-                <td><%= t.contact%></td>
-            </tr>
-            <% end %>
-        </tbody>
-    </table>
+    <% t = Sponsor.find(params[:sponsor_id]) %>
+    <h1><%=t.name%></h1>
+    <p>Sponsor website: <%=t.website%></p>
+    <h3>Contact Information</h3>
+    <ul>
+      <li>Phone: <%=t.business_phone_number%></li>
+      <li>e-mail: <%=t.business_email%></li>
+      <li>other: <%=t.contact%></li>
+    </ul>
 </div>

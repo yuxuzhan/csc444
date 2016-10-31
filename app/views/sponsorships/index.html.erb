@@ -1,25 +1,18 @@
-<p id="notice"><%= notice %></p>
+<div class="padding-navbar">
+<h1>Sponsorships of <%= Tournament.find(params[:tournament_id]).name %></h1>
 
-<h1>Sponsorships</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @sponsorships.each do |sponsorship| %>
-      <tr>
-        <td><%= link_to 'Show', sponsorship %></td>
-        <td><%= link_to 'Edit', edit_sponsorship_path(sponsorship) %></td>
-        <td><%= link_to 'Destroy', sponsorship, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+<table class="table table-striped">
+    <thead>
+        <th>Name</th>
+        <th>Amount</th>
+    </thead>
+    <tbody>
+        <% Sponsorship.where(tournament_id: params[:tournament_id]).each do |t| %>
+        <tr>
+            <td><%= link_to Sponsor.find(t.sponsor_id).name, sponsors_show_path(:sponsor_id => t.sponsor_id)%></td>
+            <td><%= t.amount%></td>
+        </tr>
+        <% end %>
+    </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Sponsorship', new_sponsorship_path %>
+</div>
