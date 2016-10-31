@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   post 'players/update'
   get "players/show"
 
+  get 'about_us/show'
 
   get 'tournaments/new'
   get 'tournaments/index'

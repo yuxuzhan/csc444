@@ -1,0 +1,42 @@
+// Place all the styles related to the about_us controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+  .about-us-image{
+    padding-top: 60px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-bottom: 600px;
+    margin-top: -100px; /* temporarily solution */
+    height: auto;
+    text-align: center;
+    color: #f8f8f8;
+    background: url(asset-path('happy_golfer.jpg')) no-repeat;
+    background-position: top;
+    background-size: cover;
+  }
+
+  .about-us-background{
+    background-color: #f8f8f8;
+    height: 650px;
+  }
+
+  .about-us-container{
+    padding-top: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+  .left-boarder{
+      border-left: thick solid #006400;
+  }
+
+  .img-circle {
+      border-radius: 50%;
+      max-width: 60%;
+  }
+
+  .row-eq-height {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      padding-bottom: 20px;
+  }
