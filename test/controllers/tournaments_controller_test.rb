@@ -5,5 +5,4 @@ class TournamentsControllerTest < ActionDispatch::IntegrationTest
     get tournaments_new_url
     assert_response :success
   end
-
 end
