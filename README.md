@@ -11,6 +11,11 @@ rake db:migrate
 rails server
 ```
 ####Push to Heroku
+For the first time push, run the following command:
+```
+heroku git:remote -a csc444
+```
+To deploy to Heroku and update database:
 ```
 git push heroku master
 heroku run rake db:migrate
