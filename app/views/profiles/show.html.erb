@@ -38,6 +38,23 @@
 
 		<h2>Sponsor Info</h2>
 				<p>Sponsored Tournament</p>
+				<table>
+					<thead>
+							<th>Sponsor Name</th>
+							<th>Sponsored Tournament</th>
+					</thead>
+					<tbody>
+
+			        <% Sponsor.where(account_id: current_account.id).each do |t| %>
+								<% Sponsorship.where(sponsor_id: t.id).each do |s|%>
+				        <tr>
+				            <td><%= link_to Sponsor.find(t.id).name, sponsors_show_path(:sponsor_id => t.id)%></td>
+				            <td><%= link_to Tournament.find(s.tournament_id).name, tournaments_show_path(:tournament_id => s.tournament_id)%></td>
+				        </tr>
+			        	<% end %>
+							<% end %>
+			    </tbody>
+				</table>
 		<h2>Payment Info</h2>
 				<p>Credit card info: *******0000</p>
 </div>
