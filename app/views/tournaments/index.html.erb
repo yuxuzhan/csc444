@@ -14,11 +14,8 @@
 			<% if t.private == false %>
 			<tr>
 				<td><%= link_to t.name, tournaments_show_path(:tournament_id => t.id)%></td>
-<<<<<<< Updated upstream
-=======
 				<td><%= @tournaments_players_count[t] %>
 				<td><%= @tournaments_organizer[t] %>
->>>>>>> Stashed changes
 				<% if @tournaments_orgnized.include?(t.id) %>
 				<td><%= link_to 'Edit', tournaments_edit_path(:id => t.id)%></td>
 				<% else %>
