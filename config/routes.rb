@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :sub_admins
+
   get 'sponsors/new'
   get 'sponsors/index'
   post 'sponsors/create'
@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get 'profiles/show'
   get 'organizers/new'
   get 'organizers/show'
+  post 'sub_admins/create'
+  get 'sub_admins/show'
   #resources :players
 
   get 'organizers/show'

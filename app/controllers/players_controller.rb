@@ -24,7 +24,7 @@ class PlayersController < ApplicationController
     def update
         @player = Player.where(account_id: params[:account_id],tournament_id: params[:tournament_id])
         @player.update(group_id: params[:player][:group_id])
-        redirect_to organizers_show_path
+        redirect_to profiles_show_path
     end
 
 end

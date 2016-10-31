@@ -1,26 +1,50 @@
 <div class="padding-navbar">
-  <h1><% "Arrangement"%></h1>
-  <% @arrangement.tournaments_created.each do |key, value|%>
-  <%= key %>
-	<table class="table table-striped">
-		<thead>
-			<th>players</th>
-			<th>group</th>
-		</thead>
-		<tbody>
-      <% value.each do |t|%>
-      <tr>
-          <td><%= t.account_id %> </td>
-          <td><%= t.group_id %> </td>
-          <td><%= form_for(:player, :url => {:controller => 'players', :account_id => t.account_id, :tournament_id =>t.tournament_id, :action => 'update'}) do |f| %>
-              <%= f.text_field :group_id%>
-              <%= f.submit "update"%>
-          </td>
-          <%end%>
-			</tr>
-      <%end%>
-		</tbody>
-	</table>
-  <%end %>
-  <td><%= link_to 'Back', tournaments_index_path %></td>
+    <h1><% "Arrangement"%></h1>
+    <% @arrangement.tournaments_created.each do |key, value|%>
+    <%= key %>
+    <table class="table table-striped">
+        <thead>
+            <th>players</th>
+            <th>group</th>
+            <th>sub_admin</th>
+            <th>group_update</th>
+            <th>sub_admin_update</th>
+        </thead>
+        <tbody>
+            <% value[0].each do |t|%>
+            <tr>
+                <td><%= t.account_id %> </td>
+                <td><%= t.group_id %> </td>
+
+                <% if value[1].blank? then %>
+                <td>No</td>
+                <% end %>
+
+                <% if value[1].present? then%>
+                    <% value[1].each do |f|%>
+                        <% if (f.account_id == t.account_id) then %>
+                        <td>"yes"</td>
+                        <% end %>
+                    <% end %>
+                <% end %>
+
+                <td><%= form_for(:player, :url => {:controller => 'players', :account_id => t.account_id, :tournament_id =>t.tournament_id, :action => 'update'}) do |f| %>
+                    <%= f.text_field :group_id%>
+                    <%= f.submit "update"%>
+                </td>
+                <% end %>
+
+                <td><%= form_for(:sub_admin, :url => {:controller => 'sub_admins', :account_id => t.account_id, :tournament_id =>t.tournament_id, :action => 'create'}) do |f| %>
+                    <%= f.text_field :approve%>
+                    <%= f.submit "update"%>
+                </td>
+                <% end %>
+
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <% end %>
+    <td><%= link_to 'Back', tournaments_index_path %></td>
+
 </div>

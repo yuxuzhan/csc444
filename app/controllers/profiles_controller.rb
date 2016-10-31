@@ -9,6 +9,7 @@ class ProfilesController < ApplicationController
         get_account_info
         get_played_tournaments
         get_orgnized_tournaments
+        get_sub_admin_tournaments
     end
 
     def get_account_info
@@ -50,7 +51,7 @@ class ProfilesController < ApplicationController
     end
 
     def get_sub_admin_tournaments
-        sub_admins = Sub_admin.where(account_id: current_account.id)
+        sub_admins = SubAdmin.where(account_id: current_account.id)
         sub_admins.each do |sub_admin|
             tournament_id = sub_admin.tournament_id
             tournament_obj = Tournament.find_by id: tournament_id
