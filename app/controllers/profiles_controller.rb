@@ -5,7 +5,7 @@ class ProfilesController < ApplicationController
         @profile = Profile.new
         @profile.tournaments_played = Hash.new
         @profile.tournaments_orgnized = Hash.new
-
+        @profile.tournaments_sub_admin = Hash.new
         get_account_info
         get_played_tournaments
         get_orgnized_tournaments
@@ -48,6 +48,16 @@ class ProfilesController < ApplicationController
             @profile.tournaments_orgnized[tournament_id] = tournament_name
         end
     end
+
+    def get_sub_admin_tournaments
+        sub_admins = Sub_admin.where(account_id: current_account.id)
+        sub_admins.each do |sub_admin|
+            tournament_id = sub_admin.tournament_id
+            tournament_obj = Tournament.find_by id: tournament_id
+            tournament_name = tournament_obj.name
+            @profile.tournaments_sub_admin[tournament_id] = tournament_name
+        end
+    end
 end
 
 class Profile
@@ -57,5 +67,6 @@ class Profile
                   :gender,
                   :phone_number,
                   :tournaments_played,
-                  :tournaments_orgnized
+                  :tournaments_orgnized,
+                  :tournaments_sub_admin
 end

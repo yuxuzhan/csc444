@@ -20,12 +20,22 @@
 		<h2>Tournaments I organize</h2>
 		<% if (@profile.tournaments_orgnized.empty? == false) then %>
 				<% @profile.tournaments_orgnized.each do |key, value| %>
-						<p><%= link_to value, tournaments_show_path(:tournamet_id => key)%></p>
+						<p><%= link_to value, tournaments_show_path(:tournament_id => key)%></p>
 				<% end %>
 				<%= link_to "arrange group", organizers_show_path %>
 		<% else %>
 				<p>You haven't orgnized any tournamnet yet</p>
 		<% end %>
+		<h2> Tournament I am a Sub-Admin</h2>
+		<% if (@profile.tournaments_sub_admin.empty? == false) then %>
+				<% @profile.tournaments_sub_admin.each do |key, value| %>
+						<p><%= link_to value, tournaments_show_path(:tournament_id => key)%></p>
+				<% end %>
+				<%= link_to "arrange group", organizers_show_path %>
+		<% else %>
+				<p>You haven't orgnized any tournamnet yet</p>
+		<% end %>
+
 		<h2>Sponsor Info</h2>
 				<p>Sponsored Tournament</p>
 		<h2>Payment Info</h2>

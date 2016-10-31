@@ -14,6 +14,7 @@ class SponsorshipsController < ApplicationController
 
   # GET /sponsorships/new
   def new
+    cookies[:tournament_id] = params[:tournament_id]
     @sponsorship = Sponsorship.new
   end
 
@@ -26,7 +27,9 @@ class SponsorshipsController < ApplicationController
   def create
     @sponsorship = Sponsorship.new(sponsorship_params)
     if @sponsorship.save
-          redirect_to tournaments_show_path(:tournament_id => @sponsorship.tournament_id), notice: 'sponsorship donated'
+        tournament_id = cookies[:tournament_id]
+        cookies.delete :tournament_id
+        redirect_to tournaments_show_path(:tournament_id => tournament_id), notice: 'sponsorship donated'
     else
         render 'new', notice: 'Invalid'
     end

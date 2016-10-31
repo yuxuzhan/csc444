@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :sub_admins
   get 'sponsors/new'
   get 'sponsors/index'
   post 'sponsors/create'
@@ -18,10 +19,13 @@ Rails.application.routes.draw do
   get 'organizers/show'
   #resources :players
 
+  get 'organizers/show'
+
   post 'players/create'
   post 'players/update'
   get "players/show"
 
+  get 'about_us/show'
 
   get 'tournaments/new'
   get 'tournaments/index'
