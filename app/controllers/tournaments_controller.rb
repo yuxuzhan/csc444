@@ -83,10 +83,10 @@ class TournamentsController < ApplicationController
     def get_tournaments_organizer
       tournaments = Tournament.all
       tournaments.each do |tournament|
-          number = 0
           organizer = Organizer.where(tournament_id: tournament.id, admin: true)
           organizer.each do |organizer|
               @tournaments_organizer[tournament] = organizer.account_id
+              # Nedd to find a way to get name by account_id from Devise.
               #account_obj = Account.find_by id: organizer.account_id
               #@tournaments_organizer[tournament] = account_obj.name
           end
