@@ -4,6 +4,11 @@ class TournamentsController < ApplicationController
     def index
         @tournaments = Tournament.all
         @tournaments_orgnized = get_editable_tournaments
+        @tournaments_players_count = Hash.new
+        get_numberofplayers_in_tournament
+        @tournaments_organizer = Hash.new
+        get_tournaments_organizer
+
     end
 
     def new
@@ -63,4 +68,28 @@ class TournamentsController < ApplicationController
         return arr
     end
 
+    def get_numberofplayers_in_tournament
+        tournaments = Tournament.all
+        tournaments.each do |tournament|
+            number = 0
+            players = Player.where(tournament_id: tournament.id)
+            players.each do |player|
+                number += 1
+            end
+            @tournaments_players_count[tournament] = number
+        end
+    end
+
+    def get_tournaments_organizer
+      tournaments = Tournament.all
+      tournaments.each do |tournament|
+          number = 0
+          organizer = Organizer.where(tournament_id: tournament.id, admin: true)
+          organizer.each do |organizer|
+              @tournaments_organizer[tournament] = organizer.account_id
+              #account_obj = Account.find_by id: organizer.account_id
+              #@tournaments_organizer[tournament] = account_obj.name
+          end
+      end
+    end
 end
