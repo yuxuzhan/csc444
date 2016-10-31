@@ -2,12 +2,15 @@
     <h1>Become a Sponsor</h1>
 
     <%= form_for(:sponsor, :url => {:controller => 'sponsors', :action => 'create'}) do |f| %>
+    <% for error in @sponsor.errors.full_messages %>
+      <li><%= error %></li>
+    <% end %>
+    
     <div class="field">
         <%= f.label :name, 'Orgnization Name' %><br/>
         <%= f.text_field :name, autofocus: true %>
     </div>
 
-    <h3>Contact Information</h3>
     <div class="field">
         <%= f.label :website, 'Link to website' %><br/>
         <%= f.text_field :website %>
@@ -16,19 +19,11 @@
     <div class="field">
         <%= f.label :business_phone_number, 'Phone' %><br/>
         <%= f.text_field :business_phone_number %>
-        <label class="radio-inline">
-            <%= f.check_box :same_phone_number %>
-            Use Account Phone Number
-        </label>
     </div>
 
     <div class="field">
         <%= f.label :business_email, 'Email' %><br/>
         <%= f.text_field :business_email %>
-        <label class="radio-inline">
-            <%= f.check_box :same_email %>
-            Use Account Email
-        </label>
     </div>
 
     <div class="field">

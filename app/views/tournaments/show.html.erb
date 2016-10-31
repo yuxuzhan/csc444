@@ -22,7 +22,7 @@
       <% end %>
   	</tbody>
   </table>
-    <%= button_to('Want To Donate Money to tournament', sponsors_new_path, :class => 'btn btn-large btn-primary', :method => :post)%>
+    <%= link_to('Want To Donate Money to tournament', sponsorships_new_path(:tournament_id =>t.id), :class => 'btn btn-large btn-primary')%>
 
 <% end %>
 

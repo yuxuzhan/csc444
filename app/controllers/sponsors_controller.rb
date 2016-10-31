@@ -5,22 +5,23 @@ class SponsorsController < ApplicationController
         @sponsor_detail = Sponsor.all
     end
 
-    def create
+    def new
         @sponsor = Sponsor.new
-        @sponsor.account_id = current_account.id
-        @sponsor.name = params[:name]
-        @sponsor.website = params[:website]
-        @sponsor.contact = params[:contact]
+    end
 
-        @duplicate_sponsor = Sponsor.where(account_id: current_account.id, name: params[:name])
-        if @duplicate_sponsor.blank?
-            if @sponsor.save
-                redirect_to sponsors_index_path, notice: 'Sponsor created'
-            else
-                render 'new', notice: 'Invalid'
-            end
+    def create
+        @sponsor = Sponsor.new(sponsor_params)
+        @sponsor.account_id = current_account.id
+        if @sponsor.save
+          redirect_to tournaments_index_path, notice: 'Sponsor created'
         else
-            redirect_to sponsors_index_path, notice: 'Already a sponsor'
+          render 'new', notice: 'Invalid'
         end
     end
+
+    def sponsor_params
+        params.require(:sponsor).permit(:name, :website, :business_phone_number, :business_email, :contact)
+    end
+
+
 end

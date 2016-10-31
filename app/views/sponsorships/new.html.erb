@@ -1,0 +1,27 @@
+<div class="padding-navbar">
+    <h1>New Sponsorship</h1>
+
+    <%= form_for(:sponsorship, :url => {:controller => 'sponsorships', :action => 'create'}) do |f| %>
+    <div class="field"><%= f.hidden_field(:tournament_id, :value => params[:tournament_id])%></div>
+    <div class="field">
+      <%= f.label :sponsor, 'Choose you sponsor name' %><br/>
+      <%= f.select(:sponsor_id) do %>
+      <%= @sponsor_list = Sponsor.where(account_id: current_account.id)%>
+        <% @sponsor_list.each do |c| -%>
+            <%= content_tag(:option, c.name, value: c.id) %>
+        <% end %>
+      <% end %>
+        <%= link_to('Create a new sponsor not in list', sponsors_new_path) %>
+    </div>
+
+    <div class="field">
+        <%= f.label :amount, 'amount of money' %><br/>
+        <%= f.text_field :amount %>
+    </div>
+
+    <div class="actions">
+        <%= f.submit "Donate" %>
+    </div>
+
+    <% end %>
+</div>

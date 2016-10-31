@@ -11,7 +11,7 @@ class TournamentsController < ApplicationController
     end
 
     def show
-        @tournament_detail = Tournament.where(id: params[:tournamet_id])
+        @tournament_detail = Tournament.where(id: params[:tournament_id])
     end
 
     def create

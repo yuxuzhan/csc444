@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
-  post 'sponsors/new'
+  get 'sponsors/new'
   get 'sponsors/index'
   post 'sponsors/create'
   get 'sponsors/show'
+
+  get 'sponsorships/new'
+  get 'sponsorships/index'
+  post 'sponsorships/create'
+  get 'sponsorships/show'
 
   get 'tournaments/show'
   get 'tournaments/edit'
