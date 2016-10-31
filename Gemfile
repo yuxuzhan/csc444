@@ -51,7 +51,7 @@ group :development, :test do
   # Use SQLite3 as the database for development
   gem 'sqlite3'
 
-  gem 'rspec-rails', '2.13.1'
+  gem 'rspec-rails', '3.5.0'
 end
 
 group :development do
