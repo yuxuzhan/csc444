@@ -1,6 +1,7 @@
 <div class="padding-navbar">
     <% t = Sponsor.find(params[:sponsor_id]) %>
     <h1><%=t.name%></h1>
+    <%= image_tag t.logo.thumb.url %>
     <p>Sponsor website: <%=t.website%></p>
     <h3>Contact Information</h3>
     <ul>

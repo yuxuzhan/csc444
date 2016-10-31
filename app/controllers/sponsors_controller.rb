@@ -22,7 +22,7 @@ class SponsorsController < ApplicationController
     end
 
     def sponsor_params
-        params.require(:sponsor).permit(:name, :website, :business_phone_number, :business_email, :contact)
+        params.require(:sponsor).permit(:name, :website, :logo, :business_phone_number, :business_email, :contact)
     end
 
 

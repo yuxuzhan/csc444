@@ -9,6 +9,10 @@
         <%= f.text_field :name, autofocus: true %>
     </div>
     <div class="field">
+      <%= f.label :logo , 'Logo'%><br>
+      <%= f.file_field :logo %>
+    </div>
+    <div class="field">
         <%= f.label :website, 'Link to website' %><br/>
         <%= f.text_field :website %>
     </div>
