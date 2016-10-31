@@ -11,7 +11,7 @@
             <%= content_tag(:option, c.name, value: c.id) %>
         <% end %>
       <% end %>
-        <%= link_to('Create a new sponsor not in list', sponsors_new_path) %>
+        <%= link_to('Create a new sponsor not in list', sponsors_new_path(:tournament_id => params[:tournament_id])) %>
     </div>
 
     <div class="field">

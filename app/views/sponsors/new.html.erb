@@ -1,16 +1,13 @@
 <div class="padding-navbar">
     <h1>Become a Sponsor</h1>
-
     <%= form_for(:sponsor, :url => {:controller => 'sponsors', :action => 'create'}) do |f| %>
     <% for error in @sponsor.errors.full_messages %>
       <li><%= error %></li>
     <% end %>
-    
     <div class="field">
         <%= f.label :name, 'Orgnization Name' %><br/>
         <%= f.text_field :name, autofocus: true %>
     </div>
-
     <div class="field">
         <%= f.label :website, 'Link to website' %><br/>
         <%= f.text_field :website %>
