@@ -43,13 +43,15 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
-#Use to upload image file to rails 
+#Use to upload image file to rails
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   # Use SQLite3 as the database for development
   gem 'sqlite3'
+
+  gem 'rspec-rails', '2.13.1'
 end
 
 group :development do
