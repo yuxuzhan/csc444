@@ -30,6 +30,10 @@ heroku run rake db:migrate
 * Signup: https://csc444.herokuapp.com/accounts/sign_up
 
 ###Test
+* Run all RSpec tests
+```
+rake spec
+```
 * Test the account registration/login:
 ```
 rspec spec/features/account_spec.rb
