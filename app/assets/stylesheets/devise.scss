@@ -1,5 +1,5 @@
 .new-session{
-    background: url(asset-path('intro-header.jpg')) no-repeat center center;
+    background:linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url(asset-path('intro-header.jpg')) no-repeat center center;
     background-size: cover;
     padding: 0;
     margin-top: -15px;
@@ -7,8 +7,8 @@
     height: 100%;
     min-height: 100%;
     z-index: 99;
-}
 
+}
 
 .login
 {
@@ -16,7 +16,11 @@
     margin: 0 auto;
 }
 
-
+.registration
+{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
 
 p.form-title
 {
@@ -90,12 +94,12 @@ form.login .remember-forgot
 }
 .links
 {
-
     font-size: 12px;
     font-weight: 400;
     width: 250px;
     margin: 0 auto;
 }
+
 .links.a
 {
     transition: color 0.5s ease;
