@@ -38,16 +38,15 @@ RSpec.feature "account sign in/up" do
         expect(current_path).to eql(new_account_session_path)
     end
 
-    # scenario "allow user to sign in with correct infomation" do
-    #     user = FactoryGirl.build(:account)
-    #
-    #     visit new_account_session_path
-    #     fill_in "Email" , with: user.email
-    #     fill_in "Password" , with: user.password
-    #     click_on("Sign In")
-    #     # save_and_open_page
-    #     expect(page).to have_current_path(root_path)
-    # end
+    scenario "allow user to sign in with correct infomation" do
+        user = FactoryGirl.create(:account)
+
+        visit new_account_session_path
+        fill_in "Email" , with: user.email
+        fill_in "Password" , with: user.password
+        click_on("Sign In")
+        expect(page).to have_current_path(root_path)
+    end
 end
 
 # DatabaseCleaner.clean
