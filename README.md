@@ -38,3 +38,14 @@ rake spec
 ```
 rspec spec/features/account_spec.rb
 ```
+If the testing fails due to any Factory Girl or Database issues, try the following commands:
+```
+bin/rails db:environment:set RAILS_ENV=test
+bundle exec rake db:drop RAILS_ENV=test
+bundle exec rake db:create RAILS_ENV=test
+bundle exec rake db:schema:load RAILS_ENV=test
+```
+Make sure to switch back to development mode:
+```
+bin/rails db:environment:set RAILS_ENV=development
+```
