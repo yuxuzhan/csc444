@@ -16,8 +16,17 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require 'factory_girl'
 
-require 'capybara/rspec'
+FactoryGirl.define do
+    sequence(:email) { |n| "someone#{n}@example.com" }
+
+    factory :account do
+      email
+      password 'password'
+      password_confirmation { |u| u.password }
+  end
+end
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

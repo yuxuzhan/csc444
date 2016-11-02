@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'spec_helper'
 # require 'database_cleaner'
 
 RSpec.feature "account sign in/up" do
@@ -13,12 +14,14 @@ RSpec.feature "account sign in/up" do
     end
 
     scenario "allow user to sign up the new account" do
+        user = FactoryGirl.build(:account)
+
         visit new_account_registration_path
         fill_in "Name" ,  with: "Test Account"
-        fill_in "Email" , with: "tonyzt@hotmail.com"
+        fill_in "Email" , with: user.email
         fill_in "Phone number" ,  with: "1234567890"
-        fill_in "Password" ,  with: "password"
-        fill_in "Password confirmation" , with: "password"
+        fill_in "Password" ,  with: user.password_confirmation
+        fill_in "Password confirmation" , with: user.password_confirmation
         page.choose('account_gender_m')
         click_on("Accept and Sign up")
 
@@ -36,13 +39,14 @@ RSpec.feature "account sign in/up" do
     end
 
     # scenario "allow user to sign in with correct infomation" do
+    #     user = FactoryGirl.build(:account)
+    #
     #     visit new_account_session_path
-    #
-    #     fill_in "Email" , with: "tonyzt@hotmail.com"
-    #     fill_in "Password" , with: "password"
-    #     click_on("Log in")
-    #
-    #     expect(current_path).to eql(root_path)
+    #     fill_in "Email" , with: user.email
+    #     fill_in "Password" , with: user.password
+    #     click_on("Sign In")
+    #     # save_and_open_page
+    #     expect(page).to have_current_path(root_path)
     # end
 end
 
