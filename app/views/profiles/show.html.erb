@@ -11,7 +11,7 @@
 		<h2>Tournaments I play in</h2>
 		<% if (@profile.tournaments_played.empty? == false) then %>
 				<% @profile.tournaments_played.each do |key, value| %>
-						<p><%= link_to value, tournaments_show_path(:tournamet_id => key)%></p>
+						<p><%= link_to value, tournaments_show_path(:tournament_id => key)%></p>
 				<% end %>
 		<% else %>
 				<p>You have't joined any tournament yet</p>
