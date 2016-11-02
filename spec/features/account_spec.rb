@@ -7,7 +7,7 @@ RSpec.feature "account sign in/up" do
 
         fill_in "Email" , with: "nobody@example.com"
         fill_in "Password" , with: "password"
-        click_on("Log in")
+        click_on("Sign In")
 
         expect(current_path).to eql(new_account_session_path)
     end
@@ -30,7 +30,7 @@ RSpec.feature "account sign in/up" do
 
         fill_in "Email" , with: "tonyzt132@hotmail.com"
         fill_in "Password" , with: "wrongpassword"
-        click_on("Log in")
+        click_on("Sign In")
 
         expect(current_path).to eql(new_account_session_path)
     end
