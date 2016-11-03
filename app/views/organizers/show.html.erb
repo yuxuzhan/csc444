@@ -17,13 +17,15 @@
                 <td><%= t.group_id %> </td>
 
                 <% if value[1].blank? then %>
-                <td>No</td>
+                <td>"no"</td>
                 <% end %>
 
                 <% if value[1].present? then%>
                     <% value[1].each do |f|%>
                         <% if (f.account_id == t.account_id) then %>
                         <td>"yes"</td>
+                        <% else %>
+                        <td>"no"</td>
                         <% end %>
                     <% end %>
                 <% end %>
