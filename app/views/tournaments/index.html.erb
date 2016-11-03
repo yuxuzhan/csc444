@@ -6,6 +6,7 @@
 		<thead>
 			<th>Name</th>
 			<th>Number of players</th>
+			<th>Slots</th>
 			<th>Organizer</th>
 		</thead>
 
@@ -15,6 +16,7 @@
 			<tr>
 				<td><%= link_to t.name, tournaments_show_path(:tournament_id => t.id)%></td>
 				<td><%= @tournaments_players_count[t] %>
+				<td><%= t.slots %></td>
 				<td><%= @tournaments_organizer[t] %>
 				<% if @tournaments_orgnized.include?(t.id) %>
 				<td><%= link_to 'Edit', tournaments_edit_path(:id => t.id)%></td>

@@ -54,7 +54,7 @@ class TournamentsController < ApplicationController
     end
 
     def tournament_params
-        params.require(:tournament).permit(:name, :venue, :details, :contact, :private, :date)
+        params.require(:tournament).permit(:name, :venue, :details, :contact, :private, :date, :slots)
     end
 
     def get_editable_tournaments
