@@ -22,6 +22,15 @@
       <% end %>
   	</tbody>
   </table>
+
+  <iframe
+  width="600"
+  height="450"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBDGM6j6MEEI73Tcd5pgIs_n674JFRWjBw&q=+<%= t.venue %>" allowfullscreen>
+  </iframe>
+
+
     <%= link_to('To see current sponsorships', sponsorships_index_path(:tournament_id =>t.id), :class => 'btn btn-large btn-primary')%>
     <%= link_to('Want To Donate Money to tournament', sponsorships_new_path(:tournament_id =>t.id), :class => 'btn btn-large btn-primary')%>
 
