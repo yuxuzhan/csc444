@@ -15,7 +15,9 @@
   			<td><%= t.venue%></td>
   			<td><%= t.date%></td>
   			<td><%= t.contact%></td>
+        <% if t.slots > 0 %>
         <td><%= link_to 'Sign up', players_create_path(:tournament_id => t.id), :method => :post%></td>
+        <% end %>
         <td><%= link_to 'players in tournament', players_show_path(:tournament_id => t.id) %></td>
         <td><%= link_to 'Back', tournaments_index_path %></td>
   		</tr>

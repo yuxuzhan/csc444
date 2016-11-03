@@ -92,4 +92,5 @@ class TournamentsController < ApplicationController
           end
       end
     end
+
 end

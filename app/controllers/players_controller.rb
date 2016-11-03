@@ -6,9 +6,13 @@ class PlayersController < ApplicationController
         @player.tournament_id = params[:tournament_id]
         @player.account_id = current_account.id
         @duplicate_player = Player.where(tournament_id: params[:tournament_id], account_id: current_account.id)
+
+        @tournament = Tournament.find_by id: params[:tournament_id]
         if @duplicate_player.blank?
             if @player.save
                 redirect_to tournaments_index_path, notice: 'Joined Tournament'
+                @tournament.slots = @tournament.slots-1
+                @tournament.save
             else
                 render 'new', notice: 'Invalid'
             end
