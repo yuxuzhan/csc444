@@ -29,6 +29,8 @@ Rails.application.routes.draw do
 
   get 'about_us/show'
 
+  get 'contacts/show'
+
   get 'tournaments/new'
   get 'tournaments/index'
   post 'tournaments/create'
