@@ -1,0 +1,26 @@
+<div class="about-us-image">
+</div>
+
+<div class="about-us-background">
+    <div class="contacts-container">
+        <h1>Contact us</h1>
+        <%= simple_form_for @contact, :html => {:class => 'form-horizontal' } do |f| %>
+      <!--      <%= f.input :email, :required => true %> -->
+            <div class="row">
+                <div class="col-md-6">
+                    <%= f.input :name, :placeholder => "  Please enter your name *", :required => true, :input_html => {:style => 'width: 100%;'} %>
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="col-md-6">
+                    <%= f.input :email, :placeholder => "  Please enter your email *", :required => true, :input_html => {:style => 'width: 100%;'} %>
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+
+            <%= f.input :message, :as => :text, :placeholder => "  Message for us *", :required => true, :input_html => {:style => 'width: 100%;', :rows => 5} %>
+            </br>
+            <%= f.button :submit, 'Send message', :class=> "btn btn-primary" %>
+            <p class="text-muted"><strong>*</strong> These fields are required.</p>
+        <% end %>
+    </div>
+</div>

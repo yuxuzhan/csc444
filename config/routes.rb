@@ -27,9 +27,10 @@ Rails.application.routes.draw do
   post 'players/update'
   get "players/show"
 
-  get 'about_us/show'
+  get 'about_us', to: 'about_us#show'
 
-  get 'contacts/show'
+  get 'contacts', to: 'contacts#new'
+  post 'contacts', to: 'contacts#create'
 
   get 'tournaments/new'
   get 'tournaments/index'
