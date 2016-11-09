@@ -1,4 +1,9 @@
 <div class="padding-navbar">
+<div id="error_explanation">
+  <% if flash[:error].present? %>
+    <p><%= flash[:error] %></p>
+  <% end %>
+</div>
 <% @tournament_detail.each do |t| %>
   <h1><%= t.name%></h1>
   <table class = "table table-striped">
@@ -16,12 +21,26 @@
   			<td><%= t.date%></td>
   			<td><%= t.contact%></td>
         <% if t.slots > 0 %>
-        <td><%= link_to 'Sign up', players_create_path(:tournament_id => t.id), :method => :post%></td>
-        <% end %>
+        <td>
+          <%= form_tag players_create_path do %>
+            <% if defined?(current_account.id) && (current_account.id != '')%>
+                <% @account = Account.find(current_account.id)%>
+                <%= hidden_field_tag 'email', @account.email %>
+            <% else %>
+                <%= hidden_field_tag 'email'%>
+            <% end %>
+            <%= hidden_field_tag 'tournament_id', t.id %>
+            <%= hidden_field_tag 'amount', 2000 %>
+            <%= hidden_field_tag(:stripeToken) %>
+
+            <button id='signupButton'>Sign Up</button>
+          <% end %>
+        </td>
         <td><%= link_to 'players in tournament', players_show_path(:tournament_id => t.id) %></td>
         <td><%= link_to 'Back', tournaments_index_path %></td>
-  		</tr>
-      <% end %>
+        <% end %>
+    </tr>
+    <% end %>
   	</tbody>
   </table>
 
@@ -39,3 +58,38 @@
 <% end %>
 
 </div>
+
+<script src="https://checkout.stripe.com/checkout.js"></script>
+
+<script>
+
+$('#signupButton').on('click', function(e) {
+  e.preventDefault();
+  $('#error_explanation').html('');
+  var email = $('input#email').val();
+  if (email) {
+    var amount = $('input#amount').val();
+    StripeCheckout.open({
+      key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+      locale: 'auto',
+      name: 'Golf Tournament Ticket',
+      description: 'pay',
+      currency: 'cad',
+      email: email,
+      amount: amount,
+      token: function(token){
+        $('input#stripeToken').val(token.id);
+        $('form').submit();
+      }
+    });
+  }
+  else {
+    $('#error_explanation').html('<p>Please Login before Sign Up</p>');
+  }
+});
+
+// Close Checkout on page navigation
+$(window).on('popstate', function() {
+  handler.close();
+});
+</script>

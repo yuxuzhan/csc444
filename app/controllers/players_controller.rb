@@ -2,6 +2,13 @@ class PlayersController < ApplicationController
     before_action :authenticate_account!, except: [:show, :index]
 
     def create
+      begin
+        Stripe::Charge.create(
+          :amount => params[:amount],
+          :currency => 'cad',
+          :source => params[:stripeToken],
+          :description => 'Ticketing'
+        )
         @player = Player.new
         @player.tournament_id = params[:tournament_id]
         @player.account_id = current_account.id
@@ -19,6 +26,10 @@ class PlayersController < ApplicationController
         else
             redirect_to tournaments_index_path, notice: 'Already in Tournament'
         end
+      rescue Stripe::CardError => e
+        flash[:error] = e.message
+        redirect_to new_charge_path
+      end
     end
 
     def show

@@ -4,6 +4,7 @@
 		<thead>
 			<th>tournament</th>
 			<th>account</th>
+			<th>name</th>
 			<th>group</th>
 			<th>checkin</th>
 		</thead>
@@ -12,6 +13,7 @@
 			<tr>
 				<td><%= t.tournament_id%></td>
 				<td><%= t.account_id%></td>
+				<td><%= Account.find(t.account_id).name%></td>
 				<td><%= t.group_id%></td>
 				<td><%= t.checkin%></td>
 				<td><%= link_to 'Back', tournaments_index_path %></td>
