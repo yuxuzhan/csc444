@@ -5,6 +5,13 @@ class ChargesController < ApplicationController
   end
 
   def create
+    @sponsorship =  Sponsorship.new()
+    @sponsorship.sponsor_id = params[:sponsor_id]
+    @sponsorship.tournament_id = 1
+    @sponsorship.amount = params[:amount]
+    @sponsorship.save
+    @amount = params[:amount]
+    
     @amount = params[:amount]
 
     @amount = @amount.gsub('$', '').gsub(',', '')
