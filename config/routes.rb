@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'profiles/show'
   get 'organizers/new'
   get 'organizers/show'
+  get 'organizers/update'
   post 'sub_admins/create'
   get 'sub_admins/show'
   #resources :players

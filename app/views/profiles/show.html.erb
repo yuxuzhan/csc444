@@ -23,6 +23,8 @@
 						<p><%= link_to value, tournaments_show_path(:tournament_id => key)%></p>
 				<% end %>
 				<%= link_to "arrange group", organizers_show_path %>
+				<br/>
+				<%= link_to "check in", organizers_update_path %>
 		<% else %>
 				<p>You haven't orgnized any tournamnet yet</p>
 		<% end %>

@@ -9,6 +9,12 @@ class OrganizersController < ApplicationController
         get_played_players
     end
 
+    def update
+        @arrangement = Arrangement.new
+        @arrangement.tournaments_created = Hash.new
+        get_played_players
+    end
+
     def get_played_players
         arr = []
         organizer = Organizer.where(account_id: current_account.id)
@@ -21,6 +27,7 @@ class OrganizersController < ApplicationController
             sub_admin_info = SubAdmin.where(tournament_id: tournament_id)
             arr << sub_admin_info
             @arrangement.tournaments_created[tournament_name] = arr
+            arr = []
         end
       end
 end
