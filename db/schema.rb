@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20161103012532) do
     t.integer  "sponsor_id"
     t.integer  "tournament_id"
     t.integer  "amount"
+    t.string   "stripe_token"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end

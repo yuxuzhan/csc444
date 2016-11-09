@@ -9,9 +9,10 @@ class ChargesController < ApplicationController
     @sponsorship.sponsor_id = params[:sponsor_id]
     @sponsorship.tournament_id = 1
     @sponsorship.amount = params[:amount]
+    @sponsorship.stripe_token = params[:stripeToken]
     @sponsorship.save
     @amount = params[:amount]
-    
+
     @amount = params[:amount]
 
     @amount = @amount.gsub('$', '').gsub(',', '')
