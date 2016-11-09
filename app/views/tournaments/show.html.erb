@@ -32,7 +32,8 @@
             <%= hidden_field_tag 'tournament_id', t.id %>
             <%= hidden_field_tag 'amount', 2000 %>
             <%= hidden_field_tag(:stripeToken) %>
-
+            <% player = Player.where(account_id: current_account.id, tournament_id: t.id) %>
+            <%= hidden_field_tag 'player_id', player%>
             <button id='signupButton'>Sign Up</button>
           <% end %>
         </td>
@@ -67,24 +68,30 @@ $('#signupButton').on('click', function(e) {
   e.preventDefault();
   $('#error_explanation').html('');
   var email = $('input#email').val();
-  if (email) {
-    var amount = $('input#amount').val();
-    StripeCheckout.open({
-      key: '<%= Rails.configuration.stripe[:publishable_key] %>',
-      locale: 'auto',
-      name: 'Golf Tournament Ticket',
-      description: 'pay',
-      currency: 'cad',
-      email: email,
-      amount: amount,
-      token: function(token){
-        $('input#stripeToken').val(token.id);
-        $('form').submit();
-      }
-    });
+  var player_id = $('#player_id').val();
+  if(player_id){
+      $('#error_explanation').html('<p>You are already signed up for this tournament</p>');
   }
   else {
-    $('#error_explanation').html('<p>Please Login before Sign Up</p>');
+    if (email) {
+      var amount = $('input#amount').val();
+      StripeCheckout.open({
+        key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+        locale: 'auto',
+        name: 'Golf Tournament Ticket',
+        description: 'pay',
+        currency: 'cad',
+        email: email,
+        amount: amount,
+        token: function(token){
+          $('input#stripeToken').val(token.id);
+          $('form').submit();
+        }
+      });
+    }
+    else {
+      $('#error_explanation').html('<p>Please Login before Sign Up</p>');
+    }
   }
 });
 
