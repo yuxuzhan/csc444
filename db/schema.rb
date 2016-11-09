@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161103012532) do
+ActiveRecord::Schema.define(version: 20161109154509) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20161103012532) do
     t.boolean  "checkin"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "stripe_token"
   end
 
   create_table "sponsors", force: :cascade do |t|
@@ -60,16 +61,15 @@ ActiveRecord::Schema.define(version: 20161103012532) do
     t.string   "business_email"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
-    t.string   "avatar"
   end
 
   create_table "sponsorships", force: :cascade do |t|
     t.integer  "sponsor_id"
     t.integer  "tournament_id"
     t.integer  "amount"
-    t.string   "stripe_token"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "stripe_token"
   end
 
   create_table "sub_admins", force: :cascade do |t|

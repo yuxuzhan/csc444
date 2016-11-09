@@ -12,6 +12,7 @@ class PlayersController < ApplicationController
         @player = Player.new
         @player.tournament_id = params[:tournament_id]
         @player.account_id = current_account.id
+        @player.stripe_token = params[:stripeToken]
         @duplicate_player = Player.where(tournament_id: params[:tournament_id], account_id: current_account.id)
 
         @tournament = Tournament.find_by id: params[:tournament_id]
