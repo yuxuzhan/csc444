@@ -10,20 +10,43 @@ class SponsorsController < ApplicationController
     end
 
     def create
-        @sponsor = Sponsor.new(sponsor_params)
+      @amount = params[:amount]
+      @amount = @amount.gsub('$', '').gsub(',', '')
+      tournament_id = cookies[:tournament_id]
+
+      begin
+        @amount = Float(@amount).round(2)
+        @amount = (@amount * 100).to_i # Must be an integer!
+        @sponsor = Sponsor.new
+        @sponsor.name = params[:name]
+        @sponsor.website = params[:website]
+        @sponsor.logo = params[:logo]
+        @sponsor.business_phone_number = params[:business_phone_number]
+        @sponsor.business_email = params[:business_email]
+        @sponsor.contact = params[:contact]
         @sponsor.account_id = current_account.id
         if @sponsor.save
-          tournament_id = cookies[:tournament_id]
+          Stripe::Charge.create(
+            :amount => @amount,
+            :currency => 'cad',
+            :source => params[:stripeToken],
+            :description => 'Custom donation'
+          )
+          @sponsorship = Sponsorship.new
+          @sponsorship.sponsor_id = @sponsor.id
+          @sponsorship.tournament_id = tournament_id
+          @sponsorship.amount = params[:amount]
+          @sponsorship.stripe_token = params[:stripeToken]
+          @sponsorship.save
           cookies.delete :tournament_id
-          redirect_to sponsorships_new_path(:tournament_id => tournament_id), notice: 'Sponsor created'
+          redirect_to tournaments_show_path(:tournament_id => tournament_id), notice: 'Sponsor created'
         else
           render 'new', notice: 'Invalid'
         end
+      rescue Stripe::CardError => e
+        flash[:error] = e.message
+        redirect_to sponsors_new_path(:tournament_id => tournament_id)
+      end
     end
-
-    def sponsor_params
-        params.require(:sponsor).permit(:name, :website, :logo, :business_phone_number, :business_email, :contact)
-    end
-
 
 end

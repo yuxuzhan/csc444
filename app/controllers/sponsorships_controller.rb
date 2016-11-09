@@ -1,5 +1,5 @@
 class SponsorshipsController < ApplicationController
-  before_action :authenticate_account!, except: [:show]
+  before_action :authenticate_account!, except: [:show, :index]
 
   # GET /sponsorships
   # GET /sponsorships.json
@@ -32,36 +32,25 @@ class SponsorshipsController < ApplicationController
 
     begin
       @amount = Float(@amount).round(2)
-    rescue
-      flash[:error] = 'Charge not completed. Please enter a valid amount in USD ($).'
-      redirect_to new_charge_path
-      return
+      @amount = (@amount * 100).to_i # Must be an integer!
+      Stripe::Charge.create(
+        :amount => @amount,
+        :currency => 'cad',
+        :source => params[:stripeToken],
+        :description => 'Custom donation'
+      )
+      tournament_id = cookies[:tournament_id]
+      @sponsorship =  Sponsorship.new
+      @sponsorship.sponsor_id = params[:sponsors]["sponsor_id"]
+      @sponsorship.tournament_id = tournament_id
+      @sponsorship.amount = params[:amount]
+      @sponsorship.stripe_token = params[:stripeToken]
+      @sponsorship.save
+      cookies.delete :tournament_id
+      redirect_to tournaments_show_path(:tournament_id => tournament_id)
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+      redirect_to sponsorships_new_path(:tournament_id => params[:tournament_id])
     end
-
-    @amount = (@amount * 100).to_i # Must be an integer!
-
-    if @amount < 500
-      flash[:error] = 'Charge not completed. Donation amount must be at least $5.'
-      redirect_to new_charge_path
-      return
-    end
-
-    Stripe::Charge.create(
-      :amount => @amount,
-      :currency => 'cad',
-      :source => params[:stripeToken],
-      :description => 'Custom donation'
-    )
-    tournament_id = cookies[:tournament_id]
-    @sponsorship =  Sponsorship.new
-    @sponsorship.sponsor_id = params[:sponsors]["sponsor_id"]
-    @sponsorship.tournament_id = tournament_id
-    @sponsorship.amount = params[:amount]
-    @sponsorship.stripe_token = params[:stripeToken]
-    @sponsorship.save
-    cookies.delete :tournament_id
-    redirect_to tournaments_show_path(:tournament_id => tournament_id)
-
   end
-
 end

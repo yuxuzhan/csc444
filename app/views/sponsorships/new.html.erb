@@ -6,8 +6,9 @@
     <% end %>
   </div>
   <div class="field">
+    <%= link_to('Sponsor not in list? click here to create new sponsor', sponsors_new_path(:tournament_id => params[:tournament_id])) %><br/>
+    <%= label_tag(:sponsors, 'Please select a sponsor name in your account') %><br/>
     <%= select("sponsors", "sponsor_id", Sponsor.where(account_id: current_account.id).collect {|p| [ p.name, p.id ] }, { include_blank: true })%>
-    <%= link_to('Create a new sponsor not in list', sponsors_new_path(:tournament_id => params[:tournament_id])) %>
   </div>
   <article>
     <%= label_tag(:amount, 'Donation Amount:') %>
@@ -47,9 +48,6 @@ $('#donateButton').on('click', function(e) {
 
   if (isNaN(amount)) {
     $('#error_explanation').html('<p>Please enter a valid amount in USD ($).</p>');
-  }
-  else if (amount < 5.00) {
-    $('#error_explanation').html('<p>Donation amount must be at least $5.</p>');
   }
   else {
     amount = amount * 100; // Needs to be an integer!
