@@ -26,27 +26,42 @@ class SponsorshipsController < ApplicationController
   # POST /sponsorships
   # POST /sponsorships.json
   def create
-    @sponsorship = Sponsorship.new(sponsorship_params)
-    if @sponsorship.save
-        tournament_id = cookies[:tournament_id]
-        cookies.delete :tournament_id
-        redirect_to tournaments_show_path(:tournament_id => tournament_id), notice: 'sponsorship donated'
-    else
-        render 'new', notice: 'Invalid'
+    @amount = params[:amount]
+
+    @amount = @amount.gsub('$', '').gsub(',', '')
+
+    begin
+      @amount = Float(@amount).round(2)
+    rescue
+      flash[:error] = 'Charge not completed. Please enter a valid amount in USD ($).'
+      redirect_to new_charge_path
+      return
     end
+
+    @amount = (@amount * 100).to_i # Must be an integer!
+
+    if @amount < 500
+      flash[:error] = 'Charge not completed. Donation amount must be at least $5.'
+      redirect_to new_charge_path
+      return
+    end
+
+    Stripe::Charge.create(
+      :amount => @amount,
+      :currency => 'cad',
+      :source => params[:stripeToken],
+      :description => 'Custom donation'
+    )
+    tournament_id = cookies[:tournament_id]
+    @sponsorship =  Sponsorship.new
+    @sponsorship.sponsor_id = params[:sponsors]["sponsor_id"]
+    @sponsorship.tournament_id = tournament_id
+    @sponsorship.amount = params[:amount]
+    @sponsorship.stripe_token = params[:stripeToken]
+    @sponsorship.save
+    cookies.delete :tournament_id
+    redirect_to tournaments_show_path(:tournament_id => tournament_id)
 
   end
 
-
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_sponsorship
-      @sponsorship = Sponsorship.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def sponsorship_params
-      params.require(:sponsorship).permit(:tournament_id, :sponsor_id, :amount)
-    end
 end
