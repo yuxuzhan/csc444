@@ -46,7 +46,7 @@
                 <ul class="list-inline intro-social-buttons padding-navbar" align="middle">
                     <li>
                         <% if account_signed_in? %>
-                          <%= link_to('My Account', profiles_show_path, :class => "btn btn-default btn-lg")  %>
+                          <%= link_to('My Account', profiles_path, :class => "btn btn-default btn-lg")  %>
                         <% else %>
                           <%= link_to('Sign up', new_account_registration_path, :class => "btn btn-default btn-lg")  %>
                         <% end %>

@@ -25,7 +25,7 @@
                     </li>
                     <% if account_signed_in? %>
                         <li>
-                            <%= link_to('My Account', profiles_show_path)  %>
+                            <%= link_to('My Account', profiles_path)  %>
                         </li>
                         <li>
                             <%= link_to('Log out', destroy_account_session_path, :method => :delete, data: {confirm: 'Are you sure?'}) %>

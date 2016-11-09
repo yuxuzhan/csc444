@@ -12,6 +12,17 @@ class ProfilesController < ApplicationController
         get_sub_admin_tournaments
     end
 
+    def torunament
+        @profile = Profile.new
+        @profile.tournaments_played = Hash.new
+        @profile.tournaments_orgnized = Hash.new
+        @profile.tournaments_sub_admin = Hash.new
+        get_account_info
+        get_played_tournaments
+        get_orgnized_tournaments
+        get_sub_admin_tournaments
+    end
+
     def get_account_info
         account = Account.find_by id: current_account.id
 

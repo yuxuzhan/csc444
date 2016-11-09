@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   get 'tournaments/edit'
   put 'tournaments/update'
 
-  get 'profiles/show'
+  get 'profiles', to: 'profiles#show'
+  get 'profiles/tournament'
+
   get 'organizers/new'
   get 'organizers/show'
   get 'organizers/update'
