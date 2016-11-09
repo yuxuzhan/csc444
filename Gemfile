@@ -18,7 +18,7 @@ gem 'nokogiri',  '~> 1.6.8.1'
 gem 'devise'
 
 # Use Stripe for online payment
-# gem 'stripe-rails'
+gem 'stripe'
 
 #Use Data-Confirm Modal for popup
 gem 'data-confirm-modal'

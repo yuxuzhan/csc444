@@ -1,0 +1,69 @@
+<div class="padding-navbar">
+<%= form_tag charges_path do |f|%>
+  <div id="error_explanation">
+    <% if flash[:error].present? %>
+      <p><%= flash[:error] %></p>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= select("post", "sponsor_id", Sponsor.where(account_id: current_account.id).collect {|p| [ p.name, p.id ] }, { include_blank: true })%>
+    <%= link_to('Create a new sponsor not in list', sponsors_new_path(:tournament_id => params[:tournament_id])) %>
+  </div>
+  <article>
+    <%= label_tag(:amount, 'Donation Amount:') %>
+    <%= text_field_tag(:amount) %>
+  </article>
+  <% @account = Account.find(current_account.id)%>
+  <article>
+    <%= hidden_field_tag 'account_email', @account.email %>
+    <%= hidden_field_tag(:stripeToken) %>
+  </article>
+  <button id='donateButton'>Donate</button>
+<% end %>
+</div>
+<script src="https://checkout.stripe.com/checkout.js"></script>
+
+<script>
+var handler = StripeCheckout.configure({
+  key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+  locale: 'auto',
+  token: function(token) {
+    $('input#stripeToken').val(token.id);
+    $('form').submit();
+  }
+});
+
+$('#donateButton').on('click', function(e) {
+  e.preventDefault();
+
+  $('#error_explanation').html('');
+  var name = $('select').val();
+  var email = $('#account_email').val();
+  var amount = $('input#amount').val();
+  amount = amount.replace(/\$/g, '').replace(/\,/g, '')
+
+  amount = parseFloat(amount);
+
+  if (isNaN(amount)) {
+    $('#error_explanation').html('<p>Please enter a valid amount in USD ($).</p>');
+  }
+  else if (amount < 5.00) {
+    $('#error_explanation').html('<p>Donation amount must be at least $5.</p>');
+  }
+  else {
+    amount = amount * 100; // Needs to be an integer!
+    handler.open({
+      name: 'Golf',
+      description: 'pay',
+      currency: 'cad',
+      email: email,
+      amount: Math.round(amount)
+    })
+  }
+});
+
+// Close Checkout on page navigation
+$(window).on('popstate', function() {
+  handler.close();
+});
+</script>

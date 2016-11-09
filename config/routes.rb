@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :charges
+
   get 'sponsors/new'
   get 'sponsors/index'
   post 'sponsors/create'
