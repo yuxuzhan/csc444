@@ -1,0 +1,29 @@
+<div class="padding-navbar">
+    <h1><% "Arrangement"%></h1>
+    <% @arrangement.tournaments_created.each do |key, value|%>
+    <%= key %>
+    <table class="table table-striped">
+        <thead>
+            <th>players</th>
+            <th>checkin</th>
+        </thead>
+        <tbody>
+            <% value[0].each do |t|%>
+            <tr>
+                <td><%= t.account_id %> </td>
+                <td><%= t.checkin %> </td>
+
+                <td><%= form_for(:player, :url => {:controller => 'players', :account_id => t.account_id, :tournament_id =>t.tournament_id, :action => 'update'}) do |f| %>
+                    <%= f.text_field :checkin%>
+                    <%= f.submit "update"%>
+                </td>
+                <% end %>
+
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <% end %>
+    <td><%= link_to 'Back', tournaments_index_path %></td>
+
+</div>
