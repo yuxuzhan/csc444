@@ -3,6 +3,11 @@ class Account < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
   before_save :downcase_email
+  after_create :send_mail
+
+  def send_mail
+  	UserMailer.signup_email(self).deliver
+  end
 
   def downcase_email
   	self.email.downcase!
