@@ -2,8 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.grey-background{
-    background-color: #f8f8f8;
+.picture-background{
+  background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(asset-path('intro-header.jpg')) no-repeat center center;
+  background-size: cover;
+  min-height: 70%;
 }
 
 /* Profile container */
@@ -14,7 +16,7 @@
 /* Profile sidebar */
 .profile-sidebar {
   padding: 20px 0 10px 0;
-  background: #fff;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .profile-userpic img {
@@ -77,7 +79,7 @@
 }
 
 .profile-usermenu ul li a {
-  color: #93a3b5;
+  color: #738aa3;
   font-size: 14px;
   font-weight: 400;
 }
@@ -97,7 +99,7 @@
 }
 
 .profile-usermenu ul li.active a {
-  color: #5b9bd1;
+  color: #738aa3;
   background-color: #f6f9fb;
   border-left: 2px solid #5b9bd1;
   margin-left: -2px;
@@ -106,6 +108,6 @@
 /* Profile Content */
 .profile-content {
   padding: 20px;
-  background: #fff;
+  background-color: rgba(255, 255, 255, 0.8);
   min-height: 460px;
 }

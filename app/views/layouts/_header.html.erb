@@ -25,17 +25,17 @@
                     </li>
                     <% if account_signed_in? %>
                         <li>
-                            <%= link_to('My Account', profiles_path)  %>
+                            <%= link_to('My Account', profiles_path) %>
                         </li>
                         <li>
                             <%= link_to('Log out', destroy_account_session_path, :method => :delete, data: {confirm: 'Are you sure?'}) %>
                         </li>
                     <% else %>
                         <li>
-                            <%= link_to('Sign in', new_account_session_path)  %>
+                            <%= link_to('Sign in', new_account_session_path) %>
                         </li>
                         <li>
-                            <%= link_to('Sign up', new_account_registration_path)  %>
+                            <%= link_to('Sign up', new_account_registration_path) %>
                         </li>
                     <% end %>
 

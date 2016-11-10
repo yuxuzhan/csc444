@@ -1,6 +1,6 @@
-<div class="padding-navbar grey-background">
+<div class="padding-navbar picture-background">
 		<div class="container">
-				<div class="row profile">
+				<div class="row row-eq-height profile">
 						<div class="col-md-3">
 								<div class="profile-sidebar">
 										<!-- SIDEBAR USERPIC -->
@@ -28,40 +28,103 @@
 										<div class="profile-usermenu">
 												<ul class="nav">
 													<li class="active">
-															<a href="#">
+															<a data-toggle="tab" href="#account">
 															<i class="fa fa-user fa-fw"></i>
-															Account </a>
+															Account</a>
 													</li>
 													<li>
-															<%= link_to('Tournament', profiles_tournament_path)  %>
-														<!--	<a href="#">
+															<a data-toggle="tab" href="#tournament">
 															<i class="fa fa-trophy fa-fw"></i>
-															Tournament </a> -->
+															Tournament </a>
 													</li>
 													<li>
-															<a href="#" target="_blank">
+															<a data-toggle="tab" href="#sponsorship">
 															<i class="fa fa-handshake-o fa-fw"></i>
 															Sponsorship </a>
 													</li>
 													<li>
-															<a href="#">
+															<a data-toggle="tab" href="#payment">
 															<i class="fa fa-credit-card-alt fa-fw"></i>
 															Payment Info </a>
 													</li>
 											</ul>
 									</div>
-									<!-- END MENU -->
-
-
+									<!-- END SIDEBAR MENU -->
 							</div>
 						</div>
+
 						<div class="col-md-9">
-								<div class="profile-content">
-										mail: <%= @profile.email %><br>
-										Birthdate: <%= @profile.birth %><br>
-										Gender: <%= @profile.gender %><br>
-										Phone number: <%= @profile.phone_number %><br>
-										<%= link_to 'Edit Profile', edit_account_registration_path %>
+								<div class="profile-content tab-content">
+										<!-- ACCOUNT INFO -->
+										<div id="account" class="tab-pane fade in active">
+												mail: <%= @profile.email %><br>
+												Birthdate: <%= @profile.birth %><br>
+												Gender: <%= @profile.gender %><br>
+												Phone number: <%= @profile.phone_number %><br>
+												<%= link_to 'Edit Profile', edit_account_registration_path %>
+										</div>
+										<!-- END ACCOUNT INFO -->
+										<!-- TOURNAMENT INFO -->
+										<div id="tournament" class="tab-pane fade">
+												<h2>Tournaments I play in</h2>
+												<% if (@profile.tournaments_played.empty? == false) then %>
+														<% @profile.tournaments_played.each do |key, value| %>
+																<p><%= link_to value, tournaments_show_path(:tournament_id => key)%></p>
+														<% end %>
+												<% else %>
+													<p>You have't joined any tournament yet</p>
+												<% end %>
+
+												<h2>Tournaments I organize</h2>
+												<% if (@profile.tournaments_orgnized.empty? == false) then %>
+														<% @profile.tournaments_orgnized.each do |key, value| %>
+																<p><%= link_to value, tournaments_show_path(:tournament_id => key)%></p>
+														<% end %>
+														<%= link_to "arrange group", organizers_show_path %>
+														<br/>
+														<%= link_to "check in", organizers_update_path %>
+												<% else %>
+														<p>You haven't orgnized any tournamnet yet</p>
+												<% end %>
+
+												<h2> Tournament I am a Sub-Admin</h2>
+												<% if (@profile.tournaments_sub_admin.empty? == false) then %>
+														<% @profile.tournaments_sub_admin.each do |key, value| %>
+																<p><%= link_to value, tournaments_show_path(:tournament_id => key)%></p>
+														<% end %>
+														<%= link_to "arrange group", sub_admins_show_path %>
+												<% else %>
+														<p>You haven't orgnized any tournamnet yet</p>
+												<% end %>
+  									</div>
+										<!-- END TOURNAMENT INFO -->
+										<!-- PAYMENT INFO -->
+										<div id="sponsorship" class="tab-pane fade">
+												<h2>Sponsor Info</h2>
+												<p>Sponsored Tournament</p>
+												<table>
+														<thead>
+																<th>Sponsor Name</th>
+																<th>Sponsored Tournament</th>
+														</thead>
+														<tbody>
+																<% Sponsor.where(account_id: current_account.id).each do |t| %>
+																		<% Sponsorship.where(sponsor_id: t.id).each do |s|%>
+																				<tr>
+																						<td><%= link_to Sponsor.find(t.id).name, sponsors_show_path(:sponsor_id => t.id)%></td>
+																						<td><%= link_to Tournament.find(s.tournament_id).name, tournaments_show_path(:tournament_id => s.tournament_id)%></td>
+																				</tr>
+																		<% end %>
+																<% end %>
+														</tbody>
+												</table>
+										</div>
+										<!-- END SPONSORSHIP INFO -->
+										<!-- PAYMENT INFO -->
+										<div id="payment" class="tab-pane fade">
+												<p>Credit card info: *******0000</p>
+										</div>
+										<!-- END PAYMENT INFO -->
 								</div>
 						</div>
 				</div>

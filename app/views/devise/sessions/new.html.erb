@@ -1,4 +1,4 @@
-<div class="new-session">
+<div class="new-session padding-navbar">
 <!-- <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
 <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
@@ -14,7 +14,7 @@
         });
     });
 </script> -->
-
+    <div class="login-container">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => 'login'}) do |f| %>
     <p class="form-title">Log In</p>
 
@@ -36,5 +36,7 @@
     <div class="actions">
         <%= f.submit "Sign In", :class=>"btn btn-large btn-primary"%>
     </div>
+    <p align='right'><%= link_to('Don\'t have a account?', new_account_registration_path) %></p>
     <% end %>
+  </div>
 </div>
