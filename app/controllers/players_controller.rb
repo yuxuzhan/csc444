@@ -9,6 +9,7 @@ class PlayersController < ApplicationController
           :source => params[:stripeToken],
           :description => 'Ticketing'
         )
+
         @player = Player.new
         @player.tournament_id = params[:tournament_id]
         @player.account_id = current_account.id
@@ -18,6 +19,7 @@ class PlayersController < ApplicationController
         @tournament = Tournament.find_by id: params[:tournament_id]
         if @duplicate_player.blank?
             if @player.save
+                UserMailer.player_email(@player).deliver
                 redirect_to tournaments_index_path, notice: 'Joined Tournament'
                 @tournament.slots = @tournament.slots-1
                 @tournament.save

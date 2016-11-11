@@ -38,6 +38,9 @@ class SponsorsController < ApplicationController
           @sponsorship.amount = params[:amount]
           @sponsorship.stripe_token = params[:stripeToken]
           @sponsorship.save
+
+          UserMailer.sponsorship_email(@sponsorship).deliver
+
           cookies.delete :tournament_id
           redirect_to tournaments_show_path(:tournament_id => tournament_id), notice: 'Sponsor created'
         else
