@@ -43,12 +43,12 @@ class PlayersController < ApplicationController
         if params[:player][:group_id].present?
             @player = Player.where(account_id: params[:account_id],tournament_id: params[:tournament_id])
             @player.update(group_id: params[:player][:group_id])
-            redirect_to profiles_show_path
+            redirect_to profiles_path
         end
         if params[:player][:checkin].present?
             @player = Player.where(account_id: params[:account_id],tournament_id: params[:tournament_id])
             @player.update(checkin: params[:player][:checkin])
-            redirect_to profiles_show_path
+            redirect_to organizers_update_path
         end
     end
 
