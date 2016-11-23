@@ -32,11 +32,13 @@
             <%= hidden_field_tag 'tournament_id', t.id %>
             <%= hidden_field_tag 'amount', 2000 %>
             <%= hidden_field_tag(:stripeToken) %>
+            <% if !current_account.nil? %>
             <% @duplicate_player = Player.where(tournament_id: t.id, account_id: current_account.id) %>
             <% if @duplicate_player.blank? %>
               <%= hidden_field_tag 'player_id'%>
             <% else %>
               <%= hidden_field_tag 'player_id', @duplicate_player%>
+            <% end %>
             <% end %>
             <button id='signupButton'>Sign Up</button>
           <% end %>
