@@ -21,4 +21,10 @@ class UserMailer < ApplicationMailer
 		mail(to: @user.email, subject: 'You have sponsored a tournament!')
 	end
 
+	def contact_us_email(contact)
+		@contact = contact
+
+		mail(to: 'csc444.golfi@gmail.com', subject: 'User Feedback')
+	end
+
 end

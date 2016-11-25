@@ -6,6 +6,7 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(params[:contact])
     @contact.request = request
+    UserMailer.contact_us_email(@contact).deliver
     if @contact.deliver
       flash.now[:error] = nil
       flash.now[:notice] = 'Thank you for your message!'
