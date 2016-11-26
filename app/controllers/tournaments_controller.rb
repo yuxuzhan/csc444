@@ -28,7 +28,7 @@ class TournamentsController < ApplicationController
             @org.admin = true
 
             if @org.save
-                redirect_to home_show_path, notice: 'Tournament created'
+                redirect_to tournaments_show_path(:tournament_id => @org.tournament_id), notice: 'Tournament created'
             else
                 render 'new', notice: 'Invalid'
             end
