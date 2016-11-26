@@ -31,7 +31,7 @@
                 <% end %>
 
                 <td><%= form_for(:player, :url => {:controller => 'players', :account_id => t.account_id, :tournament_id =>t.tournament_id, :action => 'update'}) do |f| %>
-                    <%= f.text_field :group_id%>
+                    <%= f.text_field :group_id_organizer%>
                     <%= f.submit "update"%>
                 </td>
                 <% end %>
