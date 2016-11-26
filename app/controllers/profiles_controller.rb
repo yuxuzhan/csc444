@@ -20,6 +20,7 @@ class ProfilesController < ApplicationController
         @profile.birth = account.birth
         @profile.gender = get_gender_name(account.gender)
         @profile.phone_number = account.phone_number
+        @profile.image = account.image
     end
 
     def get_gender_name(gender)
@@ -69,5 +70,6 @@ class Profile
                   :phone_number,
                   :tournaments_played,
                   :tournaments_orgnized,
-                  :tournaments_sub_admin
+                  :tournaments_sub_admin,
+                  :image
 end

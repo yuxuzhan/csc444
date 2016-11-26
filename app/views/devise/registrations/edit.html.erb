@@ -39,6 +39,21 @@
             <%= f.password_field :current_password, autocomplete: "off", :class => "form-control",:placeholder=>"Current Password" %>
         </div>
 
+        <div class="form-group col-lg-12 field">
+          <% if current_account.image.url.present? && current_account.image.url.exclude?("fallback")%>
+            <%= f.label :current_image, "Your current profile image"%><br/>
+            <%= image_tag(current_account.image.thumb.url) %><br/>
+            <%= f.label :remove_image do %>
+              <%= f.check_box :remove_image%>
+              check to delete profile image
+            <% end %>
+          <% end %>
+          <br/>
+          <%= f.label :image, "Upload profile image"%>
+          <%= f.file_field :image %>
+          <%= f.hidden_field :image_cache %>
+        </div>
+
         <div class="actions center">
             <%= f.submit "Update", :class=>"btn btn-success btn-large form-control"%>
         </div>

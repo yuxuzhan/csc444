@@ -54,6 +54,12 @@
         </div>
 
         <div class="form-group col-lg-12 field">
+          <%= f.label :image, "Choose and upload profile image"%>
+          <%= f.file_field :image %>
+          <%= f.hidden_field :image_cache %>
+        </div>
+
+        <div class="form-group col-lg-12 field">
             <%= f.label :gender %><br />
             <label class="radio-inline"><%= f.radio_button :gender, "m" %>Male</label>
             <label class="radio-inline"><%= f.radio_button :gender, "f" %>Female</label>

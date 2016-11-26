@@ -5,7 +5,11 @@
 								<div class="profile-sidebar">
 										<!-- SIDEBAR USERPIC -->
 										<div class="profile-userpic">
-												<%= image_tag("Stumm.jpg", :alt => "Professor Stumm icon", :class => "img-responsive")%>
+											<% if @profile.image.thumb.url.present? %>
+												<%= image_tag(@profile.image.thumb.url, :class => "img-responsive", alt:@profile.name)%>
+											<% else %>
+												<%= image_tag(@profile.image.url, :class => "img-responsive", alt:@profile.name)%>
+											<% end %>
 										</div>
 										<!-- END SIDEBAR USERPIC -->
 										<!-- SIDEBAR USER TITLE -->
