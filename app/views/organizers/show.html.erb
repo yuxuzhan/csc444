@@ -13,7 +13,7 @@
         <tbody>
             <% value[0].each do |t|%>
             <tr>
-                <td><%= t.account_id %> </td>
+                <td><%= Account.find(t.account_id).name %> </td>
                 <td><%= t.group_id %> </td>
 
                 <% if value[1].blank? then %>
