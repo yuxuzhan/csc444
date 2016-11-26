@@ -8,7 +8,7 @@
   <h1><%= t.name%></h1>
   <table class = "table table-striped">
   	<thead>
-  		<th>Name</th>
+  		<th>Description</th>
   		<th>Venue</th>
   		<th>Date</th>
   		<th>Contact</th>
@@ -16,7 +16,7 @@
   	<tbody>
       <% if t.private == false %>
   		<tr>
-        <td><%= t.name%></td>
+        <td><%= t.details%></td>
   			<td><%= t.venue%></td>
   			<td><%= t.date%></td>
   			<td><%= t.contact%></td>
