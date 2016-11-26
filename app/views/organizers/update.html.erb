@@ -10,16 +10,15 @@
         <tbody>
             <% value[0].each do |t|%>
             <tr>
-                <td><%= t.account_id %> </td>
+                <td><%= Account.find(t.account_id).name %> </td>
                 <td><%= t.checkin %> </td>
 
-                <td><%= form_for(:player, :url => {:controller => 'players', :account_id => t.account_id, :tournament_id =>t.tournament_id, :action => 'update'}) do |f| %>
-                    <%= f.text_field :checkin%>
-                    <%= f.submit "update"%>
-                </td>
-                <% end %>
-
             </tr>
+            <% end %>
+            <td><%= form_for(:player, :url => {:controller => 'players',:action => 'update'}) do |f| %>
+                <%= f.text_field :ticketnumber%>
+                <%= f.submit "update"%>
+            </td>
             <% end %>
         </tbody>
     </table>
