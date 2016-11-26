@@ -30,7 +30,7 @@
                 <%= hidden_field_tag 'email'%>
             <% end %>
             <%= hidden_field_tag 'tournament_id', t.id %>
-            <%= hidden_field_tag 'amount', 2000 %>
+            <%= hidden_field_tag 'amount', t.ticket_price*100 %>
             <%= hidden_field_tag(:stripeToken) %>
             <% if !current_account.nil? %>
             <% @duplicate_player = Player.where(tournament_id: t.id, account_id: current_account.id) %>
