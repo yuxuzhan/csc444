@@ -17,7 +17,11 @@ class OrganizersController < ApplicationController
 
     def get_played_players
         arr = []
-        organizer = Organizer.where(account_id: current_account.id)
+        if(!current_account.admin)
+            organizer = Organizer.where(account_id: current_account.id)
+        else
+            organizer = Organizer.all
+        end
         organizer.each do |organizer|
             tournament_id = organizer.tournament_id
             tournament_obj = Tournament.find_by id: tournament_id

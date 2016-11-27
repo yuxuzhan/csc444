@@ -9,15 +9,21 @@
 		<% end %>
 
 		<h2>Tournaments I organize</h2>
-		<% if (@profile.tournaments_orgnized.empty? == false) then %>
-				<% @profile.tournaments_orgnized.each do |key, value| %>
-						<p><%= link_to value, tournament_path(key)%></p>
+		<% if !current_account.admin %>
+				<% if (@profile.tournaments_orgnized.empty? == false) then %>
+						<% @profile.tournaments_orgnized.each do |key, value| %>
+								<p><%= link_to value, tournament_path(key)%></p>
+						<% end %>
+						<%= link_to "arrange group", organizers_show_path %>
+						<br/>
+						<%= link_to "check in", organizers_update_path %>
+				<% else %>
+						<p>You haven't orgnized any tournamnet yet</p>
 				<% end %>
+		<% else %>
 				<%= link_to "arrange group", organizers_show_path %>
 				<br/>
 				<%= link_to "check in", organizers_update_path %>
-		<% else %>
-				<p>You haven't orgnized any tournamnet yet</p>
 		<% end %>
 
 		<h2> Tournament I am a Sub-Admin</h2>
