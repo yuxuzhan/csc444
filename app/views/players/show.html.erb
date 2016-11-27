@@ -8,7 +8,7 @@
 		</thead>
 		<tbody>
 			<% if @player_info.present? %>
-			<tr><%= Tournament.find(@player_info[0]).name%></tr>
+			<tr><%= Tournament.find(@player_info[0].tournament_id).name%></tr>
 			<% @player_info.each do |t|%>
 			<tr>
 				<td><%= Account.find(t.account_id).name%></td>
