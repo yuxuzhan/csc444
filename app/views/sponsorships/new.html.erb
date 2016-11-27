@@ -18,6 +18,7 @@
           <input type="text" id="input_amount">
           <button id='donateButton' class="btn btn-primary">Donate</button>
       </form>
+      <p id="error_explanation"></p>
     </div>
   </div>
 </div>
@@ -41,18 +42,18 @@ $('#donateButton').on('click', function(e) {
   var amount = $('#input_amount').val();
   amount = amount.replace(/\$/g, '').replace(/\,/g, '');
   amount = parseFloat(amount);
-  if (isNaN(amount)) {
+  var money = new RegExp('^[+]?([1-9][0-9]*(?:[\.][0-9]*)?|0*\.0*[1-9][0-9]*)(?:[eE][+-][0-9]+)?$');
+  if (money.test(amount)) {
+      amount = amount * 100; // Needs to be an integer!
+      $('#amount').val(Math.round(amount));
+      handler.open({
+        name: 'Golf',
+        description: 'pay',
+        currency: 'cad',
+        amount: $('#amount').val()
+      })
+  } else {
     $('#error_explanation').html('<p>Please enter a valid amount in CAD ($).</p>');
-  }
-  else {
-    amount = amount * 100; // Needs to be an integer!
-    $('#amount').val(Math.round(amount));
-    handler.open({
-      name: 'Golf',
-      description: 'pay',
-      currency: 'cad',
-      amount: $('#amount').val()
-    })
   }
 });
 
