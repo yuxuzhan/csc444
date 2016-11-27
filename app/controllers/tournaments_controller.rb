@@ -16,12 +16,17 @@ class TournamentsController < ApplicationController
     end
 
     def show
-        @tournament_detail = Tournament.where(id: params[:tournament_id])
+        @tournament = Tournament.find(params[:id])
     end
 
     def create
         @tournament = Tournament.new(tournament_params)
         if @tournament.save
+            if params[:avatars]
+              params[:avatars].each do |a|
+                @tournament.attachments.create(avatar: a)
+              end
+            end
             @org = Organizer.new
             @org.tournament_id = @tournament.id
             @org.account_id = current_account.id
@@ -37,9 +42,9 @@ class TournamentsController < ApplicationController
         end
     end
 
+
     def edit
         @tournament = Tournament.find(params[:id])
-
         @user = Organizer.where(account_id: current_account.id, tournament_id: params[:id])
         if @user.blank?
             flash[:notice] = 'You are not the tournament organizer'
@@ -48,10 +53,21 @@ class TournamentsController < ApplicationController
     end
 
     def update
-        @tournament = Tournament.find(params[:id])
-        @tournament.update(tournament_params)
-        redirect_to tournaments_index_path
+      @tournament = Tournament.find(params[:id])
+      if @tournament.update(tournament_params)
+      # to handle multiple images upload on update when user add more picture
+        if params[:avatars]
+          params[:avatars].each do |a|
+            @tournament.attachments.create(avatar: a)
+          end
+        end
+        flash[:notice] = "Tournament has been updated."
+        redirect_to @tournament
+      else
+        render :edit
+      end
     end
+
 
     def tournament_params
         params.require(:tournament).permit(:name, :venue, :details, :contact, :private, :date, :slots, :ticket_price)

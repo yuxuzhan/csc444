@@ -7,8 +7,9 @@ class CreateTournaments < ActiveRecord::Migration[5.0]
             t.string :contact
             t.boolean :private
             t.date :date
-            
+
             t.timestamps
         end
+
     end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161126193440) do
+ActiveRecord::Schema.define(version: 20161127024124) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -32,6 +32,13 @@ ActiveRecord::Schema.define(version: 20161126193440) do
     t.string   "image"
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
+  end
+
+  create_table "attachments", force: :cascade do |t|
+    t.integer  "tournament_id"
+    t.string   "avatar"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "organizers", force: :cascade do |t|

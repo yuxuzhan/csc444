@@ -4,24 +4,54 @@
     <p><%= flash[:error] %></p>
   <% end %>
 </div>
-<% @tournament_detail.each do |t| %>
-  <h1><%= t.name%></h1>
-  <table class = "table table-striped">
-  	<thead>
-  		<th>Description</th>
-  		<th>Venue</th>
-  		<th>Date</th>
-  		<th>Contact</th>
-  	</thead>
-  	<tbody>
-      <% if t.private == false %>
-  		<tr>
-        <td><%= t.details%></td>
-  			<td><%= t.venue%></td>
-  			<td><%= t.date%></td>
-  			<td><%= t.contact%></td>
-        <% if t.slots > 0 %>
-        <td>
+  <%= link_to 'Back', tournaments_path %>
+  <div class="container-fulid">
+    <div class="row">
+      <div class="col-md-8 col-sm-12 col-xs-12">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <% @tournament.attachments.each_with_index do |photo, n| %>
+              <li data-target='#MyCarousel' data-slide-to="#{n}" class="#{'active' if n == 0}"></li>
+            <% end %>
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <%= image_tag @tournament.attachments.first.avatar.url %>
+            </div>
+            <% @tournament.attachments.drop(1).each do |p| %>
+              <div class="item">
+                  <%= image_tag p.avatar.url%>
+              </div>
+            <% end %>
+          </div>
+
+          <!-- Left and right controls -->
+          <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12 col-xs-12">
+        <p>Date: <%=@tournament.date%></p>
+        <p>Venue: <%=@tournament.venue%></p>
+        <p>Contact: <%@tournament.contact%></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <%= link_to('To see current sponsorships', sponsorships_index_path(:tournament_id =>@tournament.id))%><br/>
+        <%= link_to('Want To Donate Money to tournament', sponsorships_new_path(:tournament_id =>@tournament.id))%><br/>
+        <%= link_to 'players in tournament', players_show_path(:tournament_id => @tournament.id) %><br/>
+        <% if @tournament.slots > 0 %>
           <%= form_tag players_create_path do %>
             <% if defined?(current_account.id) && (current_account.id != '')%>
                 <% @account = Account.find(current_account.id)%>
@@ -29,44 +59,38 @@
             <% else %>
                 <%= hidden_field_tag 'email'%>
             <% end %>
-            <%= hidden_field_tag 'tournament_id', t.id %>
-            <%= hidden_field_tag 'amount', t.ticket_price*100 %>
+            <%= hidden_field_tag 'tournament_id', @tournament.id %>
+            <%= hidden_field_tag 'amount', @tournament.ticket_price*100 %>
             <%= hidden_field_tag(:stripeToken) %>
             <% if !current_account.nil? %>
-            <% @duplicate_player = Player.where(tournament_id: t.id, account_id: current_account.id) %>
-            <% if @duplicate_player.blank? %>
-              <%= hidden_field_tag 'player_id'%>
-            <% else %>
-              <%= hidden_field_tag 'player_id', @duplicate_player%>
-            <% end %>
+              <% @duplicate_player = Player.where(tournament_id: @tournament.id, account_id: current_account.id) %>
+              <% if @duplicate_player.blank? %>
+                <%= hidden_field_tag 'player_id'%>
+              <% else %>
+                <%= hidden_field_tag 'player_id', @duplicate_player%>
+              <% end %>
             <% end %>
             <button id='signupButton'>Sign Up</button>
           <% end %>
-        </td>
-        <td><%= link_to 'players in tournament', players_show_path(:tournament_id => t.id) %></td>
-        <% end %>
-        <td><%= link_to 'Back', tournaments_index_path %></td>
-    </tr>
-    <% end %>
-  	</tbody>
-  </table>
+          <% end %>
+      </div>
+    </div>
 
-  <%= link_to('To see current sponsorships', sponsorships_index_path(:tournament_id =>t.id), :class => 'btn btn-large btn-primary')%>
-  <%= link_to('Want To Donate Money to tournament', sponsorships_new_path(:tournament_id =>t.id), :class => 'btn btn-large btn-primary')%>
-  <br/><br/>
 
-  <iframe
-  width="600"
-  height="450"
-  frameborder="0" style="border:0"
-  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBDGM6j6MEEI73Tcd5pgIs_n674JFRWjBw&q=+<%= t.venue %>" allowfullscreen>
-  </iframe>
-  <br>
-  Share this tournament!<br>
-  <%= facebook_button %><%= twitter_button %><%= linkedin_button %>
-
-<% end %>
-
+    <div class="row">
+      <div class="col-md-8 col-sm-12 col-xs-12">
+        <h2><%= @tournament.name%></h2>
+        <h5>Description</h5>
+        <p><%= @tournament.details%></p>
+        <p>Share this tournament!</p>
+        <%= facebook_button %><%= twitter_button %><%= linkedin_button %>
+      </div>
+      <div class="col-md-4 col-sm-12 col-xs-12">
+        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBDGM6j6MEEI73Tcd5pgIs_n674JFRWjBw&q=+<%= @tournament.venue %>" allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script src="https://checkout.stripe.com/checkout.js"></script>

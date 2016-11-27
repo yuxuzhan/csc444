@@ -1,0 +1,55 @@
+<%= form_for @tournament, :html => {:multipart => true}  do |f| %>
+  <% for error in @tournament.errors.full_messages %>
+    <li><%= error %></li>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, 'Tournament Name' %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :venue, 'Tournament Venue' %><br />
+    <%= f.text_field :venue %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date, 'Tournament Date' %><br />
+    <%= f.date_field :date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :details, 'Tournament Details' %><br />
+    <%= f.text_field :details %>
+  </div>
+
+  <div class="field">
+    <%= f.label :contact, 'Contact Information' %><br />
+    <%= f.text_field :contact %>
+  </div>
+
+  <div class="field">
+    <%= f.label :slots, 'Maximum number of players' %><br />
+    <%= f.text_field :slots %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ticket_price, 'Ticket_price' %><br />
+    <%= f.text_field :ticket_price %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :private, 'Make Tournament Private' %><br />
+    <%= f.check_box :private %>
+  </div>
+
+  <div class="field">
+    <%= f.label :avatars, "Upload tournament image"%><br>
+    <%= file_field_tag "avatars[]", type: :file, multiple: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Create" %>
+  </div>
+<% end %>

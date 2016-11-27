@@ -1,6 +1,6 @@
 <div class="padding-navbar">
 	<h1>Tournaments</h1>
-	<%= link_to('Create a tournament', tournaments_new_path) %>
+	<%= link_to('Create a tournament', new_tournament_path) %>
 
 	<table class="table table-striped">
 		<thead>
@@ -14,12 +14,12 @@
 			<% @tournaments.each do |t| %>
 			<% if t.private == false %>
 			<tr>
-				<td><%= link_to t.name, tournaments_show_path(:tournament_id => t.id)%></td>
+				<td><%= link_to t.name, tournament_path(t.id)%></td>
 				<td><%= @tournaments_players_count[t] %>
 				<td><%= t.slots %></td>
 				<td><%= @tournaments_organizer[t] %>
 				<% if @tournaments_orgnized.include?(t.id) %>
-				<td><%= link_to 'Edit', tournaments_edit_path(:id => t.id)%></td>
+				<td><%= link_to 'Edit', edit_tournament_path(t.id)%></td>
 				<% else %>
 				<td></td>
 				<% end %>

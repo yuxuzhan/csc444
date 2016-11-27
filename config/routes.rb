@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :attachments, only: [:create, :destroy]
   resources :charges
+  resources :tournaments
 
   get 'sponsors/new'
   get 'sponsors/index'
@@ -36,9 +38,6 @@ Rails.application.routes.draw do
   get 'contacts', to: 'contacts#new'
   post 'contacts', to: 'contacts#create'
 
-  get 'tournaments/new'
-  get 'tournaments/index'
-  post 'tournaments/create'
 
   devise_for :accounts
   get "home/show" => "home#show"
