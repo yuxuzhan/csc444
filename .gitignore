@@ -5,3 +5,5 @@ log/development.log
 log/
 .idea/
 .DS_Store
+db/test.sqlite3
+db/development.sqlite3

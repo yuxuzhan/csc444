@@ -58,10 +58,15 @@
             <%= f.submit "Update", :class=>"btn btn-success btn-large form-control"%>
         </div>
     <% end %>
-    <br/> <br/><br/>
+
+    <br/>
+    <%= link_to('Back to Profile Page', profiles_path) %>
+
+
+    <!-- <br/> <br/><br/>
     <legend>Cancel my account</legend>
     <p> No need for this account anymore?
     <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, :class=>"btn btn-primary btn-large" %></p>
-    <%= link_to "Back", :back %>
+    <%= link_to "Back", :back %> -->
 </div>
 </div>
