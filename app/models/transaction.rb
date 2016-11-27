@@ -1,3 +1,3 @@
 class Transaction < ApplicationRecord
-  belongs_to :tournament_id
+  belongs_to :tournament
 end

@@ -7,7 +7,7 @@ class PlayersController < ApplicationController
           :amount => params[:amount],
           :currency => 'cad',
           :source => params[:stripeToken],
-          :description => 'Ticketing'
+          :description => 'Ticketing From Players'
         )
 
         @player = Player.new
@@ -20,9 +20,9 @@ class PlayersController < ApplicationController
         if @duplicate_player.blank?
             if @player.save
                 UserMailer.player_email(@player).deliver
-                redirect_to tournaments_index_path, notice: 'Joined Tournament'
                 @tournament.slots = @tournament.slots-1
                 @tournament.save
+                redirect_to players_show_path(:tournament_id => @player.tournament_id)
             else
                 render 'new', notice: 'Invalid'
             end

@@ -1,5 +1,6 @@
 class Tournament < ApplicationRecord
 	has_many :attachments, :inverse_of => :tournament, :dependent => :destroy
+	has_many :transactions
 
 	validates :name, :presence => true
 	validates :venue, :presence => true

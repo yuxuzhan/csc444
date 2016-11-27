@@ -13,6 +13,14 @@ class UserMailer < ApplicationMailer
 		mail(to: @user.email, subject: 'You have signed up for a tournament!')
 	end
 
+	def guest_email(tournament,transaction,user)
+		@tournament = tournament
+		@transaction = transaction
+		@user = user
+		mail(to: @user.email, subject: 'Welcome to watch a tournament!')
+	end
+
+
 	def sponsorship_email(sponsorship)
 		@sponsorship = sponsorship
 		@sponsor = Sponsor.find_by id: @sponsorship.sponsor_id
