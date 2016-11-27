@@ -34,8 +34,13 @@
   </div>
 
   <div class="field">
-    <%= f.label :ticket_price, 'Ticket_price' %><br />
+    <%= f.label :ticket_price, 'Ticket_price for player' %><br />
     <%= f.text_field :ticket_price %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ticket_price_guest, 'Ticket_price for guest' %><br />
+    <%= f.text_field :ticket_price_guest %>
   </div>
 
 
@@ -50,6 +55,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Create" %>
+    <%= f.submit "Submit" %>
   </div>
 <% end %>

@@ -94,10 +94,11 @@ ActiveRecord::Schema.define(version: 20161127064135) do
     t.string   "contact"
     t.boolean  "private"
     t.date     "date"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "slots"
     t.integer  "ticket_price"
+    t.integer  "ticket_price_guest"
   end
 
   create_table "transactions", force: :cascade do |t|

@@ -10,4 +10,5 @@ class Tournament < ApplicationRecord
 	validates :date, :presence => true
 	validates :slots, :presence => true
 	validates :ticket_price, :presence => true
+	validates :ticket_price_guest, :presence => true
 end
