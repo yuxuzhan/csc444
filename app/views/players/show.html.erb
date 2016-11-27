@@ -7,6 +7,7 @@
 			<th>checkin</th>
 		</thead>
 		<tbody>
+			<% if @player_info.present? %>
 			<tr><%= Tournament.find(@player_info[0]).name%></tr>
 			<% @player_info.each do |t|%>
 			<tr>
@@ -15,7 +16,11 @@
 				<td><%= t.checkin%></td>
 			</tr>
 			<% end %>
+			<% else %>
+			<tr> No Players in This Tournament Yet </tr>
+			<% end %>
 		</tbody>
-		<td><%= link_to 'Back', request.referrer %></td>
+		</br>
+		<tr><%= link_to 'Back', request.referrer %></tr>
 	</table>
 </div>
