@@ -109,4 +109,11 @@ ActiveRecord::Schema.define(version: 20161127064135) do
     t.datetime "updated_at",    null: false
   end
 
+  create_table "transactions", force: :cascade do |t|
+    t.integer  "tournament_id_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["tournament_id_id"], name: "index_transactions_on_tournament_id_id"
+  end
+
 end

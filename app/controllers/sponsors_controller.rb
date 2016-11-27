@@ -11,7 +11,6 @@ class SponsorsController < ApplicationController
       redirect_to :back
     end
 
-
     def sponsor_params
       params.require(:sponsor).permit(:name, :website, :logo, :contact)
     end
