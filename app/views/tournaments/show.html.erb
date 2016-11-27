@@ -62,7 +62,7 @@
                 <%= hidden_field_tag 'email'%>
             <% end %>
             <%= hidden_field_tag 'tournament_id', @tournament.id %>
-            <%= hidden_field_tag 'amount', @tournament.ticket_price %>
+            <%= hidden_field_tag 'amount', @tournament.ticket_price*100 %>
             <%= hidden_field_tag(:stripeToken) %>
             <% if !current_account.nil? %>
               <% @duplicate_player = Player.where(tournament_id: @tournament.id, account_id: current_account.id) %>
@@ -103,7 +103,7 @@
                       <%= hidden_field_tag 'guest_email'%>
                   <% end %>
                   <%= hidden_field_tag 'guest_tournament_id', @tournament.id %>
-                  <%= hidden_field_tag 'guest_amount', @tournament.ticket_price %>
+                  <%= hidden_field_tag 'guest_amount', @tournament.ticket_price_guest %>
                   <%= hidden_field_tag(:stripeToken) %>
                   <% end %>
                 <button id="GuestPurchase" type="button" class="btn btn-default" data-dismiss="modal">CheckOut</button>
@@ -145,7 +145,7 @@ $('#signupButton').on('click', function(e) {
   }
   else {
     if (email) {
-      var amount = $('input#amount').val() * 100;
+      var amount = $('input#amount').val();
       StripeCheckout.open({
         key: '<%= Rails.configuration.stripe[:publishable_key] %>',
         locale: 'auto',
