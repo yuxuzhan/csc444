@@ -49,3 +49,12 @@ Make sure to switch back to development mode:
 ```
 bin/rails db:environment:set RAILS_ENV=development
 ```
+###Troubleshooting
+If you receive the error when upload the picture:
+```
+This image Failed to manipulate with MiniMagick, maybe it is not an image? Original Error: ImageMagick/GraphicsMagick is not installed
+```
+For Mac, please run:
+```
+brew install graphicsmagick
+```
