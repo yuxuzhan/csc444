@@ -1,63 +1,64 @@
-<div class="container padding-navbar">
-<div class="registration col-md-8 col-md-offset-2">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <%= devise_error_messages! %>
-        <legend>Edit <%= resource_name.to_s.humanize %></legend>
-        <div class="form-group col-lg-6 field">
-            <%= f.label :phone_number %><br/>
-            <%= f.text_field :phone_number, :class => "form-control", :placeholder=>"phone_number" %>
-        </div>
+<div class="page-background padding-navbar row">
+  <div class="registration col-md-8 col-md-offset-2">
+    <div class="glass-container">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= devise_error_messages! %>
+          <legend>Edit <%= resource_name.to_s.humanize %></legend>
+          <div class="form-group col-lg-6 field">
+              <%= f.label :phone_number %><br/>
+              <%= f.text_field :phone_number, :class => "form-control", :placeholder=>"phone_number" %>
+          </div>
 
-        <div class="form-group col-lg-6 field">
-            <%= f.label :birth, 'Date of Birth' %><br/>
-            <%= f.date_field :birth, :class => "form-control" %>
-        </div>
+          <div class="form-group col-lg-6 field">
+              <%= f.label :birth, 'Date of Birth' %><br/>
+              <%= f.date_field :birth, :class => "form-control" %>
+          </div>
 
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-            <div>Currently waiting confirmation for:
-            <%= resource.unconfirmed_email %></div>
-        <% end %>
-
-        <div class="form-group col-lg-6 field">
-            <%= f.label :password, 'Password (leave blank if no change needed)'%>
-            <%= f.password_field :password, autocomplete: "off", :class => "form-control",:placeholder=>"Password" %>
-            <% if @minimum_password_length %>
-                <br/>
-                <em><%= @minimum_password_length %>
-                characters minimum</em>
-            <% end %>
-        </div>
-
-        <div class="form-group col-lg-6 field">
-            <%= f.label :password_confirmation %><br/>
-            <%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-control",:placeholder=>"Confirm Password" %>
-        </div>
-
-        <div class="form-group col-lg-12 field">
-            <%= f.label :current_password %>
-            <i>(we need your current password to confirm your changes)</i><br/>
-            <%= f.password_field :current_password, autocomplete: "off", :class => "form-control",:placeholder=>"Current Password" %>
-        </div>
-
-        <div class="form-group col-lg-12 field">
-          <% if current_account.image.url.present? && current_account.image.url.exclude?("fallback")%>
-            <%= f.label :current_image, "Your current profile image"%><br/>
-            <%= image_tag(current_account.image.thumb.url) %><br/>
-            <%= f.label :remove_image do %>
-              <%= f.check_box :remove_image%>
-              check to delete profile image
-            <% end %>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <div>Currently waiting confirmation for:
+              <%= resource.unconfirmed_email %></div>
           <% end %>
-          <br/>
-          <%= f.label :image, "Upload profile image"%>
-          <%= f.file_field :image %>
-          <%= f.hidden_field :image_cache %>
-        </div>
 
-        <div class="actions center">
-            <%= f.submit "Update", :class=>"btn btn-success btn-large form-control"%>
-        </div>
-    <% end %>
+          <div class="form-group col-lg-6 field">
+              <%= f.label :password, 'Password (leave blank if no change needed)'%>
+              <%= f.password_field :password, autocomplete: "off", :class => "form-control",:placeholder=>"Password" %>
+              <% if @minimum_password_length %>
+                  <br/>
+                  <em><%= @minimum_password_length %>
+                  characters minimum</em>
+              <% end %>
+          </div>
+
+          <div class="form-group col-lg-6 field">
+              <%= f.label :password_confirmation %><br/>
+              <%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-control",:placeholder=>"Confirm Password" %>
+          </div>
+
+          <div class="form-group col-lg-12 field">
+              <%= f.label :current_password %>
+              <i>(we need your current password to confirm your changes)</i><br/>
+              <%= f.password_field :current_password, autocomplete: "off", :class => "form-control",:placeholder=>"Current Password" %>
+          </div>
+
+          <div class="form-group col-lg-12 field">
+            <% if current_account.image.url.present? && current_account.image.url.exclude?("fallback")%>
+              <%= f.label :current_image, "Your current profile image"%><br/>
+              <%= image_tag(current_account.image.thumb.url) %><br/>
+              <%= f.label :remove_image do %>
+                <%= f.check_box :remove_image%>
+                check to delete profile image
+              <% end %>
+            <% end %>
+            <br/>
+            <%= f.label :image, "Upload profile image"%>
+            <%= f.file_field :image %>
+            <%= f.hidden_field :image_cache %>
+          </div>
+
+          <div class="actions center">
+              <%= f.submit "Update", :class=>"btn btn-success btn-large form-control"%>
+          </div>
+      <% end %>
 
     <br/>
     <%= link_to('Back to Profile Page', profiles_path) %>
@@ -68,5 +69,6 @@
     <p> No need for this account anymore?
     <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, :class=>"btn btn-primary btn-large" %></p>
     <%= link_to "Back", :back %> -->
-</div>
+    </div>
+  </div>
 </div>

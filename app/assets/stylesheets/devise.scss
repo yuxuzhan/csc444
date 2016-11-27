@@ -1,15 +1,4 @@
-.new-session{
-    background:linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(asset-path('intro-header.jpg')) no-repeat center center;
-    background-size: cover;
-    background-position: center;
-    padding: 0;
-    margin-top: -15px;
-    width: 100%;
-    min-height: 70%;
-    z-index: 99;
-}
-
-.login-container{
+.glass-container{
   width: 500px;
   margin-top: 45px;
   margin-left: auto;
@@ -20,14 +9,13 @@
 .login
 {
     width: 250px;
-    padding-bottom: 9%;
     margin: 0 auto;
 }
 
 .registration
 {
-    padding-top: 40px;
-    padding-bottom: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .signup-container{
@@ -46,7 +34,7 @@ p.form-title
     color: #5b9bd1;
     text-transform: uppercase;
     letter-spacing: 4px;
-    padding-top: 20%;
+    padding-top: 5%;
 }
 
 form.login input[type="email"],form.login input[type="password"]

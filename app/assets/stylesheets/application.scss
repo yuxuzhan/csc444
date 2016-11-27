@@ -58,3 +58,23 @@ footer {
 p.copyright {
     margin: 15px 0 0;
 }
+
+.page-background{
+    background:linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(asset-path('intro-header.jpg')) no-repeat center center;
+    background-size: cover;
+    background-position: center;
+    margin-top: -15px;
+    padding-bottom: 50px;
+    width: 100%;
+    min-height: 70%;
+    z-index: 99;
+}
+
+.glass-container{
+  width: auto;
+  margin-top: 45px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 50px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
