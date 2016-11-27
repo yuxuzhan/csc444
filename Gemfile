@@ -49,6 +49,9 @@ gem 'mini_magick'
 gem 'mail_form', '>= 1.5.0.rc'
 gem 'simple_form', '>= 3.0.0.rc'
 
+#Used for social media sharing
+gem 'shareable'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
