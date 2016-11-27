@@ -1,9 +1,6 @@
 class Tournament < ApplicationRecord
 	has_many :attachments, :inverse_of => :tournament, :dependent => :destroy
-<<<<<<< Updated upstream
 	has_many :transactions
-=======
->>>>>>> Stashed changes
 	has_many :sponsorships
 
 	validates :name, :presence => true
