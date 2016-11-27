@@ -33,7 +33,7 @@ class TournamentsController < ApplicationController
             @org.admin = true
 
             if @org.save
-                redirect_to tournaments_show_path(:tournament_id => @org.tournament_id), notice: 'Tournament created'
+                redirect_to tournament_path(@org.tournament_id), notice: 'Tournament created'
             else
                 render 'new', notice: 'Invalid'
             end
@@ -48,7 +48,7 @@ class TournamentsController < ApplicationController
         @user = Organizer.where(account_id: current_account.id, tournament_id: params[:id])
         if @user.blank?
             flash[:notice] = 'You are not the tournament organizer'
-            redirect_to tournaments_index_path
+            redirect_to tournaments_path
         end
     end
 

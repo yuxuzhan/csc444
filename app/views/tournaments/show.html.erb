@@ -8,36 +8,38 @@
   <div class="container-fulid">
     <div class="row">
       <div class="col-md-8 col-sm-12 col-xs-12">
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-          <!-- Indicators -->
-          <ol class="carousel-indicators">
-            <% @tournament.attachments.each_with_index do |photo, n| %>
-              <li data-target='#MyCarousel' data-slide-to="#{n}" class="#{'active' if n == 0}"></li>
-            <% end %>
-          </ol>
+        <% if @tournament.attachments.present? %>
+          <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+              <% @tournament.attachments.each_with_index do |photo, n| %>
+                <li data-target='#MyCarousel' data-slide-to="#{n}" class="#{'active' if n == 0}"></li>
+              <% end %>
+            </ol>
 
-          <!-- Wrapper for slides -->
-          <div class="carousel-inner" role="listbox">
-            <div class="item active">
-              <%= image_tag @tournament.attachments.first.avatar.url %>
-            </div>
-            <% @tournament.attachments.drop(1).each do |p| %>
-              <div class="item">
-                  <%= image_tag p.avatar.url%>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+              <div class="item active">
+                <%= image_tag @tournament.attachments.first.avatar.url %>
               </div>
-            <% end %>
-          </div>
+              <% @tournament.attachments.drop(1).each do |p| %>
+                <div class="item">
+                    <%= image_tag p.avatar.url%>
+                </div>
+              <% end %>
+            </div>
 
-          <!-- Left and right controls -->
-          <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          <% end %>
       </div>
       <div class="col-md-4 col-sm-12 col-xs-12">
         <p>Date: <%=@tournament.date%></p>
@@ -48,8 +50,8 @@
 
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">
-        <%= link_to('To see current sponsorships', sponsorships_index_path(:tournament_id =>@tournament.id))%><br/>
-        <%= link_to('Want To Donate Money to tournament', sponsorships_new_path(:tournament_id =>@tournament.id))%><br/>
+        <%= link_to('To see current sponsorships', sponsorship_path(@tournament.id))%><br/>
+        <%= link_to('Want To Donate Money to tournament', new_sponsorship_path(:tournament_id => @tournament.id))%><br/>
         <%= link_to 'players in tournament', players_show_path(:tournament_id => @tournament.id) %><br/>
         <% if @tournament.slots > 0 %>
           <%= form_tag players_create_path, id: "player_form" do %>

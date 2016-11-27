@@ -4,7 +4,7 @@ class Account < ApplicationRecord
   mount_uploader :image, ImageUploader
   before_save :downcase_email
   after_create :send_mail
-
+  has_many :sponsors
 
   def send_mail
   	UserMailer.signup_email(self).deliver

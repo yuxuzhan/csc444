@@ -1,0 +1,13 @@
+<%= form_for @sponsorship, :html => {:multipart => true} do |f| %>
+  <% for error in @sponsorship.errors.full_messages %>
+    <li><%= error %></li>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :sponsors_id, 'Please select a sponsor name in your account' %><br/>
+    <%= select_tag "sponsors_id", options_for_select(@user.sponsors.collect {|p| [ p.name, p.id ] }) %>
+  </div>
+  <%= f.hidden_field :tournament_id, :value => @tournament%>
+  <%= f.hidden_field :amount, :value => "", :id => "amount"%>
+  <%= f.hidden_field :stripe_token, :value => "", :id => "stripe_token"%>
+<% end %>

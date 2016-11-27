@@ -1,0 +1,30 @@
+<%= form_for @sponsor, :html => {:multipart => true} do |f| %>
+  <% for error in @sponsor.errors.full_messages %>
+    <li><%= error %></li>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, 'Orgnization Name' %><br/>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :logo, 'Logo' %><br/>
+    <%= f.file_field :logo %>
+  </div>
+
+  <div class="field">
+    <%= f.label :website, 'Website' %><br/>
+    <%= f.text_field :website %>
+  </div>
+
+  <div class="field">
+    <%= f.label :contact, 'Contact' %><br/>
+    <%= f.text_field :contact %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Create" %>
+  </div>
+
+<% end %>

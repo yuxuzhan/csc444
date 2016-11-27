@@ -1,13 +1,8 @@
 <div class="padding-navbar">
-    <% t = Sponsor.find(params[:sponsor_id]) %>
-    <h1><%=t.name%></h1>
-    <%= link_to image_tag(t.logo.url, style: "max-height: 200px", alt:t.name), t.website %>
+    <h1><%=@sponsor.name%></h1>
+    <%= link_to image_tag(@sponsor.logo.url, style: "max-height: 200px", alt:@sponsor.name), "http://#{@sponsor.website}"%>
     <br/>
-    <%= link_to "Sponsor Website", t.website %>
+    <%= link_to "Sponsor Website", "http://#{@sponsor.website}" %>
     <h3>Contact Information</h3>
-    <ul>
-      <li>Phone: <%=t.business_phone_number%></li>
-      <li>e-mail: <%=t.business_email%></li>
-      <li>other: <%=t.contact%></li>
-    </ul>
+    <p><%=@sponsor.contact%></p>
 </div>

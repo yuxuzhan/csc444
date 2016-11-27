@@ -1,21 +1,19 @@
 class SponsorshipsController < ApplicationController
-  before_action :authenticate_account!, except: [:show, :index]
-
-  # GET /sponsorships
-  # GET /sponsorships.json
-  def index
-
-  end
+  before_action :authenticate_account!, except: [:show]
 
   # GET /sponsorships/1
   # GET /sponsorships/1.json
   def show
+    @tournament = Tournament.find(params[:id])
+    @sponsorship = @tournament.sponsorships
   end
 
   # GET /sponsorships/new
   def new
-    cookies[:tournament_id] = params[:tournament_id]
     @sponsorship = Sponsorship.new
+    @sponsor = Sponsor.new
+    @tournament = params[:tournament_id]
+    @user = Account.find(current_account.id)
   end
 
   # GET /sponsorships/1/edit
@@ -26,34 +24,28 @@ class SponsorshipsController < ApplicationController
   # POST /sponsorships
   # POST /sponsorships.json
   def create
-    @amount = params[:amount]
-
-    @amount = @amount.gsub('$', '').gsub(',', '')
+    @user = Account.find(current_account)
+    if params[:sponsors_id]
+      #user used existing sponsor
+      @sponsor = @user.sponsors.find(params[:sponsors_id])
+    end
+    @amount = params[:sponsorship]["amount"]
+    @stripe_token = params[:sponsorship]["stripe_token"]
+    @tournament = Tournament.find(params[:sponsorship]["tournament_id"])
 
     begin
-      @amount = Float(@amount).round(2)
-      @amount = (@amount * 100).to_i # Must be an integer!
       Stripe::Charge.create(
         :amount => @amount,
         :currency => 'cad',
-        :source => params[:stripeToken],
+        :source => @stripe_token,
         :description => 'Custom donation'
       )
-      tournament_id = cookies[:tournament_id]
-      @sponsorship =  Sponsorship.new
-      @sponsorship.sponsor_id = params[:sponsors]["sponsor_id"]
-      @sponsorship.tournament_id = tournament_id
-      @sponsorship.amount = params[:amount]
-      @sponsorship.stripe_token = params[:stripeToken]
-      @sponsorship.save
+      @sponsor.sponsorships.create(:amount => @amount, :stripe_token => @stripe_token, :tournament_id => @tournament.id)
+      redirect_to @tournament
 
-      UserMailer.sponsorship_email(@sponsorship).deliver
-      
-      cookies.delete :tournament_id
-      redirect_to tournaments_show_path(:tournament_id => tournament_id)
     rescue Stripe::CardError => e
       flash[:error] = e.message
-      redirect_to sponsorships_new_path(:tournament_id => params[:tournament_id])
+      redirect_to new_sponsorship_path(:tournament_id => params[:tournament_id])
     end
   end
 end

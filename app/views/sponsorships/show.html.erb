@@ -1,4 +1,18 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_sponsorship_path(@sponsorship) %> |
-<%= link_to 'Back', sponsorships_path %>
+<div class="padding-navbar">
+<h1>Sponsorships of <%= @tournament.name %></h1>
+<%= link_to "Back", @tournament %>
+<table class="table table-striped">
+    <thead>
+        <th>Name</th>
+        <th>Amount</th>
+    </thead>
+    <tbody>
+        <% @sponsorship.each do |t| %>
+        <tr>
+            <td><%= link_to t.sponsor.name, t.sponsor %></td>
+            <td><%= t.amount/100%></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+</div>

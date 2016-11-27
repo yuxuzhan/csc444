@@ -3,20 +3,8 @@ Rails.application.routes.draw do
   resources :attachments, only: [:create, :destroy]
   resources :charges
   resources :tournaments
-
-  get 'sponsors/new'
-  get 'sponsors/index'
-  post 'sponsors/create'
-  get 'sponsors/show'
-
-  get 'sponsorships/new'
-  get 'sponsorships/index'
-  post 'sponsorships/create'
-  get 'sponsorships/show'
-
-  get 'tournaments/show'
-  get 'tournaments/edit'
-  put 'tournaments/update'
+  resources :sponsors
+  resources :sponsorships
 
   post 'transactions/create'
   get 'profiles', to: 'profiles#show'
