@@ -18,7 +18,7 @@
 				<td><%= @tournaments_players_count[t] %>
 				<td><%= t.slots %></td>
 				<td><%= @tournaments_organizer[t] %>
-				<% if @tournaments_orgnized.include?(t.id) %>
+				<% if @tournaments_orgnized.include?(t.id) || current_account.admin? %>
 				<td><%= link_to 'Edit', edit_tournament_path(t.id)%></td>
 				<% else %>
 				<td></td>
