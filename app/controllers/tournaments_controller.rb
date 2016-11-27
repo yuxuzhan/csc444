@@ -68,6 +68,12 @@ class TournamentsController < ApplicationController
       end
     end
 
+    def destroy
+        @tournament = Tournament.find(params[:id])
+        @tournament.destroy
+
+        redirect_to tournaments_path
+    end
 
     def tournament_params
         params.require(:tournament).permit(:name, :venue, :details, :contact, :private, :date, :slots, :ticket_price,:ticket_price_guest)

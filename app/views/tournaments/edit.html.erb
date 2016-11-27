@@ -1,4 +1,5 @@
 <div class="padding-navbar">
 <h1>Edit Tournament</h1>
   <%= render "tournaments/form" %>
+  <%= button_to "Delete this tournament", {:controller => 'tournaments', :action => 'destroy', :id => @tournament.id}, data: { confirm: "Are you sure?" }, :method => :delete %>
 </div>
