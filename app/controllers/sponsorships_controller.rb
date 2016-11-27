@@ -40,7 +40,8 @@ class SponsorshipsController < ApplicationController
         :source => @stripe_token,
         :description => 'Custom donation'
       )
-      @sponsor.sponsorships.create(:amount => @amount, :stripe_token => @stripe_token, :tournament_id => @tournament.id)
+      @sponsorship = @sponsor.sponsorships.create(:amount => @amount, :stripe_token => @stripe_token, :tournament_id => @tournament.id)
+      UserMailer.sponsorship_email(@sponsorship).deliver
       redirect_to @tournament
 
     rescue Stripe::CardError => e
