@@ -1,201 +1,205 @@
 <div class="padding-navbar">
-<div id="error_explanation">
-  <% if flash[:error].present? %>
-    <p><%= flash[:error] %></p>
-  <% end %>
-</div>
-  <%= link_to 'Back', tournaments_path %>
-  <div class="container-fulid">
-    <div class="row">
-      <div class="col-md-8 col-sm-12 col-xs-12">
-        <% if @tournament.attachments.present? %>
-          <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-              <% @tournament.attachments.each_with_index do |photo, n| %>
-                <li data-target='#MyCarousel' data-slide-to="#{n}" class="#{'active' if n == 0}"></li>
-              <% end %>
-            </ol>
+    <div id="error_explanation">
+        <% if flash[:error].present? %>
+            <p><%= flash[:error] %></p>
+        <% end %>
+    </div>
+    <%= link_to 'Back', tournaments_path %>
+    <div class="container-fulid">
+        <div class="row">
+            <div class="col-md-8 col-sm-12 col-xs-12">
+                <% if @tournament.attachments.present? %>
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <% @tournament.attachments.each_with_index do |photo, n| %>
+                            <li data-target='#MyCarousel' data-slide-to="#{n}" class="#{'active' if n == 0}"></li>
+                        <% end %>
+                    </ol>
 
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-              <div class="item active">
-                <%= image_tag @tournament.attachments.first.avatar.url %>
-              </div>
-              <% @tournament.attachments.drop(1).each do |p| %>
-                <div class="item">
-                    <%= image_tag p.avatar.url%>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <%= image_tag @tournament.attachments.first.avatar.url %>
+                        </div>
+                        <% @tournament.attachments.drop(1).each do |p| %>
+                            <div class="item">
+                                <%= image_tag p.avatar.url%>
+                            </div>
+                        <% end %>
+                    </div>
+
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
-              <% end %>
+                <% end %>
             </div>
-
-            <!-- Left and right controls -->
-            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-          <% end %>
-      </div>
-      <div class="col-md-4 col-sm-12 col-xs-12">
-        <p>Date: <%=@tournament.date%></p>
-        <p>Venue: <%=@tournament.venue%></p>
-        <p>Contact: <%=@tournament.contact%></p>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-12 col-sm-12 col-xs-12">
-        <%= link_to('To see current sponsorships', sponsorship_path(@tournament.id))%><br/>
-        <%= link_to('Want To Donate Money to tournament', new_sponsorship_path(:tournament_id => @tournament.id))%><br/>
-        <%= link_to 'players in tournament', players_show_path(:tournament_id => @tournament.id) %><br/>
-        <% if @tournament.slots > 0 %>
-          <%= form_tag players_create_path, id: "player_form" do %>
-            <% if defined?(current_account.id) && (current_account.id != '')%>
-                <% @account = Account.find(current_account.id)%>
-                <%= hidden_field_tag 'email', @account.email %>
-            <% else %>
-                <%= hidden_field_tag 'email'%>
-            <% end %>
-            <%= hidden_field_tag 'tournament_id', @tournament.id %>
-            <%= hidden_field_tag 'amount', @tournament.ticket_price*100 %>
-            <%= hidden_field_tag(:stripeToken) %>
-            <% if !current_account.nil? %>
-              <% @duplicate_player = Player.where(tournament_id: @tournament.id, account_id: current_account.id) %>
-              <% if @duplicate_player.blank? %>
-                <%= hidden_field_tag 'player_id'%>
-              <% else %>
-                <%= hidden_field_tag 'player_id', @duplicate_player%>
-              <% end %>
-            <% end %>
-            <button id='signupButton'>Sign Up As Player</button>
-          <% end %>
-          <% end %>
-
-          <button data-toggle="modal" data-target="#myModal">Purchase As Guest</button>
-
-          <div id="myModal" class="modal fade" role="dialog">
-          <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Guests Tickets</h4>
-              </div>
-              <div class="modal-body">
-                  <table class="table table-striped">
-                      <tbody>
-                          <tr> Number of Tickets </tr>
-                          <tr> <%= select_tag("NumberofTickets", options_for_select([1,2,3,4,5])) %></tr>
-                      </tbody>
-                  </table>
-              </div>
-              <div class="modal-footer">
-                <%= form_tag transactions_create_path, id: "guest_form" do %>
-                  <% if defined?(current_account.id) && (current_account.id != '')%>
-                      <% @account = Account.find(current_account.id)%>
-                      <%= hidden_field_tag 'guest_email', @account.email %>
-                  <% else %>
-                      <%= hidden_field_tag 'guest_email'%>
-                  <% end %>
-                  <%= hidden_field_tag 'guest_tournament_id', @tournament.id %>
-                  <%= hidden_field_tag 'guest_amount', @tournament.ticket_price_guest %>
-                  <%= hidden_field_tag(:stripeToken) %>
-                  <% end %>
-                <button id="GuestPurchase" type="button" class="btn btn-default" data-dismiss="modal">CheckOut</button>
-              </div>
+            <div class="col-md-4 col-sm-12 col-xs-12">
+                <p>Date:
+                    <%=@tournament.date%></p>
+                <p>Venue:
+                    <%=@tournament.venue%></p>
+                <p>Contact:
+                    <%=@tournament.contact%></p>
             </div>
-          </div>
-          </div>
+        </div>
 
-      </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <%= link_to('To see current sponsorships', sponsorship_path(@tournament.id))%><br/>
+                <%= link_to('Want To Donate Money to tournament', new_sponsorship_path(:tournament_id => @tournament.id))%><br/>
+                <%= link_to 'players in tournament', players_show_path(:tournament_id => @tournament.id) %><br/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-sm-12 col-xs-12">
+                <h2><%= @tournament.name%></h2>
+                <h5>Description</h5>
+                <p><%= @tournament.details%></p>
+                <p>Avaliable Spots for Player: <%= @avaliable_spots%></p>
+                <h5>Ticket Price</h5>
+                <p>Player: <%= @tournament.ticket_price %></p>
+                <p>Guest: <%= @tournament.ticket_price_guest %></p>
+                <% if @tournament.slots > 0 %>
+                    <%= form_tag players_create_path, id: "player_form" do %>
+                        <% if defined?(current_account.id) && (current_account.id != '')%>
+                            <% @account = Account.find(current_account.id)%>
+                            <%= hidden_field_tag 'email', @account.email %>
+                        <% else %>
+                            <%= hidden_field_tag 'email'%>
+                        <% end %>
+
+                        <%= hidden_field_tag 'tournament_id', @tournament.id %>
+                        <%= hidden_field_tag 'amount', @tournament.ticket_price*100 %>
+                        <%= hidden_field_tag(:stripeToken) %>
+                        <% if current_account %>
+                            <% @duplicate_player = Player.where(tournament_id: @tournament.id, account_id: current_account.id) %>
+                            <% if @duplicate_player.blank? %>
+                                <%= hidden_field_tag 'player_id'%>
+                            <% else %>
+                                <%= hidden_field_tag 'player_id', @duplicate_player%>
+                            <% end %>
+                        <% end %>
+                        <button id='signupButton'>Sign Up As Player</button>
+                    <% end %>
+                <% end %>
+
+                <button data-toggle="modal" data-target="#myModal">Purchase As Guest</button>
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Guests Tickets</h4>
+                            </div>
+                            <div class="modal-body">
+                                <table class="table table-striped">
+                                    <tbody>
+                                        <tr>
+                                            Number of Tickets
+                                        </tr>
+                                        <tr>
+                                            <%= select_tag("NumberofTickets", options_for_select([1,2,3,4,5])) %></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <%= form_tag transactions_create_path, id: "guest_form" do %>
+                                    <% if defined?(current_account.id) && (current_account.id != '')%>
+                                        <% @account = Account.find(current_account.id)%>
+                                        <%= hidden_field_tag 'guest_email', @account.email %>
+                                    <% else %>
+                                        <%= hidden_field_tag 'guest_email'%>
+                                    <% end %>
+                                    <%= hidden_field_tag 'guest_tournament_id', @tournament.id %>
+                                    <%= hidden_field_tag 'guest_amount', @tournament.ticket_price_guest %>
+                                    <%= hidden_field_tag(:stripeToken) %>
+                                <% end %>
+                                <button id="GuestPurchase" type="button" class="btn btn-default" data-dismiss="modal">CheckOut</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p>Share this tournament!</p>
+                <%= facebook_button %><%= twitter_button %><%= linkedin_button %>
+            </div>
+            <div class="col-md-4 col-sm-12 col-xs-12">
+                <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBDGM6j6MEEI73Tcd5pgIs_n674JFRWjBw&q=+<%= @tournament.venue %>" allowfullscreen></iframe>
+            </div>
+        </div>
     </div>
-
-
-    <div class="row">
-      <div class="col-md-8 col-sm-12 col-xs-12">
-        <h2><%= @tournament.name%></h2>
-        <h5>Description</h5>
-        <p><%= @tournament.details%></p>
-        <p>Share this tournament!</p>
-        <%= facebook_button %><%= twitter_button %><%= linkedin_button %>
-      </div>
-      <div class="col-md-4 col-sm-12 col-xs-12">
-        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBDGM6j6MEEI73Tcd5pgIs_n674JFRWjBw&q=+<%= @tournament.venue %>" allowfullscreen>
-        </iframe>
-      </div>
-    </div>
-  </div>
 </div>
 
 <script src="https://checkout.stripe.com/checkout.js"></script>
 
 <script>
-
-$('#signupButton').on('click', function(e) {
-  e.preventDefault();
-  $('#error_explanation').html('');
-  var email = $('input#email').val();
-  var player_id = $('input#player_id').val();
-  if(player_id){
-      $('#error_explanation').html('<p>You are already signed up for this tournament</p>');
-  }
-  else {
-    if (email) {
-      var amount = $('input#amount').val();
-      StripeCheckout.open({
-        key: '<%= Rails.configuration.stripe[:publishable_key] %>',
-        locale: 'auto',
-        name: 'Golf Tournament Ticket For Player',
-        description: 'pay',
-        currency: 'cad',
-        email: email,
-        amount: amount,
-        token: function(token){
-          $('input#stripeToken').val(token.id);
-          $('#player_form').submit();
-        }
-      });
-    }
-    else {
-      $('#error_explanation').html('<p>Please Login before Sign Up</p>');
-    }
-  }
-});
-
-$('#GuestPurchase').on('click', function(e) {
-    e.preventDefault();
-    $('#error_explanation').html('');
-    var email = $('input#guest_email').val();
-    var player_id = $('input#guest_player_id').val();
-    if (email) {
-        var amount = $('input#guest_amount').val()*$("#NumberofTickets").val()*100;
-        StripeCheckout.open({
-            key: '<%= Rails.configuration.stripe[:publishable_key] %>',
-            locale: 'auto',
-            name: 'Golf Tournament Ticket For Guests',
-            description: 'pay',
-            currency: 'cad',
-            email: email,
-            amount: amount,
-            token: function(token){
-              $('input#stripeToken').val(token.id);
-              $('input#guest_amount').val(amount)
-              $('#guest_form').submit();
+    $('#signupButton').on('click', function (e) {
+        e.preventDefault();
+        $('#error_explanation').html('');
+        var email = $('input#email').val();
+        var player_id = $('input#player_id').val();
+        if (player_id) {
+            $('#error_explanation').html('<p>You are already signed up for this tournament</p>');
+        } else {
+            if (email) {
+                var amount = $('input#amount').val();
+                StripeCheckout.open({
+                    key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+                    locale: 'auto',
+                    name: 'Golf Tournament Ticket For Player',
+                    description: 'pay',
+                    currency: 'cad',
+                    email: email,
+                    amount: amount,
+                    token: function (token) {
+                        $('input#stripeToken').val(token.id);
+                        $('#player_form').submit();
+                    }
+                });
+            } else {
+                $('#error_explanation').html('<p>Please Login before Sign Up</p>');
             }
-        });
-    }
-    else {
-        $('#error_explanation').html('<p>Please Login before Sign Up</p>');
-    }
-});
+        }
+    });
 
-// Close Checkout on page navigation
-$(window).on('popstate', function() {
-  handler.close();
-});
+    $('#GuestPurchase').on('click', function (e) {
+        e.preventDefault();
+        $('#error_explanation').html('');
+        var email = $('input#guest_email').val();
+        var player_id = $('input#guest_player_id').val();
+        if (email) {
+            var amount = $('input#guest_amount').val() * $("#NumberofTickets").val() * 100;
+            StripeCheckout.open({
+                key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+                locale: 'auto',
+                name: 'Golf Tournament Ticket For Guests',
+                description: 'pay',
+                currency: 'cad',
+                email: email,
+                amount: amount,
+                token: function (token) {
+                    $('input#stripeToken').val(token.id);
+                    $('input#guest_amount').val(amount)
+                    $('#guest_form').submit();
+                }
+            });
+        } else {
+            $('#error_explanation').html('<p>Please Login before Sign Up</p>');
+        }
+    });
+
+    // Close Checkout on page navigation
+    $(window).on('popstate', function () {
+        handler.close();
+    });
 </script>

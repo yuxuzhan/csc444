@@ -12,9 +12,6 @@ class ChargesController < ApplicationController
     @sponsorship.stripe_token = params[:stripeToken]
     @sponsorship.save
     @amount = params[:amount]
-
-    @amount = params[:amount]
-
     @amount = @amount.gsub('$', '').gsub(',', '')
 
     begin
