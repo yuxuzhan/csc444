@@ -1,6 +1,23 @@
 <div id="account" class="tab-pane fade in active">
-		email: <%= @profile.email %><br>
-		Gender: <%= @profile.gender %><br>
-		Phone number: <%= @profile.phone_number %><br>
-		<%= link_to 'Edit Profile', edit_account_registration_path %>
+		<table class="table table-user-information">
+				<tbody>
+						<tr>
+								<td>Email:</td>
+								<td><%= @profile.email %></td>
+						</tr>
+						<tr>
+								<td>Gender:</td>
+								<% if (@profile.gender == "Male") then %>
+										<td>基佬</td>
+								<% else %>
+										<td>萌妹子</td>
+								<% end %>
+						</tr>
+						<tr>
+								<td>Phone number:</td>
+								<td><%= @profile.phone_number %></td>
+						</tr>
+				</tbody>
+		</table>
+		<%= link_to("Edit Profile", edit_account_registration_path, :class => "btn btn-primary btn-md")  %>
 </div>
