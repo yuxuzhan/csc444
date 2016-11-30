@@ -16,7 +16,6 @@ class TournamentsController < ApplicationController
 
     def show
         @tournament = Tournament.find(params[:id])
-        @avaliable_spots = get_available_spots
         @tournaments_orgnized = get_editable_tournaments
     end
 
@@ -88,20 +87,6 @@ class TournamentsController < ApplicationController
             end
         end
         arr
-    end
-
-    def get_available_spots
-        player_count = 0
-        players = Player.where(tournament_id: @tournament.id)
-        players.each do |_player|
-            player_count += 1
-        end
-        available_slots = @tournament.slots - player_count
-        if available_slots >= 0
-            return available_slots
-        else
-            return "N/A"
-        end
     end
 
     def get_number_of_players_in_tournament

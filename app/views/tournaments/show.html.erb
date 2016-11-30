@@ -67,7 +67,7 @@
                 <h2><%= @tournament.name%></h2>
                 <h5>Description</h5>
                 <%= markdown(@tournament.details) %>
-                <p>Avaliable Spots for Player: <%= @avaliable_spots%></p>
+                <p>Avaliable Spots for Player: <%= @tournament.slots%></p>
                 <h5>Ticket Price</h5>
                 <p>Player: <%= @tournament.ticket_price %></p>
                 <p>Guest: <%= @tournament.ticket_price_guest %></p>
