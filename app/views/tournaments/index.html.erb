@@ -1,31 +1,33 @@
-<div class="padding-navbar">
-	<h1>Tournaments</h1>
-	<%= link_to('Create a tournament', new_tournament_path) %>
+<div class="tournament-background padding-navbar">
+		<div class="glass-container			">
+				<h1>Tournaments</h1>
 
-	<table class="table table-striped">
-		<thead>
-			<th>Name</th>
-			<th>Number of players</th>
-			<th>Slots</th>
-			<th>Organizer</th>
-		</thead>
+				<table class="table table-striped">
+					<thead>
+						<th>Name</th>
+						<th>Number of players</th>
+						<th>Slots</th>
+						<th>Organizer</th>
+					</thead>
 
-		<tbody>
-			<% @tournaments.each do |t| %>
-			<% if t.private == false %>
-			<tr>
-				<td><%= link_to t.name, tournament_path(t.id)%></td>
-				<td><%= @tournaments_players_count[t] %>
-				<td><%= t.slots %></td>
-				<td><%= @tournaments_organizer[t] %>
-				<% if @tournaments_orgnized.include?(t.id) || (current_account && current_account.admin?) %>
-				<td><%= link_to 'Edit', edit_tournament_path(t.id)%></td>
-				<% else %>
-				<td></td>
-				<% end %>
-			</tr>
-			<% end %>
-			<% end %>
-		</tbody>
-	</table>
+					<tbody>
+						<% @tournaments.each do |t| %>
+						<% if t.private == false %>
+						<tr>
+							<td><%= link_to t.name, tournament_path(t.id)%></td>
+							<td><%= @tournaments_players_count[t] %>
+							<td><%= t.slots %></td>
+							<td><%= @tournaments_organizer[t] %>
+							<% if @tournaments_orgnized.include?(t.id) || (current_account && current_account.admin?) %>
+							<td><%= link_to 'Edit', edit_tournament_path(t.id)%></td>
+							<% else %>
+							<td></td>
+							<% end %>
+						</tr>
+						<% end %>
+						<% end %>
+					</tbody>
+				</table>
+				<%= link_to('Create a tournament', new_tournament_path) %>
+		</div>
 </div>
