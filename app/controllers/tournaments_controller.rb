@@ -17,6 +17,7 @@ class TournamentsController < ApplicationController
     def show
         @tournament = Tournament.find(params[:id])
         @avaliable_spots = get_available_spots
+        @tournaments_orgnized = get_editable_tournaments
     end
 
     def create

@@ -4,6 +4,9 @@
             <p><%= flash[:error] %></p>
         <% end %>
     </div>
+    <% if @tournaments_orgnized.include?(@tournament.id) || (current_account && current_account.admin?) %>
+        <%= link_to 'Edit', edit_tournament_path(@tournament.id)%><br />
+    <% end %>
     <%= link_to 'Back', tournaments_path %>
     <div class="container-fulid">
         <div class="row">
@@ -63,7 +66,7 @@
             <div class="col-md-8 col-sm-12 col-xs-12">
                 <h2><%= @tournament.name%></h2>
                 <h5>Description</h5>
-                <p><%= @tournament.details%></p>
+                <%= markdown(@tournament.details) %>
                 <p>Avaliable Spots for Player: <%= @avaliable_spots%></p>
                 <h5>Ticket Price</h5>
                 <p>Player: <%= @tournament.ticket_price %></p>
