@@ -1,60 +1,59 @@
 <%= form_for @tournament, :html => {:multipart => true}  do |f| %>
-  <% for error in @tournament.errors.full_messages %>
-    <li><%= error %></li>
-  <% end %>
+    <% for error in @tournament.errors.full_messages %>
+      <li><%= error %></li>
+    <% end %>
 
-  <div class="field">
-    <%= f.label :name, 'Tournament Name' %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
+      <div class="form-group col-lg-6 field">
+      <%= f.label :name, 'Tournament Name' %><br />
+      <%= f.text_field :name, autofocus: true, :class => "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :venue, 'Tournament Venue' %><br />
-    <%= f.text_field :venue %>
-  </div>
+    <div class="form-group col-lg-6 field">
+      <%= f.label :venue, 'Tournament Venue' %><br />
+      <%= f.text_field :venue, :class => "form-control"%>
+    </div>
 
-  <div class="field">
-    <%= f.label :date, 'Tournament Date' %><br />
-    <%= f.date_field :date %>
-  </div>
+    <div class="form-group col-lg-6 field">
+      <%= f.label :date, 'Tournament Date' %><br />
+      <%= f.date_field :date, :class => "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :details, 'Tournament Details' %><br />
-    <%= f.text_area :details, cols: "30", rows: "10" %>
-  </div>
+    <div class="form-group col-lg-6 field">
+      <%= f.label :contact, 'Contact Information' %><br />
+      <%= f.text_field :contact, :class => "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :contact, 'Contact Information' %><br />
-    <%= f.text_field :contact %>
-  </div>
+    <div class="form-group col-lg-6 field">
+      <%= f.label :slots, 'Maximum number of players' %><br />
+      <%= f.text_field :slots, :class => "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :slots, 'Maximum number of players' %><br />
-    <%= f.text_field :slots %>
-  </div>
+    <div class="form-group col-lg-6 field">
+      <%= f.label :ticket_price, 'Ticket_price for player' %><br />
+      <%= f.text_field :ticket_price, :class => "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :ticket_price, 'Ticket_price for player' %><br />
-    <%= f.text_field :ticket_price %>
-  </div>
+    <div class="form-group col-lg-6 field">
+      <%= f.label :ticket_price_guest, 'Ticket_price for guest' %><br />
+      <%= f.text_field :ticket_price_guest, :class => "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :ticket_price_guest, 'Ticket_price for guest' %><br />
-    <%= f.text_field :ticket_price_guest %>
-  </div>
+    <div class="form-group col-lg-6 field">
+      <%= f.label :avatars, "Upload tournament image"%><br>
+      <%= file_field_tag "avatars[]", type: :file, multiple: true%>
+    </div>
 
+    <div class="form-group col-lg-12 field">
+      <%= f.label :details, 'Tournament Details' %><br />
+      <%= f.text_area :details, cols: "50", rows: "10", :class => "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :private, 'Make Tournament Private' %><br />
-    <%= f.check_box :private %>
-  </div>
+    <div class="form-group col-lg-12 field">
+      <%= f.label :private, 'Make Tournament Private' %><br />
+      <%= f.check_box :private %>
+    </div>
 
-  <div class="field">
-    <%= f.label :avatars, "Upload tournament image"%><br>
-    <%= file_field_tag "avatars[]", type: :file, multiple: true %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Submit" %>
-  </div>
+    <div class="form-group col-lg-2 actions">
+      <%= f.submit "Submit",:class=>"btn btn-success btn-lg btn-block" %>
+    </div>
 <% end %>
