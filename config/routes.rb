@@ -14,7 +14,10 @@ Rails.application.routes.draw do
   get 'term_of_service', to: 'term_of_service#show'
 
   get 'privacy_policy', to: 'privacy_policy#show'
+  
+  get 'features', to: 'features#show'
 
+  get 'faq', to: 'faq#show'
 
   post 'transactions/create'
 
