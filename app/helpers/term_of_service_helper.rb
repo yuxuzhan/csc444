@@ -1,0 +1,2 @@
+module TermOfServiceHelper
+end

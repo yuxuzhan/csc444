@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'contacts', to: 'contacts#new'
   post 'contacts', to: 'contacts#create'
 
+  get 'term_of_service', to: 'term_of_service#show'
+
   post 'transactions/create'
 
   get 'profiles', to: 'profiles#show'

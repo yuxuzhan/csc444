@@ -1,0 +1,17 @@
+// Place all the styles related to the term_of_service controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.term-of-service-head {
+    padding-bottom: 60px;
+    color: #f8f8f8;
+    background: url(asset-path('home-banner.jpg')) no-repeat center center;
+    background-size: cover;
+}
+.term-of-service-content{
+	padding-top:40px;
+    margin: 10px 0 10px;
+    font-weight: 300;
+}
+.term-of-service-content.h4 {
+    margin: 30px 0 15px;
+}
