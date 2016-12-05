@@ -65,7 +65,9 @@
             <label class="radio-inline"><%= f.radio_button :gender, "f" %>Female</label>
         </div>
 
-        <p>By clicking the Continue button below, you agree to the Terms of Agreement</p>
+        <p>By clicking the Continue button below, you agree to the 
+            <%= link_to('Term of Use and Conditions', term_of_service_path) %>
+        </p>
 
         <div class="actions">
             <%= f.submit "Accept and Sign up", :class=>"btn btn-success btn-large form-control" %>

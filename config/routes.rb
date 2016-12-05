@@ -13,6 +13,9 @@ Rails.application.routes.draw do
 
   get 'term_of_service', to: 'term_of_service#show'
 
+  get 'privacy_policy', to: 'privacy_policy#show'
+
+
   post 'transactions/create'
 
   get 'profiles', to: 'profiles#show'

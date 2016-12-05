@@ -89,3 +89,23 @@ p.copyright {
   min-height: 70%;
   z-index: 99;
 }
+
+.static-pages-head {
+    padding-bottom: 60px;
+    color: #f8f8f8;
+    background: url(asset-path('home-banner.jpg')) no-repeat center center;
+    background-size: cover;
+}
+
+.static-pages-content{
+    padding-top:40px;
+    font-weight: 300;
+}
+
+.static-pages-content p{
+    margin: 20px 0 10px;
+}
+
+.static-pages-content h4{
+    margin: 30px 0 10px;
+}
