@@ -3,28 +3,26 @@
     <li><%= error %></li>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name, 'Orgnization Name' %><br/>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control"%>
   </div>
 
-  <div class="field">
-    <%= f.label :logo, 'Logo' %><br/>
-    <%= f.file_field :logo %>
+
+  <div class="form-group">
+    <%= f.label :logo, 'Logo', class: "custom-file" %>
+    <%= f.file_field :logo, class: "custom-file-input"%>
+    <span class="custom-file-control"></span>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :website, 'Website' %><br/>
-    <%= f.text_field :website %>
+    <%= f.text_field :website, class: "form-control"%>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :contact, 'Contact' %><br/>
-    <%= f.text_field :contact %>
+    <%= f.text_field :contact, class: "form-control" %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Create" %>
-  </div>
-
+  <%= f.submit "Create",class:"btn btn-primary" %>
 <% end %>
