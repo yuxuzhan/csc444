@@ -18,7 +18,9 @@ Rails.application.routes.draw do
   get 'features', to: 'features#show'
 
   get 'faq', to: 'faq#show'
-
+  
+  get 'partners', to: 'partner#show'
+  
   post 'transactions/create'
 
   get 'profiles', to: 'profiles#show'
