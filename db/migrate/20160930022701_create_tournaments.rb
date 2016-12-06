@@ -3,6 +3,7 @@ class CreateTournaments < ActiveRecord::Migration[5.0]
         create_table :tournaments do |t|
             t.string :name
             t.string :venue
+            t.string :logo
             t.string :details
             t.string :contact
             t.boolean :private

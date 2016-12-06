@@ -1,23 +1,4 @@
 <div class="page-background padding-navbar row">
-<!-- <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
-<script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
-
-<script>
-    $(document).ready(function () {
-        $("#new_account").validate({
-            debug: true,
-            rules: {
-                "account[name]": {required: true},
-                "account[password]": {required: true, minlength: 6},
-                "account[password_confirmation]": {equalTo: "#account_password"},
-                "account[email]": {required: true, email: true},
-                "account[phone_number]": {required: true,  phoneUS: true},
-                "account[gender]": {required: true}
-            }
-        });
-    });
-</script> -->
 <div class="col-md-8 col-md-offset-2">
   <div class="registration signup-container">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -65,7 +46,7 @@
             <label class="radio-inline"><%= f.radio_button :gender, "f" %>Female</label>
         </div>
 
-        <p>By clicking the Continue button below, you agree to the 
+        <p>By clicking the Continue button below, you agree to the
             <%= link_to('Term of Use and Conditions', term_of_service_path) %>
         </p>
 

@@ -10,7 +10,7 @@
             <div class="col-md-3 col-sm-3">
                 <div class="user-wrapper">
                     <div class="profile-userpic">
-                        <%= image_tag("tournament-logo.png", :alt => "Professor Stumm icon", :class => "img-responsive")%>
+                        <%= image_tag(@tournament.logo.url, :alt => "Professor Stumm icon", :class => "img-responsive")%>
                     </div>
                     <div class="description">
                         <table class=" table table-user-information">
@@ -78,7 +78,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                  <td>Share this tournament!</td>
+                                  <!-- <td>Share this tournament!</td> -->
                                   <td><%= twitter_button %><%= linkedin_button %><%= facebook_button %></td>
                                 </tr>
                             </tbody>

@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 20161127201435) do
   create_table "tournaments", force: :cascade do |t|
     t.string   "name"
     t.string   "venue"
+    t.string   "logo"
     t.string   "details"
     t.string   "contact"
     t.boolean  "private"
