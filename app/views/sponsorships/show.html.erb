@@ -2,6 +2,7 @@
 <div class="container-fluid glass-container">
 <%= link_to "< Back", @tournament %>
 <h1>Sponsorships of <%= @tournament.name %></h1>
+<% if @sponsorship.length > 0%>
 <table class="table table-striped">
     <thead>
         <th>Name</th>
@@ -16,5 +17,8 @@
         <% end %>
     </tbody>
 </table>
+<%else%>
+<p>No sponsor for this tournament yet.</p>
+<%end%>
 </div>
 </div>
