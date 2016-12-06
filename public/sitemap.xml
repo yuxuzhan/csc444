@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<url><loc>http://csc444.herokuapp.com/</loc><priority>1.00</priority></url>
+<url><loc>http://csc444.herokuapp.com/tournaments</loc><priority>0.85</priority></url>
+<url><loc>http://csc444.herokuapp.com/features</loc><priority>0.85</priority></url>
+<url><loc>http://csc444.herokuapp.com/about_us</loc><priority>0.85</priority></url>
+<url><loc>http://csc444.herokuapp.com/contacts</loc><priority>0.85</priority></url>
+<url><loc>http://csc444.herokuapp.com/accounts/sign_in</loc><priority>0.85</priority></url>
+<url><loc>http://csc444.herokuapp.com/accounts/sign_up</loc><priority>0.85</priority></url>
+<url><loc>http://csc444.herokuapp.com/term_of_service</loc><priority>0.85</priority></url>
+<url><loc>http://csc444.herokuapp.com/privacy_policy</loc><priority>0.85</priority></url>
+<url><loc>http://csc444.herokuapp.com/faq</loc><priority>0.85</priority></url>
+<url><loc>http://csc444.herokuapp.com/tournaments/1</loc><priority>0.69</priority></url>
+<url><loc>http://csc444.herokuapp.com/tournaments/2</loc><priority>0.69</priority></url>
+<url><loc>http://csc444.herokuapp.com/tournaments/3</loc><priority>0.69</priority></url>
+<url><loc>http://csc444.herokuapp.com/sponsorships/1</loc><priority>0.56</priority></url>
+<url><loc>http://csc444.herokuapp.com/sponsorships/2</loc><priority>0.56</priority></url>
+<url><loc>http://csc444.herokuapp.com/sponsorships/3</loc><priority>0.56</priority></url>
+</urlset>
+ 
