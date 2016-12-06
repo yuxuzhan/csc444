@@ -1,4 +1,6 @@
 class Tournament < ApplicationRecord
+	mount_uploader :logo, LogoUploader
+
 	has_many :attachments, :inverse_of => :tournament, :dependent => :destroy
 	has_many :transactions
 	has_many :sponsorships, :dependent => :destroy
