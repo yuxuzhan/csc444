@@ -1,33 +1,44 @@
 <div class="tournament-background padding-navbar">
-		<div class="glass-container">
-				<h1>Tournaments</h1>
+		<div class="col-md-10 col-md-offset-1 col-sm-12">
+				<div class="glass-container">
+						<h1>Tournaments</h1>
 
-				<table class="table table-striped">
-					<thead>
-						<th>Name</th>
-						<th>Number of players</th>
-						<th>Slots</th>
-						<th>Organizer</th>
-					</thead>
+						<table class="table table-striped">
+								<thead>
+									<th></th>
+									<th>Name</th>
+									<th>Date</th>
+									<th>Venue</th>
+									<th>Number of players</th>
+									<th>Organizer</th>
+									<th>Option</th>
+								</thead>
 
-					<tbody>
-						<% @tournaments.each do |t| %>
-						<% if t.private == false %>
-						<tr>
-							<td><%= link_to t.name, tournament_path(t.id)%></td>
-							<td><%= @tournaments_players_count[t] %>
-							<td><%= t.slots %></td>
-							<td><%= @tournaments_organizer[t] %>
-							<% if @tournaments_orgnized.include?(t.id) || (current_account && current_account.admin?) %>
-							<td><%= link_to 'Edit', edit_tournament_path(t.id)%></td>
-							<% else %>
-							<td></td>
-							<% end %>
-						</tr>
-						<% end %>
-						<% end %>
-					</tbody>
-				</table>
-				<%= link_to('Create a tournament', new_tournament_path) %>
+								<tbody>
+										<% @tournaments.each do |t| %>
+												<% if t.private == false %>
+														<tr>
+																<% if t.logo.url.present? %>
+																		<td nowrap><%= image_tag(t.logo.url, :alt => "Logo Image", :class => "img-circle", :style => "width:50px; height:auto;")%></td>
+																<% else %>
+																		<td nowrap><%= image_tag("tournament-logo.png", :alt => "Default Logo", :class => "img-circle", :style => "width:200px; height:auto;") %></td>
+																<% end %>
+																<td><%= link_to t.name, tournament_path(t.id)%></td>
+																<td><%=t.date%></td>
+																<td><%=t.venue%></td>
+																<td><%= @tournaments_players_count[t] %>
+																<td><%= @tournaments_organizer[t] %>
+																<% if @tournaments_orgnized.include?(t.id) || (current_account && current_account.admin?) %>
+																		<td><%= link_to('Edit', edit_tournament_path(t.id), :class => "btn btn-primary btn-md") %></td>
+																<% else %>
+																		<td></td>
+																<% end %>
+														</tr>
+												<% end %>
+										<% end %>
+								</tbody>
+						</table>
+						<%= link_to('Create a tournament', new_tournament_path, :class => "btn btn-primary btn-md") %>
+				</div>
 		</div>
 </div>
