@@ -1,23 +1,22 @@
 <div class="padding-navbar tournament-background">
-<div class="container-fluid glass-container">
-    <div class="row">
-      <div class="col-md-offset-4 col-md-8">
-        <h1><%=@sponsor.name%></h1>
-        <%= link_to "Sponsor Website", "http://#{@sponsor.website}" %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-4">
-        <%= link_to image_tag(@sponsor.logo.url, style: "max-height: 200px", alt:@sponsor.name), "http://#{@sponsor.website}"%>
-      </div>
-      <br/>
-      <div class="col-md-8">
-        <div class="well">
-          <h4>Contact Information</h4>
-          <p><%=@sponsor.contact%></p>
+    <div class="container-fluid glass-container">
+        <div class="row">
+          <div class="col-md-offset-4 col-md-8">
+            <h1><%=@sponsor.name%></h1>
+            <%= link_to "Sponsor Website", "http://#{@sponsor.website}" %>
+          </div>
         </div>
-      </div>
+        <div class="row">
+          <div class="col-md-4">
+            <%= link_to image_tag(@sponsor.logo.url, style: "max-height: 200px", alt:@sponsor.name), "http://#{@sponsor.website}"%>
+          </div>
+          <br/>
+          <div class="col-md-8">
+            <div class="well">
+              <h4>Contact Information</h4>
+              <p><%=@sponsor.contact%></p>
+            </div>
+          </div>
+        </div>
     </div>
-
-</div>
 </div>

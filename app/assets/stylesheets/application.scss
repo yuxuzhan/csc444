@@ -90,6 +90,16 @@ p.copyright {
   z-index: 99;
 }
 
+.sponsor-background{
+  background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(asset-path('tournament-background.jpg')) no-repeat center center;
+  background-size: cover;
+  background-position: center;
+  margin-top: -15px;
+  width: 100%;
+  min-height: 55%;
+  z-index: 99;
+}
+
 .static-pages-head {
     height: 30%;
     color: #f8f8f8;
