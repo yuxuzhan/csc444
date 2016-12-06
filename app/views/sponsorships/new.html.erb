@@ -1,32 +1,24 @@
-<div class="padding-navbar tournament-background">
-<div class="container-fluid glass-container">
-  <h1 class="sponsor_h1">Sponsing Tournament</h1>
-  <div class="row">
-    <div class="col-md-offset-4 col-md-4 col-sm-12">
-      <h5>Create a new sponsor</h5>
-      <button class="btn btn-primary" data-toggle="modal" data-target="#myModalNorm">create</button>
-    </div>
-  </div>
-  <br/>
-  <div class="row">
-    <div class="col-md-offset-4 col-md-4 col-sm-12">
-      <%= render "sponsorships/form" %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-offset-4 col-md-4 col-sm-12">
-       <form>
-          <div class="form-group">
-          <label for="input_amount">Amount:</label>
-          <input type="text" id="input_amount" class="form-control">
+<div class="padding-navbar sponsor-background">
+    <div class="col-md-6 col-md-offset-3 col-sm-12">
+        <div class="row glass-container">
+            <h1 class="sponsor_h1">Sponsoring Tournament</h1>
+            <div class="col-md-6 col-sm-12">
+                <%= render "sponsorships/form" %>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#myModalNorm">Create Sponsor</button>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                 <form>
+                    <div class="form-group">
+                        </br>
+                        <label for="input_amount">Amount</label>
+                        <input type="text" id="input_amount" class="form-control">
+                    </div>
+                    <button id='donateButton' class="btn btn-primary">Donate</button>
+                </form>
+                <p id="error_explanation"></p>
+           </div>
         </div>
-        <button id='donateButton' class="btn btn-primary">Donate</button>
-      </form>
-      <p id="error_explanation"></p>
-
     </div>
-  </div>
-</div>
 </div>
 
 
