@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161127201435) do
+ActiveRecord::Schema.define(version: 20161206035500) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -91,7 +91,6 @@ ActiveRecord::Schema.define(version: 20161127201435) do
   create_table "tournaments", force: :cascade do |t|
     t.string   "name"
     t.string   "venue"
-    t.string   "logo"
     t.string   "details"
     t.string   "contact"
     t.boolean  "private"
@@ -101,6 +100,7 @@ ActiveRecord::Schema.define(version: 20161127201435) do
     t.integer  "slots"
     t.integer  "ticket_price"
     t.integer  "ticket_price_guest"
+    t.string   "logo"
   end
 
   create_table "transactions", force: :cascade do |t|

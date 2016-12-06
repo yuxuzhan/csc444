@@ -10,7 +10,9 @@
             <div class="col-md-3 col-sm-3">
                 <div class="user-wrapper">
                     <div class="profile-userpic">
-                        <%= image_tag(@tournament.logo.url, :alt => "Professor Stumm icon", :class => "img-responsive")%>
+                        <% if @tournament.logo.url.present? %>
+                            <%= image_tag(@tournament.logo.url, :alt => "Professor Stumm icon", :class => "img-responsive")%>
+                        <% end %>
                     </div>
                     <div class="description">
                         <table class=" table table-user-information">
