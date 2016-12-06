@@ -1,3 +1,77 @@
 // Place all the styles related to the tournaments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.small-padding {
+  padding: 2.5%;
+}
+
+.user-wrapper {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.user-wrapper .btn {
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+}
+
+.user-wrapper hr {
+  display: block;
+  border: 0;
+  margin: 1em 0;
+  padding: 0;
+  border-bottom: 3px solid #A9A9A9;
+}
+
+.user-wrapper table {
+  margin-bottom: 0px;
+}
+
+.user-wrapper .description {
+    padding: 12px;
+}
+
+.user-wrapper img {
+    width:100%;
+}
+
+.user-wrapper .btn-sm {
+    margin-bottom: 7px;
+}
+
+.profile-userpic img {
+    float: none;
+    margin: 0 auto;
+    width: 75%;
+    height: 75%;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    border-radius: 50% !important;
+    padding-top: 20px;
+}
+
+.table-user-information > tbody > tr {
+    border-top: 1px solid rgb(255, 255, 255);
+}
+
+.table-user-information > tbody > tr:first-child {
+    border-top: 0;
+}
+
+.table-user-information > tbody > tr > td {
+    border-top: 0;
+}
+
+.description-container {
+  padding-left: 2%;
+}
+
+.map-container {
+  margin-left: -1.5%;
+  padding-bottom: 5%;
+  border-right: 3px solid #A9A9A9;
+}
+
+.facebook-icon {
+  margin-bottom: 1px;
+}
