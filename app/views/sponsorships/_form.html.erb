@@ -3,9 +3,10 @@
     <li><%= error %></li>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :sponsors_id, 'Please select a sponsor name in your account' %><br/>
-    <%= select_tag "sponsors_id", options_for_select(@user.sponsors.collect {|p| [ p.name, p.id ] }) %>
+
+    <%= select_tag :sponsors_id, options_for_select(@user.sponsors.collect {|p| [ p.name, p.id ] }),{:class => 'form-control'} %>
   </div>
   <%= f.hidden_field :tournament_id, :value => @tournament%>
   <%= f.hidden_field :amount, :value => "", :id => "amount"%>

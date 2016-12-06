@@ -1,22 +1,26 @@
-<div class="padding-navbar">
-<h1>Sponsing a tournament</h1>
-<div class="container-fluid">
+<div class="padding-navbar tournament-background">
+<div class="container-fluid glass-container">
+  <h1 class="sponsor_h1">Sponsing Tournament</h1>
   <div class="row">
-    <div class="col-md-6 col-sm-12">
-      <h3>Create a new sponsor not in list</h3>
-      <%= render "sponsors/form" %>
+    <div class="col-md-offset-4 col-md-4 col-sm-12">
+      <h5>Create a new sponsor</h5>
+      <button class="btn btn-primary" data-toggle="modal" data-target="#myModalNorm">create</button>
     </div>
-    <div class="col-md-6 col-sm-12">
-      <h3>Use an existing sponsor</h3>
+  </div>
+  <br/>
+  <div class="row">
+    <div class="col-md-offset-4 col-md-4 col-sm-12">
       <%= render "sponsorships/form" %>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6 col-md-offset-3 col-sm-12">
+    <div class="col-md-offset-4 col-md-4 col-sm-12">
        <form>
+          <div class="form-group">
           <label for="input_amount">Amount:</label>
-          <input type="text" id="input_amount">
-          <button id='donateButton' class="btn btn-primary">Donate</button>
+          <input type="text" id="input_amount" class="form-control">
+        </div>
+        <button id='donateButton' class="btn btn-primary">Donate</button>
       </form>
       <p id="error_explanation"></p>
 
@@ -24,6 +28,34 @@
   </div>
 </div>
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModalNorm" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close"
+                   data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Create a new sponsor
+                </h4>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <%= render "sponsors/form" %>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
 <script src="https://checkout.stripe.com/checkout.js"></script>
 
 <script>

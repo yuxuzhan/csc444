@@ -1,6 +1,7 @@
-<div class="padding-navbar">
+<div class="padding-navbar tournament-background">
+<div class="container-fluid glass-container">
+<%= link_to "< Back", @tournament %>
 <h1>Sponsorships of <%= @tournament.name %></h1>
-<%= link_to "Back", @tournament %>
 <table class="table table-striped">
     <thead>
         <th>Name</th>
@@ -15,4 +16,5 @@
         <% end %>
     </tbody>
 </table>
+</div>
 </div>
