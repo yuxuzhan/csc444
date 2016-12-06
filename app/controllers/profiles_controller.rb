@@ -42,7 +42,11 @@ class ProfilesController < ApplicationController
     end
 
     def get_orgnized_tournaments
-        organizers = Organizer.where(account_id: current_account.id)
+        if(!current_account.admin)
+            organizers = Organizer.where(account_id: current_account.id)
+        else
+            organizers = Organizer.all
+        end
         organizers.each do |organizer|
             tournament_id = organizer.tournament_id
             tournament_obj = Tournament.find_by id: tournament_id

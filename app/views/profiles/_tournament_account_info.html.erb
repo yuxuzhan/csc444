@@ -23,7 +23,7 @@
 												<% @profile.tournaments_orgnized.each do |key, value| %>
 														<tr>
 																<td><%= link_to value, tournament_path(key)%></td>
-																<td>Admin</td>
+																<td>Organizer</td>
 																<td>
 																		<%= link_to("Arrange Group", organizers_show_path, :class => "btn btn-primary btn-xs")  %>
 																		<%= link_to("Check In", organizers_update_path, :class => "btn btn-info btn-xs")  %>
@@ -41,6 +41,21 @@
 														</tr>
 												<% end %>
 										<% end %>
+								<% end %>
+
+								<% if current_account.admin%>
+									<% if (@profile.tournaments_orgnized.empty? == false) then %>
+										<% @profile.tournaments_orgnized.each do |key, value| %>
+											<tr>
+												<td><%= link_to value, tournament_path(key)%></td>
+												<td>Admin</td>
+												<td>
+													<%= link_to("Arrange Group", organizers_show_path, :class => "btn btn-primary btn-xs")  %>
+													<%= link_to("Check In", organizers_update_path, :class => "btn btn-info btn-xs")  %>
+												</td>
+											</tr>
+										<% end %>
+									<% end %>
 								<% end %>
 					</tbody>
 				</table>
