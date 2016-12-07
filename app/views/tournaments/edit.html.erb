@@ -4,7 +4,7 @@
             <h1>Edit Tournament</h1>
             <%= render "tournaments/form" %><br/>
             <div class="col-md-3">
-                <%= button_to "Delete this tournament", {:controller => 'tournaments', :action => 'destroy', :id => @tournament.id}, data: { confirm: "Are you sure?" }, :method => :delete, :class=>"btn btn-danger btn-lg btn-block" %>
+                <%= button_to "Delete", {:controller => 'tournaments', :action => 'destroy', :id => @tournament.id}, data: { confirm: "Are you sure?" }, :method => :delete, :class=>"btn btn-danger btn-lg btn-block" %>
             </div>
         </div>
     </div>
