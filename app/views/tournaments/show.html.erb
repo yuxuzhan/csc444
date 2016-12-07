@@ -119,16 +119,14 @@
 
                             <!-- Wrapper for slides -->
                             <div class="carousel-inner" role="listbox">
-                              <div class="image-gallary">
                                 <div class="item active">
-                                    <%= image_tag @tournament.attachments.first.avatar.url %>
+                                    <%= image_tag @tournament.attachments.first.avatar.url, class: "img-responsive center-block" %>
                                 </div>
                                 <% @tournament.attachments.drop(1).each do |p| %>
                                     <div class="item">
-                                        <%= image_tag p.avatar.url%>
+                                        <%= image_tag p.avatar.url, class: "img-responsive center-block"%>
                                     </div>
                                 <% end %>
-                              </div>
                             </div>
 
                             <!-- Left and right controls -->
@@ -217,7 +215,6 @@
             }
         }
     });
-
     $('#GuestPurchase').on('click', function (e) {
         e.preventDefault();
         $('#error_explanation').html('');
@@ -243,7 +240,6 @@
             $('#error_explanation').html('<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Warning!</strong> Please Login before Purchase.</div>');
         }
     });
-
     // Close Checkout on page navigation
     $(window).on('popstate', function () {
         handler.close();
