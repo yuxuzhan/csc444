@@ -194,7 +194,7 @@
         var email = $('input#email').val();
         var player_id = $('input#player_id').val();
         if (player_id) {
-            $('#error_explanation').html('<p>You are already signed up for this tournament</p>');
+            $('#error_explanation').html('<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Warning!</strong> You have already in this tournament.</div>');
         } else {
             if (email) {
                 var amount = $('input#amount').val();
