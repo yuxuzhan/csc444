@@ -18,21 +18,13 @@
                 <td><%= Account.find(t.account_id).name %> </td>
                 <td><%= t.group_id %> </td>
 
-                <% if value[1].blank? then %>
-                  <td><span class="glyphicon glyphicon-remove" aria-hidden="false"></span></td>
-                <% end %>
-
-                <% if value[1].present? then%>
-                    <% value[1].each do |f|%>
-                        <td>
-                          <% if (f.account_id == t.account_id) then %>
-                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                          <%else%>
-                            <span class="glyphicon glyphicon-remove" aria-hidden="false"></span>
-                          <%end%>
-                        </td>
-                    <% end %>
-                <% end %>
+                <td>
+                <% if SubAdmin.where(tournament_id: params[:tournament_id], account_id: t.account_id).present? %>
+                  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                <% else %>
+                  <span class="glyphicon glyphicon-remove" aria-hidden="false"></span>
+                <%end%>
+                </td>
 
                 <td><%= form_for(:player, :url => {:controller => 'players', :account_id => t.account_id, :tournament_id =>t.tournament_id, :action => 'update'}) do |f| %>
                     <%= f.text_field :group_id_organizer%>

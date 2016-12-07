@@ -17,15 +17,14 @@ class OrganizersController < ApplicationController
 
     def get_played_players(tournament_id)
     	arr = []
- 
-        tournament_obj = Tournament.find(tournament_id)
-        tournament_name = tournament_obj.name
-        player_info = Player.where(tournament_id: tournament_id)
-        arr << player_info
-        sub_admin_info = SubAdmin.where(tournament_id: tournament_id)
-        arr << sub_admin_info
-        @arrangement.tournaments_created[tournament_name] = arr
-        arr = []
+      tournament_obj = Tournament.find(tournament_id)
+      tournament_name = tournament_obj.name
+      player_info = Player.where(tournament_id: tournament_id)
+      arr << player_info
+      sub_admin_info = SubAdmin.where(tournament_id: tournament_id)
+      arr << sub_admin_info
+      @arrangement.tournaments_created[tournament_name] = arr
+      arr = []
 
     end
 end
