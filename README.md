@@ -3,7 +3,7 @@ As golfers ourselves, we know how difficult it is to connect with local golfing 
 
 Therefore, we designed Golfi, a free website providing simple yet powerful tools for creating, joining, managing, and sponsoring golf tournaments.
 
-<img src="http://i.imgur.com/q4ewJnR.jpg" width="900">
+<img src="http://i.imgur.com/ihp9c2T.jpg" width="900">
 
 ### Technologies
 This web appllication is developed using Ruby on Rails, the app uses SQLite3 database on localhost and use PSQL on Heroku  
@@ -24,3 +24,10 @@ To deploy to Heroku and update database:
 git push heroku master
 heroku run rake db:migrate
 ```
+####Development Team
+* Anqi Wu
+* YiZheng Yang
+* Yuxuan Zhang
+* Yanrong Wang
+* Newton Lam
+* Tuo Zhang
