@@ -120,6 +120,7 @@
 
                             <!-- Wrapper for slides -->
                             <div class="carousel-inner" role="listbox">
+                              <div class="image-gallary">
                                 <div class="item active">
                                     <%= image_tag @tournament.attachments.first.avatar.url %>
                                 </div>
@@ -128,6 +129,7 @@
                                         <%= image_tag p.avatar.url%>
                                     </div>
                                 <% end %>
+                              </div>
                             </div>
 
                             <!-- Left and right controls -->

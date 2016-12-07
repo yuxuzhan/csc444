@@ -42,7 +42,6 @@ h6 {
 
 .navbar-schema {
     background-color: rgba(255, 255, 255, 0.7);
-    position: absolute;
     border-bottom: 1px solid #62b767;
 }
 
@@ -51,7 +50,7 @@ h6 {
 }
 
 footer {
-    padding: 50px 0;
+    padding: 15px 0 ;
     background-color: #f8f8f8;
 }
 
@@ -65,7 +64,8 @@ p.copyright {
     background-position: center;
     margin-top: -15px;
     width: 100%;
-    min-height: 80%;
+    min-height: 85%;
+    overflow: scroll;
     z-index: 99;
 }
 
@@ -74,19 +74,22 @@ p.copyright {
   margin-top: 45px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 45px;
   padding: 50px;
   background-color: rgba(255, 255, 255, 0.8);
 }
 
 .tournament-background{
-  background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(asset-path('tournament-background.jpg')) no-repeat center center;
+  background:linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(asset-path('tournament-background.jpg')) no-repeat center center;
   background-size: cover;
   background-position: center;
   margin-top: -15px;
-  padding-bottom: 50px;
+  padding-bottom: 0px;
   width: 100%;
-  min-height: 70%;
+  min-height: 85%;
+  overflow: scroll;
   z-index: 99;
+
 }
 
 .sponsor-background{
@@ -95,7 +98,8 @@ p.copyright {
   background-position: center;
   margin-top: -15px;
   width: 100%;
-  min-height: 70%;
+  min-height: 85%;
+  overflow: scroll;
   z-index: 99;
 }
 
