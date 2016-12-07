@@ -17,78 +17,98 @@
                     </div>
 
                     <div class="description">
-                        <table class=" table table-user-information">
-                            <h2><%= @tournament.name%></h2>
-                            <% if @tournaments_orgnized.include?(@tournament.id) || (current_account && current_account.admin?) %>
-                                <%= link_to('Edit This Tournament', edit_tournament_path(@tournament.id), :class => "btn btn-success btn-block btn-sm") %>
-                                <%= link_to('View Players In Tournament', players_show_path(:tournament_id => @tournament.id), :class => "btn btn-success btn-block btn-sm") %>
-                            <% end %>
-                            <tbody>
-                                <tr>
-                                    <td>Date:</td>
-                                    <td><%=@tournament.date%></td>
-                                </tr>
-                                <tr>
-                                    <td>Avaliable Spots:</td>
-                                    <td><%= @tournament.slots%></td>
-                                </tr>
-                                <tr>
-                                    <td>Ticket Price:</td>
-                                    <td>$<%= @tournament.ticket_price %>/player</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>$<%= @tournament.ticket_price_guest %>/guest</td>
-                                </tr>
-                                <tr>
-                                    <% if @tournament.slots > 0 %>
-                                        <%= form_tag players_create_path, id: "player_form" do %>
-                                            <% if defined?(current_account.id) && (current_account.id != '')%>
-                                                <% @account = Account.find(current_account.id)%>
-                                                <%= hidden_field_tag 'email', @account.email %>
-                                            <% else %>
-                                                <%= hidden_field_tag 'email'%>
-                                            <% end %>
+                        <div class="container-fluid">
+                          <div class="row">
+                            <div class="col-md-12 sm-padding">
+                              <h2><%= @tournament.name%></h2>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12 sm-padding">
+                              <% if @tournaments_orgnized.include?(@tournament.id) || (current_account && current_account.admin?) %>
+                                  <%= link_to('Edit This Tournament', edit_tournament_path(@tournament.id), :class => "btn btn-success btn-block btn-sm") %>
+                                  <%= link_to('View Players In Tournament', players_show_path(:tournament_id => @tournament.id), :class => "btn btn-success btn-block btn-sm") %>
+                              <% end %>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6 sm-padding">
+                              <span>Date:</span>
+                            </div>
+                            <div class="col-md-6 sm-padding">
+                              <span><%=@tournament.date%></span>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-8 sm-padding">
+                              <span>Avaliable Slots:</span>
+                            </div>
+                            <div class="col-md-4 sm-padding">
+                              <span><%= @tournament.slots%></span>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6 sm-padding">
+                              <span>Ticket Price:</span>
+                            </div>
+                            <div class="col-md-6 sm-padding">
+                              <span>$<%= @tournament.ticket_price %>/player</span>
+                              <span>$<%= @tournament.ticket_price_guest %>/guest</span>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6 sm-padding mrgn-top">
+                              <% if @tournament.slots > 0 %>
+                                  <%= form_tag players_create_path, id: "player_form" do %>
+                                      <% if defined?(current_account.id) && (current_account.id != '')%>
+                                          <% @account = Account.find(current_account.id)%>
+                                          <%= hidden_field_tag 'email', @account.email %>
+                                      <% else %>
+                                          <%= hidden_field_tag 'email'%>
+                                      <% end %>
 
-                                            <%= hidden_field_tag 'tournament_id', @tournament.id %>
-                                            <%= hidden_field_tag 'amount', @tournament.ticket_price*100 %>
-                                            <%= hidden_field_tag(:stripeToken) %>
-                                            <% if current_account %>
-                                                <% @duplicate_player = Player.where(tournament_id: @tournament.id, account_id: current_account.id) %>
-                                                <% if @duplicate_player.blank? %>
-                                                    <%= hidden_field_tag 'player_id'%>
-                                                <% else %>
-                                                    <%= hidden_field_tag 'player_id', @duplicate_player%>
-                                                <% end %>
-                                            <% end %>
-                                            <td nowrap><button id='signupButton' class="btn btn-primary btn-block btn-md center-block">Sign Up</br>As Player</button></td>
-                                        <% end %>
-                                    <% else %>
-                                        <td><button class="btn btn-danger btn-block btn-md center-block">Tournament</br>Is Full</button></td>
-                                    <% end %>
-
-                                    <td nowrap><button data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-block btn-md">Purchase</br>As Guest</button></td>
-                                </tr>
-                                <tr>
-                                    <td nowrap>
-                                        <%= link_to(sponsorship_path(@tournament.id), :class => "btn btn-primary btn-block btn-md") do %>
-                                            View</br>Sponsorships
-                                        <% end %>
-                                    </td>
-                                    <td nowrap>
-                                        <%= link_to(new_sponsorship_path(:tournament_id => @tournament.id), :class => "btn btn-primary btn-block btn-md") do %>
-                                            Become A</br>Sponsor
-                                        <% end %>
-                                    </td>
-                                </tr>
-                                <tr>
-                                  <td>Share this tournament!</td>
-                                  <td><%= twitter_button %><%= linkedin_button %><%= facebook_button %></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <%= link_to('< Back to tournament list', tournaments_path, :class => "btn btn-link btn-sm") %>
-                    </div>
+                                      <%= hidden_field_tag 'tournament_id', @tournament.id %>
+                                      <%= hidden_field_tag 'amount', @tournament.ticket_price*100 %>
+                                      <%= hidden_field_tag(:stripeToken) %>
+                                      <% if current_account %>
+                                          <% @duplicate_player = Player.where(tournament_id: @tournament.id, account_id: current_account.id) %>
+                                          <% if @duplicate_player.blank? %>
+                                              <%= hidden_field_tag 'player_id'%>
+                                          <% else %>
+                                              <%= hidden_field_tag 'player_id', @duplicate_player%>
+                                          <% end %>
+                                      <% end %>
+                                      <button id='signupButton' class="btn btn-primary btn-block btn-xs col-lg-12 center-block">Sign Up As Player</button>
+                                  <% end %>
+                              <% else %>
+                                  <button class="btn btn-danger btn-block btn-xs col-lg-12 center-block">Tournament Is Full</button>
+                              <% end %>
+                              </div>
+                              <div class="col-md-6 sm-padding mrgn-top">
+                                <button data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-block btn-xs col-lg-12 center-block">Purchase As Guest</button>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-6 sm-padding mrgn-top">
+                              <%= link_to(sponsorship_path(@tournament.id), :class => "btn btn-primary btn-block btn-xs col-lg-12 center-block") do %>
+                                  View Sponsorship
+                              <% end %>
+                            </div>
+                            <div class="col-md-6 sm-padding mrgn-top">
+                              <%= link_to(new_sponsorship_path(:tournament_id => @tournament.id), :class => "btn btn-primary btn-block btn-xs col-lg-12 center-block") do %>
+                                  Become A Sponsor
+                              <% end %>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-12 sm-padding mrgn-top">
+                              <span>Share this tournament!</span>
+                              <%= twitter_button %><%= linkedin_button %><%= facebook_button %>
+                            </div>
+                          </div>
+                          <%= link_to('< Back to tournament list', tournaments_path, :class => "btn btn-link btn-sm") %>
+                        </div>
+                      </div>
                 </div>
             </div>
 

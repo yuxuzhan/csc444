@@ -18,7 +18,16 @@
  /* "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"*/
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
+.btn {
+  white-space:normal !important;
+   word-wrap:break-word;
+}
+.sm-padding{
+  padding: 0 6px;
+}
+.mrgn-top{
+  margin-top: 10px;
+}
 body,
 html {
     width: 100%;
