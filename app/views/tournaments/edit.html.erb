@@ -3,8 +3,8 @@
         <div class=" glass-container row">
             <h1>Edit Tournament</h1>
             <%= render "tournaments/form" %><br/>
-            <div class="col-md-3">
-                <%= button_to "Delete", {:controller => 'tournaments', :action => 'destroy', :id => @tournament.id}, data: { confirm: "Are you sure?" }, :method => :delete, :class=>"btn btn-danger btn-lg btn-block" %>
+            <div class="col-md-2">
+                <%= button_to "Delete", {:controller => 'tournaments', :action => 'destroy', :id => @tournament.id}, data: { confirm: "Are you sure?" }, :method => :delete, :class=>"btn btn-danger btn-md btn-block" %>
             </div>
         </div>
     </div>

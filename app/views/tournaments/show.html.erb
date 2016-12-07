@@ -27,8 +27,8 @@
                             <div class="col-md-12 sm-padding">
                               <% if @tournaments_orgnized.include?(@tournament.id) || (current_account && current_account.admin?) %>
                                   <%= link_to('Edit This Tournament', edit_tournament_path(@tournament.id), :class => "btn btn-success btn-block btn-sm") %>
-                                  <%= link_to('View Players In Tournament', players_show_path(:tournament_id => @tournament.id), :class => "btn btn-success btn-block btn-sm") %>
                               <% end %>
+                              <%= link_to('View Players In Tournament', players_show_path(:tournament_id => @tournament.id), :class => "btn btn-success btn-block btn-sm") %>
                             </div>
                           </div>
                           <div class="row">
