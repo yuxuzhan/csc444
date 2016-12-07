@@ -212,7 +212,7 @@
                     }
                 });
             } else {
-                $('#error_explanation').html('<p>Please Login before Sign Up</p>');
+                $('#error_explanation').html('<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Warning!</strong> Please Login before Sign up.</div>');
             }
         }
     });
@@ -239,7 +239,7 @@
                 }
             });
         } else {
-            $('#error_explanation').html('<p>Please Login before Sign Up</p>');
+            $('#error_explanation').html('<div class="alert alert-danger alert-dismissible"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Warning!</strong> Please Login before Purchase.</div>');
         }
     });
 
