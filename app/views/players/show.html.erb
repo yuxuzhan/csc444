@@ -1,32 +1,34 @@
 <div class="padding-navbar sponsor-background">
-  <div class="glass-container">
-	<%= link_to '< Back', request.referrer %>
-	<h1>Players in <%=Tournament.find(params[:tournament_id]).name%></h1>
-	<% if @player_info.present? %>
-	<table class="table table-striped">
-		<thead>
-			<th>name</th>
-			<th>group</th>
-			<th>checkin</th>
-		</thead>
-		<tbody>
-			<% @player_info.each do |t|%>
-			<tr>
-				<td><%= Account.find(t.account_id).name%></td>
-				<td><%= t.group_id%></td>
-				<td>
-					<%if t.checkin%>
-						<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-					<%else%>
-						<span class="glyphicon glyphicon-remove" aria-hidden="false"></span>
-					<%end%>
-				</td>
-			</tr>
-			<% end %>
-		</tbody>
-	</table>
-	<% else %>
-	<tr> No Players in This Tournament Yet </tr>
-	<%end%>
-</div>
+    <div class="container">
+        <div class="glass-container">
+          	<%= link_to '< Back', request.referrer %>
+          	<h1>Players in <%=Tournament.find(params[:tournament_id]).name%></h1>
+          	<% if @player_info.present? %>
+          	<table class="table table-striped">
+          		<thead>
+          			<th>name</th>
+          			<th>group</th>
+          			<th>checkin</th>
+          		</thead>
+          		<tbody>
+          			<% @player_info.each do |t|%>
+          			<tr>
+          				<td><%= Account.find(t.account_id).name%></td>
+          				<td><%= t.group_id%></td>
+          				<td>
+          					<%if t.checkin%>
+          						<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+          					<%else%>
+          						<span class="glyphicon glyphicon-remove" aria-hidden="false"></span>
+          					<%end%>
+          				</td>
+          			</tr>
+          			<% end %>
+          		</tbody>
+          	</table>
+          	<% else %>
+          	<tr> No Players in This Tournament Yet </tr>
+          	<%end%>
+        </div>
+    </div>
 </div>

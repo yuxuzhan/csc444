@@ -1,21 +1,21 @@
 
 <div id="sponsorship" class="tab-pane fade">
-	<h2>Sponsor Info</h2>
-	<P>Sponsors</p>
+	<h3>Registered Sponsors</h3>
 		<ul>
 			<% Account.find(current_account.id).sponsors.each do |s| %>
 				<li><%= link_to s.name, s%></li>
 			<%end%>
 		</ul>
 
-	<p>Sponsoring History</p>
+	<hr>
+	<h3>Sponsoring History</h3>
 	<table class="table table-sm">
 		<thead>
-		<tr>
-	    <th>Tournament name</th>
-	    <th>Sponsor name</th>
-	    <th>Amount</th>
-  	</tr>
+				<tr>
+			    <th>Tournament name</th>
+			    <th>Sponsor name</th>
+			    <th>Amount</th>
+		  	</tr>
 		</thead>
 		<tbody>
 		<% Account.find(current_account.id).sponsors.each do |s| %>

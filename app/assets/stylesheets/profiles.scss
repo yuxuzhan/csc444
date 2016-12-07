@@ -112,6 +112,15 @@
   height: 100%;
 }
 
+.profile-content hr {
+  display: block;
+  border: 0;
+  margin: 1em 0;
+  padding: 0;
+  border-bottom: 3px solid #A9A9A9;
+}
+
+
 .table-user-information > tbody > tr {
     border-top: 1px solid rgb(255, 255, 255);
 }
