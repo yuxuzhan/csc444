@@ -1,32 +1,74 @@
-<div class="static-pages-head padding-navbar">
+<div class="about-us-image">
 </div>
 <div class ="container">
 	<div class="col-xs-12 static-pages-content">
-		<legend><h3>Features for Golfi</h3></legend>
-		<p>
-			This site is implemented as a site for local golf tournaments. 
-		</p>
-		<ul>
-			<li>
-				To check the available local tournaments: <%= link_to('Tournaments', tournaments_path) %>
-			</li>
-			<li>
-				To check our sponsors: <%= link_to('Partners', partners_path) %>
-			</li>
-		</ul>
-		<p>
-			In order to host, sponsor, and join a tournament, you need to either sign in as a returned user, or sign up for a new account:
-		</p>
-		<ul>
-			<li> 
-				For returned users: <%= link_to('Sign in', new_account_session_path) %>
-			</li>
-			<li> 
-				For new users: <%= link_to('Sign up', new_account_registration_path) %>
-			</li>
-		</ul>
-		<p>
-			If you have any questions, please contact us at: <%= link_to('Contact us', contacts_path) %>
-		</p>
+		<div class="feature-title-boarder"><h2 style="color:#006400">Features for Golfi</h2></div>
+
+		<div class="col-md-6">
+          <div class="row row-eq-height">
+                <div class="col-xs-4 text-center">
+                    <%= image_tag("golf-player-feature.png", :alt => "golf player feature icon", :class => "img-fluid rounded")%>
+                </div>
+                <div class="col-xs-8">
+                    <h3>To Enjoy yourself as a Golfer</h3>
+                    <p>For a golfer, this website allows you to check, and join avilable <%= link_to('tournaments', tournaments_path) %>.
+                    </p>
+                    <p> To join a tournament, you need to either <%= link_to('sign in', new_account_session_path) %> as a returned user, or <%= link_to('sign up', new_account_registration_path) %> for a new account. You could join a tournament easily by clicking a tournament name on the <%= link_to('tournaments', tournaments_path) %> page</p>
+
+                </div>
+            </div>
+            <div class="row row-eq-height">
+                <div class="col-xs-4 text-center">
+                    <%= image_tag("organizer-feature.png", :alt => "organizer feature icon", :class => "img-fluid rounded")%>
+                </div>
+                <div class="col-xs-8">
+                    <h3>To Organize a Tournament as an Organizer</h3>
+                    <p>For an organizer, this website allows you to create, manage, organize, and check for <%= link_to('tournaments', tournaments_path) %>.
+                    </p>
+                    <p> To create/manage a tournament, you need to either <%= link_to('sign in', new_account_session_path) %> as a returned user, or <%= link_to('sign up', new_account_registration_path) %> for a new account. 
+                    </p>
+                </div>
+            </div>
+          <div class="row row-eq-height">
+                <div class="col-xs-4 text-center">
+                    <%= image_tag("online-help.png", :alt => "contact us icon", :class => "img-fluid rounded")%>
+                </div>
+                <div class="col-xs-8">
+                    <h3>Questions or Concerns</h3>
+                    <p>If you have any questions about how use this site, or any concerns about any information on this website, please feel free to contact us using the <%= link_to('contact us', contacts_path) %> page. We will get back to you as soon as possible.
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+		<div class="col-md-6 feature-left-boarder">
+          <div class="row row-eq-height">
+                <div class="col-xs-4 text-center">
+                    <%= image_tag("sponsor-feature.png", :alt => "sponsor feature icon", :class => "img-fluid rounded")%>
+                </div>
+                <div class="col-xs-8">
+                    <h3>To Support as a Sponsor</h3>
+                    <p>For a sponsor, this website allows you to support, and join <%= link_to('tournaments', tournaments_path) %>.
+                    </p>
+                    <p> To become a sponser for a tournament, after you <%= link_to('sign in', new_account_session_path) %> or <%= link_to('sign up', new_account_registration_path) %>, you could support a tournament by clicking on the specific tournament name on the <%= link_to('tournaments', tournaments_path) %> page. 
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="row row-eq-height">
+                <div class="col-xs-4 text-center">
+                    <%= image_tag("guest-feature.png", :alt => "guest feature icon", :class => "img-fluid rounded")%>
+                </div>
+                <div class="col-xs-8">
+                    <h3>To Wacth a Tournament as a Guest</h3>
+                    <p>For a guest, this website allows you to buy tickets as yourself or as a group for avilable <%= link_to('tournaments', tournaments_path) %>.
+                    </p>
+                    <p> To buy a ticket/tickets, you could click on the specific tournament name on the <%= link_to('tournaments', tournaments_path) %> page, and purchase your ticket in the following page. </p>
+
+                </div>
+            </div>
+        </div>
 	</div>
 </div>
