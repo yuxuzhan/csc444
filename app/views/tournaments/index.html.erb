@@ -17,7 +17,7 @@
 								</thead>
 
 								<tbody>
-										<% @tournaments.each do |t| %>
+										<% @tournaments.reverse.each do |t| %>
 												<% if t.private == false %>
 														<tr>
 																<% if t.logo.url.present? %>
