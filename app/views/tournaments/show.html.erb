@@ -1,12 +1,10 @@
 <div class="padding-navbar tournament-background">
-    <div id="error_explanation">
-        <% if flash[:error].present? %>
-            <p><%= flash[:error] %></p>
-        <% end %>
-    </div>
-
-
     <div class="small-padding container">
+      <div id="error_explanation">
+          <% if flash[:error].present? %>
+              <p><%= flash[:error] %></p>
+          <% end %>
+      </div>
         <div class="row row-eq-height">
             <div class="col-md-3 col-sm-3">
                 <div class="user-wrapper">
@@ -101,13 +99,14 @@
                         <%= markdown(@tournament.details) %>
                     </div>
                     <hr>
-                    <div class="col-md-6 col-sm-12 map-container">
-                        <h2>Location</h2>
+
+                    <div class="col-md-5 col-sm-12 map-container">
+                        <h2>Contact & Location</h2>
+                        <p><%=@tournament.contact%></p>
                         <p><%=@tournament.venue%></p>
                         <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBDGM6j6MEEI73Tcd5pgIs_n674JFRWjBw&q=+<%= @tournament.venue %>" allowfullscreen></iframe>
-
                     </div>
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-md-7 col-sm-12">
                         <h2>Photos</h2>
                         <% if @tournament.attachments.present? %>
                             <div id="myCarousel" class="carousel slide" data-ride="carousel">

@@ -43,20 +43,20 @@ class PlayersController < ApplicationController
         if params[:player][:group_id_organizer].present?
             @player = Player.where(account_id: params[:account_id],tournament_id: params[:tournament_id])
             @player.update(group_id: params[:player][:group_id_organizer])
-            redirect_to organizers_show_path
+            redirect_to organizers_show_path(:tournament_id => params[:tournament_id])
         end
 
         if params[:player][:group_id_subAdmin].present?
             @player = Player.where(account_id: params[:account_id],tournament_id: params[:tournament_id])
             @player.update(group_id: params[:player][:group_id_subAdmin])
-            redirect_to sub_admins_show_path
+            redirect_to sub_admins_show_path(:tournament_id => params[:tournament_id])
         end
 
 
         if params[:player][:ticketnumber].present?
-            @player = Player.where(stripe_token: params[:player][:ticketnumber])
+            @player = Player.where(stripe_token: params[:player][:ticketnumber],tournament_id: params[:player][:tournament_id])
             @player.update(checkin: true)
-            redirect_to organizers_update_path
+            redirect_to organizers_update_path(:tournament_id => params[:player][:tournament_id])
         end
     end
 

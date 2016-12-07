@@ -25,8 +25,8 @@
 																<td><%= link_to value, tournament_path(key)%></td>
 																<td>Organizer</td>
 																<td>
-																		<%= link_to("Arrange Group", organizers_show_path, :class => "btn btn-primary btn-xs")  %>
-																		<%= link_to("Check In", organizers_update_path, :class => "btn btn-info btn-xs")  %>
+																		<%= link_to("Arrange Group", organizers_show_path(:tournament_id => key), :class => "btn btn-primary btn-xs")  %>
+																		<%= link_to("Check In", organizers_update_path(:tournament_id => key), :class => "btn btn-info btn-xs")  %>
 																</td>
 														</tr>
 												<% end %>

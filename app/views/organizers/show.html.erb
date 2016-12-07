@@ -3,6 +3,7 @@
     <td><%= link_to '< Back', request.referrer %></td>
     <% @arrangement.tournaments_created.each do |key, value|%>
     <h1><%= key %></h1>
+    <div class="table-responsive">
     <table class="table table-striped">
         <thead>
             <th>players</th>
@@ -53,6 +54,7 @@
             <% end %>
         </tbody>
     </table>
+    </div>
     <% end %>
 
 </div>

@@ -1,7 +1,7 @@
 
 <div class="padding-navbar sponsor-background">
   <div class="glass-container">
-    <td><%= link_to '< Back', request.referrer %></td><div class="padding-navbar">
+    <%= link_to '< Back', request.referrer %>
     <% @arrangement.tournaments_created.each do |key, value|%>
     <h1><%= key %></h1>
     <div class="row">
@@ -11,6 +11,7 @@
             <div class="form-group">
               <%= f.label :ticketnumber,"Enter ticket number to checkin"%>
               <%= f.text_field :ticketnumber, class: "form-control"%>
+              <%= f.hidden_field :tournament_id, :value => params[:tournament_id]%>
             </div>
             <%= f.submit "update",class:"btn btn-primary"%>
         <% end %>
@@ -42,4 +43,5 @@
       </div>
     </div>
     <% end %>
+  </div>
 </div>
