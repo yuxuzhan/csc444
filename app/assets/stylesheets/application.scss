@@ -104,14 +104,14 @@ p.copyright {
 }
 
 .static-pages-head {
-    height: 30%;
+    height: 40%;
     color: #f8f8f8;
-    background: url(asset-path('home-banner.jpg')) no-repeat center center;
+    background: url(asset-path('header-golfold.jpg')) no-repeat center center;
     background-size: cover;
 }
 
 .static-pages-content{
-    padding-top:30px;
+    padding-top:10px;
     font-weight: 300;
 }
 
@@ -122,3 +122,7 @@ p.copyright {
 .static-pages-content h4{
     margin: 30px 0 10px;
 }
+.static-pages-title-boarder{
+      border-bottom: thin solid #006400;
+      margin:20px;
+  }
