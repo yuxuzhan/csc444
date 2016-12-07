@@ -2,7 +2,7 @@ class SubAdminsController < ApplicationController
 
     def create
         @sub_admin = SubAdmin.new
-        if params[:sub_admin][:approve] == "yes"
+        if params[:sub_admin][:approve] == "true"
             @sub_admin.tournament_id = params[:tournament_id]
             @sub_admin.account_id = params[:account_id]
             @duplicate_sub_admin = SubAdmin.where(tournament_id: params[:tournament_id], account_id: params[:account_id])
@@ -15,7 +15,7 @@ class SubAdminsController < ApplicationController
             end
         end
 
-        if params[:sub_admin][:approve] == "no"
+        if params[:sub_admin][:approve] == "false"
             @del_sub_admin = SubAdmin.where(tournament_id: params[:tournament_id], account_id: params[:account_id])
             if @del_sub_admin.present?
                 @del_sub_admin.each do |del_sub_admin|

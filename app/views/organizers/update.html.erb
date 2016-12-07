@@ -1,28 +1,45 @@
-<div class="padding-navbar">
-    <h1><% "Arrangement"%></h1>
+
+<div class="padding-navbar sponsor-background">
+  <div class="glass-container">
+    <td><%= link_to '< Back', request.referrer %></td><div class="padding-navbar">
     <% @arrangement.tournaments_created.each do |key, value|%>
-    <%= key %>
-    <table class="table table-striped">
-        <thead>
-            <th>players</th>
-            <th>checkin</th>
-        </thead>
-        <tbody>
-            <% value[0].each do |t|%>
-            <tr>
-                <td><%= Account.find(t.account_id).name %> </td>
-                <td><%= t.checkin %> </td>
-
-            </tr>
-            <% end %>
-            <td><%= form_for(:player, :url => {:controller => 'players',:action => 'update'}) do |f| %>
-                <%= f.text_field :ticketnumber%>
-                <%= f.submit "update"%>
-            </td>
-            <% end %>
-        </tbody>
-    </table>
+    <h1><%= key %></h1>
+    <div class="row">
+      <div class="col-md-4">
+      <div class="well">
+        <%= form_for(:player, :url => {:controller => 'players',:action => 'update'}) do |f| %>
+            <div class="form-group">
+              <%= f.label :ticketnumber,"Enter ticket number to checkin"%>
+              <%= f.text_field :ticketnumber, class: "form-control"%>
+            </div>
+            <%= f.submit "update",class:"btn btn-primary"%>
+        <% end %>
+      </div>
+      </div>
+      <div class="col-md-8">
+        <div class="well">
+        <table class="table">
+            <thead>
+                <th>players</th>
+                <th>checkin</th>
+            </thead>
+            <tbody>
+                <% value[0].each do |t|%>
+                <tr>
+                    <td><%= Account.find(t.account_id).name %> </td>
+                    <td>
+                      <%if t.checkin%>
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                      <%else%>
+                        <span class="glyphicon glyphicon-remove" aria-hidden="false"></span>
+                      <%end%>
+                    </td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
     <% end %>
-    <td><%= link_to 'Back', request.referrer %></td>
-
 </div>
