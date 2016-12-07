@@ -1,7 +1,8 @@
-<div class="padding-navbar">
-  <h1><% "Arrangement"%></h1>
+<div class="padding-navbar sponsor-background">
+<div class="glass-container">
+  <%= link_to '< Back', request.referrer %>
   <% @arrangement.tournaments_sub_admin.each do |key, value|%>
-  <%= key %>
+  <h1><%= key %></h1>
 	<table class="table table-striped">
 		<thead>
 			<th>players</th>
@@ -22,5 +23,5 @@
 		</tbody>
 	</table>
   <%end %>
-  <td><%= link_to 'Back', request.referrer %></td>
+</div>
 </div>
