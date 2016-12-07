@@ -11,6 +11,7 @@
             <div class="form-group">
               <%= f.label :ticketnumber,"Enter ticket number to checkin"%>
               <%= f.text_field :ticketnumber, class: "form-control"%>
+              <%= f.hidden_field :tournament_id, :value => params[:tournament_id]%>
             </div>
             <%= f.submit "update",class:"btn btn-primary"%>
         <% end %>

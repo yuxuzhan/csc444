@@ -8,10 +8,10 @@ class SubAdminsController < ApplicationController
             @duplicate_sub_admin = SubAdmin.where(tournament_id: params[:tournament_id], account_id: params[:account_id])
             if @duplicate_sub_admin.blank?
                 if @sub_admin.save
-                    redirect_to organizers_show_path
+                    redirect_to organizers_show_path(:tournament_id => params[:tournament_id])
                 end
             else
-                redirect_to organizers_show_path
+                redirect_to organizers_show_path(:tournament_id => params[:tournament_id])
             end
         end
 
@@ -21,9 +21,9 @@ class SubAdminsController < ApplicationController
                 @del_sub_admin.each do |del_sub_admin|
                     del_sub_admin.destroy
                 end
-                redirect_to organizers_show_path
+                redirect_to organizers_show_path(:tournament_id => params[:tournament_id])
             else
-                redirect_to organizers_show_path
+                redirect_to organizers_show_path(:tournament_id => params[:tournament_id])
             end
         end
     end
