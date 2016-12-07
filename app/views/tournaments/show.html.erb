@@ -102,10 +102,10 @@
                     </div>
                     <hr>
                     <div class="col-md-6 col-sm-12 map-container">
-                        <h2>Location</h2>
+                        <h2>Contact & Location</h2>
+                        <p><%=@tournament.contact%></p>
                         <p><%=@tournament.venue%></p>
                         <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBDGM6j6MEEI73Tcd5pgIs_n674JFRWjBw&q=+<%= @tournament.venue %>" allowfullscreen></iframe>
-
                     </div>
                     <div class="col-md-6 col-sm-12">
                         <h2>Photos</h2>
