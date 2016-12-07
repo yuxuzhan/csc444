@@ -4,7 +4,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Choose what kind of storage to use for this uploader:
   storage :fog
-  
+
   process :resize_to_fit => [300, 300]
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -24,7 +24,5 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   #fallback function, set default image for account
-  def default_url(*args)
-    ActionController::Base.helpers.asset_path("fallback/" + [version_name, "image-fallback"].compact.join('_'))
-  end
+
 end

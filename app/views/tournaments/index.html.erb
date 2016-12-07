@@ -23,7 +23,7 @@
 																<% if t.logo.url.present? %>
 																		<td nowrap><%= image_tag(t.logo.url, :alt => "Logo Image", :class => "img-circle", :style => "width:50px; height:auto;")%></td>
 																<% else %>
-																		<td nowrap><%= image_tag("tournament-logo.png", :alt => "Default Logo", :class => "img-circle", :style => "width:200px; height:auto;") %></td>
+																		<td nowrap><%= image_tag("tournament-logo.png", :alt => "Default Logo", :class => "img-circle", :style => "width:50px; height:auto;") %></td>
 																<% end %>
 																<td><%= link_to t.name, tournament_path(t.id)%></td>
 																<td><%=t.date%></td>

@@ -7,6 +7,8 @@
 										<div class="profile-userpic">
 												<% if @profile.image.url.present? %>
 														<%= image_tag(@profile.image.url, :class => "img-responsive", alt:@profile.name)%>
+												<% else %>
+													<%= image_tag("default-profile.png", :class => "img-responsive", alt:@profile.name)%>
 												<% end %>
 										</div>
 										<!-- END SIDEBAR USERPIC -->

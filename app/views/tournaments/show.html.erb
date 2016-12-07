@@ -10,7 +10,7 @@
                 <div class="user-wrapper">
                     <div class="profile-userpic">
                         <% if @tournament.logo.url.present? %>
-                             <%= image_tag(@tournament.logo.url, :alt => "Logo Image", :class => "img-responsive")%>
+                             <%= image_tag(@tournament.logo.url, :alt => "Logo Image", :class => "img-responsive", :style =>"width:200px;height:auto;")%>
                         <% else %>
                               <%= image_tag("tournament-logo.png", :alt => "Default Logo", :class => "img-responsive")%>
                         <% end %>
@@ -128,26 +128,38 @@
                     </div>
                     <div class="col-md-7 col-sm-12">
                         <h2>Photos</h2>
-                        <% if @tournament.attachments.present? %>
                             <div id="myCarousel" class="carousel slide" data-ride="carousel">
                             <!-- Indicators -->
-                            <ol class="carousel-indicators">
-                                <% @tournament.attachments.each_with_index do |photo, n| %>
-                                    <li data-target='#MyCarousel' data-slide-to="#{n}" class="#{'active' if n == 0}"></li>
-                                <% end %>
-                            </ol>
+                            <% if @tournament.attachments.present? %>
+                              <ol class="carousel-indicators">
+                                  <% @tournament.attachments.each_with_index do |photo, n| %>
+                                      <li data-target='#MyCarousel' data-slide-to="#{n}" class="#{'active' if n == 0}"></li>
+                                  <% end %>
+                              </ol>
 
-                            <!-- Wrapper for slides -->
-                            <div class="carousel-inner" role="listbox">
-                                <div class="item active">
-                                    <%= image_tag @tournament.attachments.first.avatar.url, class: "img-responsive center-block" %>
-                                </div>
-                                <% @tournament.attachments.drop(1).each do |p| %>
-                                    <div class="item">
-                                        <%= image_tag p.avatar.url, class: "img-responsive center-block"%>
-                                    </div>
-                                <% end %>
-                            </div>
+                              <!-- Wrapper for slides -->
+                              <div class="carousel-inner" role="listbox">
+                                  <div class="item active">
+                                      <%= image_tag @tournament.attachments.first.avatar.url, class: "img-responsive center-block" %>
+                                  </div>
+                                  <% @tournament.attachments.drop(1).each do |p| %>
+                                      <div class="item">
+                                          <%= image_tag p.avatar.url, class: "img-responsive center-block"%>
+                                      </div>
+                                  <% end %>
+                              </div>
+                            <% else %>
+                              <ol class="carousel-indicators">
+                                  <li data-target='#MyCarousel' data-slide-to="#0" class="#active"></li>
+                              </ol>
+
+                              <!-- Wrapper for slides -->
+                              <div class="carousel-inner" role="listbox">
+                                  <div class="item active">
+                                      <%= image_tag "default-attachment.png", :alt => "Default Image", :class => "img-responsive center-block" %>
+                                  </div>
+                              </div>
+                            <% end %>
 
                             <!-- Left and right controls -->
                             <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
@@ -159,7 +171,6 @@
                                 <span class="sr-only">Next</span>
                             </a>
                             </div>
-                        <% end %>
                     </div>
                 </div>
             </div>

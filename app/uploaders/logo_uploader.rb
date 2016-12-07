@@ -26,9 +26,7 @@ class LogoUploader < CarrierWave::Uploader::Base
    end
 
    #fallback function, set default image for logo
-   def default_url(*args)
-     ActionController::Base.helpers.asset_path("fallback/" + [version_name, "logo-fallback"].compact.join('_'))
-   end
+  
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
