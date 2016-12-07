@@ -44,7 +44,7 @@ gem 'mini_magick'
 #Use to upload image file to rails
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem "fog-aws"
 # Use forms for creating contact forms
 gem 'mail_form', '>= 1.5.0.rc'
 gem 'simple_form', '>= 3.0.0.rc'
